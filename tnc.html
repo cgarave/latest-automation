@@ -9,19 +9,16 @@
     <script src="https://cdn.tiny.cloud/1/te167wk1fiddsv5gf6bf7yi169ojp0pclg2kksirxrl0w9lg/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
     <link rel="stylesheet" href="sys/style.css">
-    <link href="sys/src/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        .mce-tinymce {
-            border-radius: 6px;
+        body {
+            font-family: "Libre Franklin", sans-serif;
         }
-        .mce-content-body, .mce-resizehandle {
-            display: none !important;
-        }
-        .data-mce-style {
-            cursor: none;
-        }
-        #mceu_15-body {
-            display: none;
+        a {
+            text-decoration: underline;
+            color: lightskyblue;
         }
     </style>
 </head>
@@ -82,7 +79,7 @@
                         </select>
                     </li>
                 </ol>
-                <a href="#preview-section">
+                <a href="#preview-section" style="text-decoration: none;">
                     <button onclick="previewContent()" class="bg-[#4816C3] rounded-[4px] p-2 font-medium text-xs text-white h-fit flex flex-row gap-x-1 hover:bg-[#591DEF]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -146,7 +143,7 @@
                         <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-grid-dots"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg></li>
                     </ul>
                 </nav>
-                <div class="py-4 px-20">
+                <div class="py-4 px-80">
                     <div class="w-full h-40 bg-neutral-800 flex flex-col p-4 gap-y-3">
                         <div>
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
@@ -162,32 +159,7 @@
                     </div>
                 </div>
             </div>
-            <!--Mobile Preview-->
-            <div class="w-[425px] h-screen overflow-scroll bg-white relative">
-                <nav class="w-full h-auto bg-neutral-800 flex flex-col justify-between items-center px-4 sticky top-0">
-                    <ul class="w-full p-2 flex flex-row justify-between items-center">
-                        <li><img id="light-logo" style="width: 40px;" src="https://www.sbbanner.com/newsletter/newsletter-template-2024/188-light.png"></li>
-                        <ul class="flex flex-row gap-x-2 items-center">
-                            <li class="bg-neutral-700 p-2 rounded-[4px] font-semibold text-white text-xs">LOG IN</li>
-                            <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-grid-dots"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg></li>
-                        </ul>
-                    </ul>
-                </nav>
-                <div>
-                    <div class="w-full h-auto bg-neutral-800 flex flex-col p-4 gap-y-3">
-                        <div>
-                            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
-                        </div>
-                        <div>
-                            <h1 class="text-white font-semibold text-sm">Promotion Title</h1>
-                            <p class="text-neutral-400 text-xs mb-4">Description</p>
-                            <p class="text-neutral-400 text-xs">Terms and conditions apply</p>
-                        </div>
-                    </div>
-                    <div id="tnc-container-mobile" class="w-full p-4 text-xs"></div>
-                </div>
-            </div>
-            <a href="#header" class="bg-[#4816C3] rounded-full p-4 font-medium text-xs text-white h-fit flex flex-row gap-x-1 hover:bg-[#591DEF] absolute right-5 bottom-5 animate-bounce">Back to content editor</a>
+            <a href="#header" style="text-decoration: none; color: white;" class="bg-[#4816C3] rounded-full p-4 font-medium text-xs text-white h-fit flex flex-row gap-x-1 hover:bg-[#591DEF] absolute right-5 bottom-5 animate-bounce">Back to content editor</a>
         <!--Footer Section-->
         <footer class="px-3 py-5 text-black text-xs font-medium flex flex-row justify-between items-center absolute bottom-0 gap-x-1">
             <p>Created by Rave</p>

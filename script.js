@@ -1,126 +1,147 @@
-const ENtemplate = `<div id="content-en-gb" class="tnc-content-wrap non-editable">
+const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <div id="content-en-gb" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
                             <div class="mceEditable">Write/Paste Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
 const CNtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
 const VNtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
 const THtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
 const KRtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
 const IDtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
 const KHtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
-            
+
 const JPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
 const INtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
-                            <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
-                            <div class="full-promotion-content mceEditable">
-                                Write/Paste Localized Full Promotion contents here
-                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
                         </div>
-                        <div id="closeSExpansion" class="hidden non-editable" style="visibility: hidden;">1</div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
-
-const headerScript = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script> $(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>`
-
-const SExpansion = `<SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-<template #header>
-  <h2 class="m-4 font-semibold text-body-1">Full Promotion Specific Terms and Conditions</h2>
-</template>
-<template #content>`
-
-const closeSExpansion = ` </template>
-                          </SExpansionPanel>
-                          </div>
-                          <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                          </div>
-                          <div id="closeSExpansion" class="hidden" style="visibility: hidden;">1</div>`;
 
 //tinymce init (this is where you customize the editor)
 tinymce.init({
@@ -131,6 +152,7 @@ tinymce.init({
     editable_class: 'mceEditable',  //editable class
     noneditable_class: 'non-editable', //non-editable class
     //valid_elements: '*[*]',
+    paste_data_images: false, //disable paste of local image
     table_resize_bars: false, //disable resize bars
     object_resizing: 'img', //disable table resizing
     encoding: 'xml',
@@ -140,13 +162,27 @@ tinymce.init({
     height: 650,
     width: 1000,
     statusbar: false, //disabling status bar
-    
+    protect: [
+        /<script src="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.6.0\/jquery.min.js"><\/script>/g,
+        /<SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g,
+        /<template #header>/g,
+        /<\/template>/g,
+        /<template #content>/g,
+        /<\/SExpansionPanel>/g,
+        /<IncludeContent :url="promoDetail.termsTpl"><\/IncludeContent>/g,
+    ], 
+    // valid_styles: {
+    //     'ol': 'list-style-type',
+    //     'li': '',
+    //   },
+
 
     setup: function (editor) {
         //BeforeSetContent controls all the set contents before it appears on the editor
         //This is useful when you want to change something upon importing of the file
         editor.on('BeforeSetContent', function (event) {
-            //console.log('BeforeSetContent:', event.content);
+            event.content = event.content.trim();
+            console.log('BeforeSetContent:', event.content);
         });
     },
 
@@ -163,17 +199,17 @@ let fileNameAPS = document.getElementById('filename');
 const stringMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const generateFilenameBtn = document.getElementById('generateFilename')
 generateFilenameBtn.addEventListener('click', () => {
-  let input = document.getElementById('filename').value
-  let indexOf_ = input.indexOf('_')
-  //let promoType = input.slice(indexOf_ + 1, indexOf_ + 5) + '_'
-  let country = input.substr(0, indexOf_ + 1)
-  let promoType = input.substr(indexOf_ + 1, 4)
-  let year = input.substr(indexOf_ + 5, 4)
-  let day = input.substr(indexOf_ + 9, 2)
-  let month = input.substr(indexOf_ + 11, 2)
-  let promoNumber = input.substr(indexOf_ + 13, 3)
-  
-  fileNameAPS.value = country + promoType + '_' + day + '_' + stringMonth[month - 1] + '_' + year + '_' + promoNumber
+    let input = document.getElementById('filename').value
+    let indexOf_ = input.indexOf('_')
+    //let promoType = input.slice(indexOf_ + 1, indexOf_ + 5) + '_'
+    let country = input.substr(0, indexOf_ + 1)
+    let promoType = input.substr(indexOf_ + 1, 4)
+    let year = input.substr(indexOf_ + 5, 4)
+    let day = input.substr(indexOf_ + 9, 2)
+    let month = input.substr(indexOf_ + 11, 2)
+    let promoNumber = input.substr(indexOf_ + 13, 3)
+
+    fileNameAPS.value = country + promoType + '_' + day + '_' + stringMonth[month - 1] + '_' + year + '_' + promoNumber
 })
 
 //guide button
@@ -184,7 +220,7 @@ document.getElementById('importBtn').addEventListener('click', () => {
 const tncRegionDropdown = document.getElementById('tnc-regions-dropdown');
 tncRegionDropdown.addEventListener('change', () => {
     const selectedRegion = tncRegionDropdown.value;
-    switch(selectedRegion){
+    switch (selectedRegion) {
         case 'zh-cn':
             document.getElementById('filename').value = 'china_'
             tinymce.get('mytextarea').setContent(ENtemplate);
@@ -236,11 +272,40 @@ tncRegionDropdown.addEventListener('change', () => {
     }
 })
 
+//preview TNC
+function previewContent() {
+    let editorContent = tinymce.get('mytextarea').getContent();
+
+    editorContent = editorContent
+        .replaceAll('<SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">', '')
+        .replaceAll('<template #header>', '')
+        .replaceAll('</template>', '')
+        .replaceAll('<template #content>', '')
+        .replaceAll('</SExpansionPanel>', '')
+        .replaceAll('<IncludeContent :url="promoDetail.termsTpl"></IncludeContent>', '')
+
+        .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
+        .replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
+        .replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
+        .replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
+        .replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
+        .replaceAll(/<ol start="(.*?)" type="1">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
+        .replaceAll(/<ol start="(.*?)" type="i">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
+        .replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
+        .replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
+        .replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
+        
+        .replaceAll(/<li(.*?)>/g, '<li>')
+
+
+    document.getElementById('tnc-container').innerHTML = editorContent
+}
+
 //import TNC
-document.getElementById('import-tnc').addEventListener('click', async(e) => {
-    
+document.getElementById('import-tnc').addEventListener('click', async (e) => {
+
     const tncfile = e.target.files[0]
-    
+
     if (tncfile) {
         document.getElementById('import-check').checked = true;
         const content = await readFile(tncfile);
@@ -258,34 +323,34 @@ document.getElementById('import-tnc').addEventListener('click', async(e) => {
         const contentJP = doc.querySelector('#content-ja-jp');
         const contentIN = doc.querySelector('#content-hi-in');
 
-        if(contentEN){
+        if (contentEN) {
             tinymce.get('mytextarea').setContent(contentEN.outerHTML);
         }
-        if(contentCN){
+        if (contentCN) {
             tinymce.get('mytextarea2').setContent(contentCN.outerHTML);
         }
-        if(contentVN){
+        if (contentVN) {
             tinymce.get('mytextarea2').setContent(contentVN.outerHTML);
         }
-        if(contentTH){
+        if (contentTH) {
             tinymce.get('mytextarea2').setContent(contentTH.outerHTML);
         }
-        if(contentKR){
+        if (contentKR) {
             tinymce.get('mytextarea2').setContent(contentKR.outerHTML);
         }
-        if(contentID){
+        if (contentID) {
             tinymce.get('mytextarea2').setContent(contentID.outerHTML);
         }
-        if(contentKH){
+        if (contentKH) {
             tinymce.get('mytextarea2').setContent(contentKH.outerHTML);
         }
-        if(contentJP){
+        if (contentJP) {
             tinymce.get('mytextarea2').setContent(contentJP.outerHTML);
         }
-        if(contentIN){
+        if (contentIN) {
             tinymce.get('mytextarea2').setContent(contentIN.outerHTML);
         }
-    } 
+    }
 })
 const readFile = async (file) => {
     return new Promise((resolve, reject) => {
@@ -302,28 +367,60 @@ const readFile = async (file) => {
 
 //download TNC
 document.getElementById('download').addEventListener('click', () => {
-    if(document.getElementById('import-check').checked === false){
+    if (document.getElementById('import-check').checked === false) {
 
         let ENcontent = tinymce.get('mytextarea').getContent();
         let LOCALcontent = tinymce.get('mytextarea2').getContent();
         let mergedContent = ENcontent + LOCALcontent;
-        
-        mergedContent = mergedContent.replaceAll(' mceEditable', '').replaceAll(' non-editable', '') //clean up
 
-        let findFullProm = mergedContent.match(/<h2 class="m-4 font-semibold text-body-1">(.*?)<\/h2>/g)
-        let fullpromEN = findFullProm[0];
-        let fullpromLOCAL = findFullProm[1];
+        //clean up
+        mergedContent = mergedContent.replaceAll(' mceEditable', '').replaceAll(' non-editable', '').replaceAll('mceEditable', '')
 
+        //storing en and local full promotion
+        // let findFullProm = mergedContent.match(/<h2 class="m-4 font-semibold text-body-1">(.*?)<\/h2>/g)
+        // let fullpromEN = findFullProm[0];
+        // let fullpromLOCAL = findFullProm[1];
+
+        //shorten the code to replace full promotion when a user replaced the text of EN and/or Local full promotion
+        // mergedContent = mergedContent
+        //     .replace(fullpromEN, SExpansion.replace('<h2 class="m-4 font-semibold text-body-1">Full Promotion Specific Terms and Conditions</h2>', fullpromEN))
+        //     .replace(fullpromLOCAL, SExpansion.replace('<h2 class="m-4 font-semibold text-body-1">Full Promotion Specific Terms and Conditions</h2>', fullpromLOCAL))
+
+        // mergedContent = mergedContent
+        //     .replaceAll(/<\/div>\s*<div id="closeSExpansion" class="hidden" style="visibility: hidden;">1<\/div>\s*<\/div>/g, closeSExpansion)
+
+        //replacing links
         mergedContent = mergedContent
-        .replace(fullpromEN, SExpansion.replace('<h2 class="m-4 font-semibold text-body-1">Full Promotion Specific Terms and Conditions</h2>', fullpromEN))
-        .replace(fullpromLOCAL, SExpansion.replace('<h2 class="m-4 font-semibold text-body-1">Full Promotion Specific Terms and Conditions</h2>', fullpromLOCAL))
+            .replace(/:href="https:\/\/www.188asia.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.188bet.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/:href="`https:\/\/www.188bet.com\/[^/]*\/([^>]*)`">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.my188promo.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.188family.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.188sukses.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.188asia.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.188bet.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.my188promo.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.188family.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.188sukses.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function(){$("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?"+$.now());});</script>')
 
-        //sa closeSExpansion na tayo bro
+            .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
+            .replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
+            .replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
+            .replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
+            .replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
+            .replaceAll(/<ol start="(.*?)" type="1">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
+            .replaceAll(/<ol start="(.*?)" type="i">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
+            .replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
+            .replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
+            .replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
-        let finalContent = headerScript + mergedContent;
+            .replaceAll(/<li(.*?)>/g, '<li>')
+
+        let finalContent = mergedContent;
 
         let fileName = document.getElementById('filename').value;
-        let blob = new Blob([finalContent], {type: 'text/html'});
+        let blob = new Blob([finalContent], { type: 'text/html' });
         let htmlFile = document.createElement('a');
         htmlFile.download = `${fileName}.html`;
         htmlFile.href = window.URL.createObjectURL(blob);

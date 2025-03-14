@@ -146,7 +146,7 @@ const INtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable
 //tinymce init (this is where you customize the editor)
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
-    plugins: 'advlist lists code table image link',
+    plugins: 'advlist lists code table image link powerpaste',
     toolbar: 'code table numlist bullist image link indent outdent alignleft aligncenter alignright forecolor bold italic underline strikethrough',
     menubar: false,  // Disable the menubar entirely
     editable_class: 'mceEditable',  //editable class
@@ -158,6 +158,8 @@ tinymce.init({
     encoding: 'xml',
     element_format: 'xhtml',
     entity_encoding: 'raw',
+    powerpaste_word_import: 'prompt',
+    powerpaste_html_import: 'prompt',
     //content_style: 'li { margin: 10px; border: 5px solid red; padding: 3px; }',
     height: 650,
     width: 1000,
@@ -171,10 +173,20 @@ tinymce.init({
         /<\/SExpansionPanel>/g,
         /<IncludeContent :url="promoDetail.termsTpl"><\/IncludeContent>/g,
     ], 
-    // valid_styles: {
-    //     'ol': 'list-style-type',
-    //     'li': '',
-    //   },
+    valid_styles: {
+        'ol': 'list-style-type',
+    },
+    content_style: `
+                  body {
+                    padding: 20px;
+                    font-size: 12px
+                  }
+                  h2 {
+                    font-size: 14px;
+                  }
+                  table {
+                    width: 100%;
+                  }`,
 
 
     setup: function (editor) {
@@ -284,6 +296,7 @@ function previewContent() {
         .replaceAll('</SExpansionPanel>', '')
         .replaceAll('<IncludeContent :url="promoDetail.termsTpl"></IncludeContent>', '')
 
+        //replacing list styles
         .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
         .replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
         .replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
@@ -296,6 +309,19 @@ function previewContent() {
         .replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
         
         .replaceAll(/<li(.*?)>/g, '<li>')
+
+        //replacing tables
+        .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
+        .replaceAll('<tbody>', '<tbody class="divide-y">')
+        .replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
+        .replaceAll('</table>', '</table></div>')
+
+        //replacing paragraph
+        .replace(/<p class="MsoNormal">/g, '<p>')
+        
+        //removing spans
+        .replace(/<span lang="EN-US">/g, '')
+        .replace(/<\/span>/g, '')
 
 
     document.getElementById('tnc-container').innerHTML = editorContent
@@ -403,7 +429,8 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<a href="https:\/\/www.188family.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.188sukses.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function(){$("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?"+$.now());});</script>')
-
+        
+        //replacing list styles
             .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
             .replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
             .replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
@@ -416,6 +443,32 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
             .replaceAll(/<li(.*?)>/g, '<li>')
+        
+        //replacing tables
+            .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
+            .replaceAll('<tbody>', '<tbody class="divide-y">')
+            .replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
+            .replaceAll('</table>', '</table></div>')
+        
+        //replacing paragraph
+            .replace(/<p class="MsoNormal">/g, '<p>')
+        
+        //removing spans language
+        .replace(/<span lang="EN-US">/g, '')
+        .replace(/<span lang="ZH-CN">/g, '')
+        .replace(/<span lang="JA">/g, '')
+        .replace(/<span lang="KHM">/g, '')
+        .replace(/<span lang="TH">/g, '')
+        .replace(/<span lang="KO">/g, '')
+        .replace(/<span data-contrast="auto">/g, '')
+        .replace(/<\/span>/g, '')
+
+        //cleaning up some mess
+        .replaceAll('<br />', '')
+        .replaceAll('<br/>', '')
+        .replaceAll(' class="MsoNormal"', '')
+        .replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
+            
 
         let finalContent = mergedContent;
 

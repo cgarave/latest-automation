@@ -2,13 +2,17 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                     <div id="content-en-gb" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
-                            <div class="mceEditable">Write/Paste Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                    <p>Write/Paste Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -175,6 +179,9 @@ tinymce.init({
     ], 
     valid_styles: {
         'ol': 'list-style-type',
+        'p': 'text-align',
+        'div': 'text-align',
+        'span': 'color',
     },
     content_style: `
                   body {
@@ -285,8 +292,8 @@ tncRegionDropdown.addEventListener('change', () => {
 })
 
 //preview TNC
-function previewContent() {
-    let editorContent = tinymce.get('mytextarea').getContent();
+function previewContent(lang) {
+    let editorContent = tinymce.get(lang).getContent();
 
     editorContent = editorContent
         .replaceAll('<SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">', '')
@@ -295,6 +302,9 @@ function previewContent() {
         .replaceAll('<template #content>', '')
         .replaceAll('</SExpansionPanel>', '')
         .replaceAll('<IncludeContent :url="promoDetail.termsTpl"></IncludeContent>', '')
+
+        //replacing Full Promotion
+        .replaceAll(/<h2 class="m-4 font-semibold text-body-1 mceEditable">/g, '<h2 class="mt-4 mb-4 font-semibold text-body-1 mceEditable">')
 
         //replacing list styles
         .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
@@ -317,11 +327,12 @@ function previewContent() {
         .replaceAll('</table>', '</table></div>')
 
         //replacing paragraph
-        .replace(/<p class="MsoNormal">/g, '<p>')
+        .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
+        .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
+        .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
+        .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+
         
-        //removing spans
-        .replace(/<span lang="EN-US">/g, '')
-        .replace(/<\/span>/g, '')
 
 
     document.getElementById('tnc-container').innerHTML = editorContent
@@ -452,23 +463,29 @@ document.getElementById('download').addEventListener('click', () => {
         
         //replacing paragraph
             .replace(/<p class="MsoNormal">/g, '<p>')
+            .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
+            .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
+            .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
+            .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
         
         //removing spans language
-        .replace(/<span lang="EN-US">/g, '')
-        .replace(/<span lang="ZH-CN">/g, '')
-        .replace(/<span lang="JA">/g, '')
-        .replace(/<span lang="KHM">/g, '')
-        .replace(/<span lang="TH">/g, '')
-        .replace(/<span lang="KO">/g, '')
-        .replace(/<span data-contrast="auto">/g, '')
-        .replace(/<\/span>/g, '')
+            .replace(/<span lang="EN-US">/g, '')
+            .replace(/<span lang="ZH-CN">/g, '')
+            .replace(/<span lang="JA">/g, '')
+            .replace(/<span lang="KHM">/g, '')
+            .replace(/<span lang="TH">/g, '')
+            .replace(/<span lang="KO">/g, '')
+            .replace(/<span data-contrast="auto">/g, '')
+            .replace(/<\/span>/g, '')
 
         //cleaning up some mess
-        .replaceAll('<br />', '')
-        .replaceAll('<br/>', '')
-        .replaceAll(' class="MsoNormal"', '')
-        .replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
-            
+            .replaceAll('<br />', '')
+            .replaceAll('<br/>', '')
+            .replaceAll(' class="MsoNormal"', '')
+            .replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
+
+        //images
+            .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
 
         let finalContent = mergedContent;
 
@@ -478,5 +495,19 @@ document.getElementById('download').addEventListener('click', () => {
         htmlFile.download = `${fileName}.html`;
         htmlFile.href = window.URL.createObjectURL(blob);
         htmlFile.click();
+    }
+})
+
+//preview dropdown
+document.getElementById('preview-dropdown').addEventListener('change', () => {
+    let previewHTML = document.getElementById('preview-dropdown').value;
+
+    switch(previewHTML) {
+        case 'prev-en-gb':
+            previewContent('mytextarea');
+            break;
+        case 'prev-localized':
+            previewContent('mytextarea2');
+            break;
     }
 })

@@ -22,16 +22,7 @@
         selector: '#mytextarea',
         plugins: 'advlist lists code table',
         toolbar: 'code table numlist bullist',
-        editable_class: 'mceEditable',  //editable class
-        noneditable_class: 'non-editable', //non-editable class
-        //valid_elements: '*[*]',
-        table_resize_bars: false, //disable resize bars
-        object_resizing: 'img', //disable table resizing
-        encoding: 'xml',
-        element_format: 'xhtml',
-        //invalid_elements: 'b, i',
-        entity_encoding: 'raw',
-        //content_style: 'li { margin: 10px; border: 5px solid red; padding: 3px; }',
+
 
         setup: function (editor) {
             editor.on('BeforeSetContent', function (event) {

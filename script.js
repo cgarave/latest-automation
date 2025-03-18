@@ -19,10 +19,60 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
+const ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                        <div id="content-en-gb" class="tnc-content-wrap non-editable">
+                            <div class="contentwrap tnc-content-format non-editable">
+                                <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
+                                <div class="mceEditable">
+                                    <p>Write/Paste Significant Contents here</p>
+                                </div>
+                            </div>
+                            <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                        </div>`
+
+const ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                      <div id="content-en-gb" class="tnc-content-wrap non-editable">
+                          <div class="contentwrap tnc-content-format non-editable">
+                              <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                  <template #header>
+                                      <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
+                                  </template>
+                                  <template #content>
+                                      <div class="full-promotion-content mceEditable">
+                                      <p>Write/Paste Full Promotion contents here</p>
+                                      </div>
+                                  </template>
+                              </SExpansionPanel>
+                          </div>
+                          <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                      </div>`
+
 const CNtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const CNSCtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const CNFPtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
@@ -51,10 +101,54 @@ const VNtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
+const VNSCtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const VNFPtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
 const THtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const THSCtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const THFPtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
@@ -83,10 +177,54 @@ const KRtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
+const KRSCtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const KRFPtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
 const IDtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const IDSCtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const IDFPtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
@@ -115,10 +253,53 @@ const KHtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
+const KHSCtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+const KHFPtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
 const JPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
                             <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const JPSCtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const JPFPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
@@ -147,10 +328,32 @@ const INtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
+const INSCtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
+                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
 //tinymce init (this is where you customize the editor)
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
-    plugins: 'advlist lists code table image link powerpaste',
+    plugins: 'advlist lists code table image link paste',
     toolbar: 'code table numlist bullist image link indent outdent alignleft aligncenter alignright forecolor bold italic underline strikethrough',
     menubar: false,  // Disable the menubar entirely
     editable_class: 'mceEditable',  //editable class
@@ -162,11 +365,8 @@ tinymce.init({
     table_resize_bars: false, //disable resize bars
     object_resizing: 'img', //disable table resizing
     encoding: 'xml',
-    element_format: 'xhtml',
+    element_format: 'html',
     entity_encoding: 'raw',
-    powerpaste_word_import: 'prompt',
-    powerpaste_html_import: 'prompt',
-    //content_style: 'li { margin: 10px; border: 5px solid red; padding: 3px; }',
     height: 650,
     width: 1000,
     statusbar: false, //disabling status bar
@@ -184,6 +384,7 @@ tinymce.init({
         'p': 'text-align',
         'div': 'text-align',
         'span': 'color',
+        'img': 'margin, margin-left, margin-right'
     },
     content_style: `
                   body {
@@ -197,13 +398,12 @@ tinymce.init({
                     width: 100%;
                   }`,
 
-
     setup: function (editor) {
         //BeforeSetContent controls all the set contents before it appears on the editor
         //This is useful when you want to change something upon importing of the file
         editor.on('BeforeSetContent', function (event) {
             event.content = event.content.trim();
-            console.log('BeforeSetContent:', event.content);
+            //console.log('BeforeSetContent:', event.content);
         });
     },
 
@@ -239,55 +439,192 @@ document.getElementById('importBtn').addEventListener('click', () => {
 
 //dropdown region option
 const tncRegionDropdown = document.getElementById('tnc-regions-dropdown');
+const tncTemplateDropdown = document.getElementById('template-dropdown');
 tncRegionDropdown.addEventListener('change', () => {
     const selectedRegion = tncRegionDropdown.value;
     switch (selectedRegion) {
         case 'zh-cn':
             document.getElementById('filename').value = 'china_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(CNtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(CNSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(CNFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(CNtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
         case 'vi-vn':
             document.getElementById('filename').value = 'Vietnam_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(VNtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(VNSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(VNFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(VNtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
         case 'th-th':
             document.getElementById('filename').value = 'Thailand_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(THtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(THSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(THFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(THtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
         case 'ko-kr':
             document.getElementById('filename').value = 'Korea_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(KRtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(KRSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(KRFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(KRtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
         case 'id-id':
             document.getElementById('filename').value = 'Indonesia_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(IDtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(IDSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(IDFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(IDtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
         case 'km-kh':
             document.getElementById('filename').value = 'Cambodia_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(KHtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(KHSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(KHFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(KHtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
         case 'ja-jp':
             document.getElementById('filename').value = 'Japan_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(JPtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(JPSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(JPFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(JPtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
         case 'hi-in':
             document.getElementById('filename').value = 'India_'
-            tinymce.get('mytextarea').setContent(ENtemplate);
-            tinymce.get('mytextarea2').setContent(INtemplate);
+            document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.addEventListener('change', () => {
+                const selectedTemplate = tncTemplateDropdown.value;
+                switch(selectedTemplate) {
+                    case 'SC':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(INSCtemplate);
+                        break;
+                    case 'FP':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(INFPtemplate);
+                        break;
+                    case 'SCFP':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(INtemplate);
+                        break;
+                }
+            })
             document.getElementById('import-check').checked = false;
             break;
     }

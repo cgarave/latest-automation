@@ -353,11 +353,13 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
 //tinymce init (this is where you customize the editor)
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
-    plugins: 'advlist lists code table image link paste',
+    plugins: 'advlist lists code table image link paste noneditable',
     toolbar: 'code table numlist bullist image link indent outdent alignleft aligncenter alignright forecolor bold italic underline strikethrough',
     menubar: false,  // Disable the menubar entirely
-    editable_class: 'mceEditable',  //editable class
-    noneditable_class: 'non-editable', //non-editable class
+    //editable_class: 'mceEditable',  //editable class tinymce 7
+    //noneditable_class: 'non-editable', //non-editable class tinymce 7
+    noneditable_editable_class: 'mceEditable', //editable class tinymce 5
+    noneditable_noneditable_class: 'non-editable', //non-editable class tinymce 5
     //valid_elements: '*[*]',
     //fix_list_elements: true,
     paste_merge_formats: true,
@@ -379,13 +381,13 @@ tinymce.init({
         /<\/SExpansionPanel>/g,
         /<IncludeContent :url="promoDetail.termsTpl"><\/IncludeContent>/g,
     ], 
-    valid_styles: {
-        'ol': 'list-style-type',
-        'p': 'text-align',
-        'div': 'text-align',
-        'span': 'color',
-        'img': 'margin, margin-left, margin-right'
-    },
+    // valid_styles: {
+    //     'ol': 'list-style-type',
+    //     'p': 'text-align',
+    //     'div': 'text-align',
+    //     'span': 'color',
+    //     'img': 'margin, margin-left, margin-right'
+    // },
     content_style: `
                   body {
                     padding: 20px;
@@ -792,56 +794,56 @@ document.getElementById('download').addEventListener('click', () => {
             .replace('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function(){$("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?"+$.now());});</script>')
         
         //replacing list styles
-            .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
-            .replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
-            .replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
-            .replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
-            .replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
-            .replaceAll(/<ol start="(.*?)" type="1">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
-            .replaceAll(/<ol start="(.*?)" type="i">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
-            .replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
-            .replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
-            .replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
+            //.replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
+            //.replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
+            //.replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
+            //.replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
+            //.replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
+            //.replaceAll(/<ol start="(.*?)" type="1">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
+            //.replaceAll(/<ol start="(.*?)" type="i">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
+            //.replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
+            //.replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
+            //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
-            .replaceAll(/<li(.*?)>/g, '<li>')
+            //.replaceAll(/<li(.*?)>/g, '<li>')
         
         //replacing tables
-            .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
-            .replaceAll('<tbody>', '<tbody class="divide-y">')
-            .replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
-            .replaceAll('</table>', '</table></div>')
+            //.replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
+            //.replaceAll('<tbody>', '<tbody class="divide-y">')
+            //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
+            //.replaceAll('</table>', '</table></div>')
         
         //replacing paragraph
-            .replace(/<p class="MsoNormal">/g, '<p>')
-            .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
-            .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
-            .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
-            .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+            //.replace(/<p class="MsoNormal">/g, '<p>')
+            //.replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
+            //.replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
+            //.replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
+            //.replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
         
         //removing spans language
-            .replace(/<span lang="EN-US">/g, '')
-            .replace(/<span lang="EN-GB">/g, '')
-            .replace(/<span lang="ZH-CN">/g, '')
-            .replace(/<span lang="JA">/g, '')
-            .replace(/<span lang="KHM">/g, '')
-            .replace(/<span lang="TH">/g, '')
-            .replace(/<span lang="KO">/g, '')
-            .replace(/<span lang="AR-SA">/g, '')
-            .replace(/<span data-contrast="auto">/g, '')
-            .replace(/<span lang="EN-US" style="color: windowtext;">/g, '')
-            .replace(/<span lang="EN-US" style="color: black;">/g, '')
-            .replace(/<span lang="EN-GB" style="color: black;">/g, '')
-            .replace(/<span lang="TH" style="color: black;">/g, '')
-            .replace(/<span lang="AR-SA" style="color: black;">/g, '')
-            .replace(/<span style="color: black;">/g, '')
-            .replace(/<\/span>/g, '')
+            //.replace(/<span lang="EN-US">/g, '')
+            //.replace(/<span lang="EN-GB">/g, '')
+            //.replace(/<span lang="ZH-CN">/g, '')
+            //.replace(/<span lang="JA">/g, '')
+            //.replace(/<span lang="KHM">/g, '')
+            //.replace(/<span lang="TH">/g, '')
+            //.replace(/<span lang="KO">/g, '')
+            //.replace(/<span lang="AR-SA">/g, '')
+            //.replace(/<span data-contrast="auto">/g, '')
+            //.replace(/<span lang="EN-US" style="color: windowtext;">/g, '')
+            //.replace(/<span lang="EN-US" style="color: black;">/g, '')
+            //.replace(/<span lang="EN-GB" style="color: black;">/g, '')
+            //.replace(/<span lang="TH" style="color: black;">/g, '')
+            //.replace(/<span lang="AR-SA" style="color: black;">/g, '')
+            //.replace(/<span style="color: black;">/g, '')
+            //.replace(/<\/span>/g, '')
 
         //cleaning up some mess
-            .replaceAll('<br />', '')
-            .replaceAll('<br/>', '')
-            .replaceAll(' class="MsoNormal"', '')
-            .replaceAll(' class="MsoNoSpacing"', '')
-            .replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
+            //.replaceAll('<br />', '')
+            //.replaceAll('<br/>', '')
+            //.replaceAll(' class="MsoNormal"', '')
+            //.replaceAll(' class="MsoNoSpacing"', '')
+            //.replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
 
         //images
             .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')

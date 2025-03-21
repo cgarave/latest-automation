@@ -2,16 +2,14 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                     <div id="content-en-gb" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Significant Contents here</p>
-                            </div>
+                            <div class="mceEditable">Write/Paste Significant Contents here</div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                    <p>Write/Paste Full Promotion contents here</p>
+                                    <div class="full-promotion-content">
+                                    <div class="mceEditable">Write/Paste Full Promotion contents here</div>
                                     </div>
                                 </template>
                             </SExpansionPanel>
@@ -664,25 +662,19 @@ function previewContent(lang) {
         .replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
         .replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
         .replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
-        .replaceAll(/<ol start="(.*?)" type="1">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
-        .replaceAll(/<ol start="(.*?)" type="i">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
-        .replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
-        .replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
-        .replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
-        
-        .replaceAll(/<li(.*?)>/g, '<li>')
+        .replaceAll(/<ol start="(.*?)">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
 
         //replacing tables
         .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
         .replaceAll('<tbody>', '<tbody class="divide-y">')
-        .replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
         .replaceAll('</table>', '</table></div>')
+        //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
 
         //replacing paragraph
-        .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
-        .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
-        .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
-        .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+        //.replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
+        //.replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
+        //.replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
+        //.replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
 
         
 
@@ -794,24 +786,22 @@ document.getElementById('download').addEventListener('click', () => {
             .replace('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function(){$("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?"+$.now());});</script>')
         
         //replacing list styles
-            //.replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
-            //.replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
-            //.replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
-            //.replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
-            //.replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
-            //.replaceAll(/<ol start="(.*?)" type="1">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
+            .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
+            .replaceAll('<ol style="list-style-type: lower-roman;">', '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
+            .replaceAll('<ol style="list-style-type: upper-roman;">', '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;">')
+            .replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
+            .replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
+            .replaceAll(/<ol start="(.*?)">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
             //.replaceAll(/<ol start="(.*?)" type="i">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
             //.replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
             //.replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
-
-            //.replaceAll(/<li(.*?)>/g, '<li>')
         
         //replacing tables
-            //.replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
-            //.replaceAll('<tbody>', '<tbody class="divide-y">')
+            .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
+            .replaceAll('<tbody>', '<tbody class="divide-y">')
+            .replaceAll('</table>', '</table></div>')
             //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
-            //.replaceAll('</table>', '</table></div>')
         
         //replacing paragraph
             //.replace(/<p class="MsoNormal">/g, '<p>')

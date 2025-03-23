@@ -60,7 +60,11 @@ tinymce.init({
                   }
                   table {
                     width: 100%;
-                  }`,
+                  }
+                  .tox-toolbar button {
+                    font-size: 14px;
+                  }  
+                  `,
   plugins: ["template paste autolink link image lists advlist charmap hr anchor",
             "searchreplace wordcount visualblocks visualchars media nonbreaking",
             "table contextmenu directionality template paste"], //insert 'code' to view source

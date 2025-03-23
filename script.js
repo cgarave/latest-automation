@@ -2,14 +2,16 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                     <div id="content-en-gb" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
-                            <div class="mceEditable">Write/Paste Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content">
-                                    <div class="mceEditable">Write/Paste Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Full Promotion contents here</p>
                                     </div>
                                 </template>
                             </SExpansionPanel>
@@ -37,7 +39,7 @@ const ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/
                                   </template>
                                   <template #content>
                                       <div class="full-promotion-content mceEditable">
-                                      <p>Write/Paste Full Promotion contents here</p>
+                                        <p>Write/Paste Full Promotion contents here</p>
                                       </div>
                                   </template>
                               </SExpansionPanel>
@@ -48,13 +50,17 @@ const ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/
 const CNtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -64,7 +70,9 @@ const CNtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable
 const CNSCtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                 <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -76,7 +84,9 @@ const CNFPtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -86,13 +96,17 @@ const CNFPtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editab
 const VNtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -102,7 +116,9 @@ const VNtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable
 const VNSCtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -114,7 +130,9 @@ const VNFPtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -124,13 +142,17 @@ const VNFPtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editab
 const THtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -140,7 +162,9 @@ const THtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable
 const THSCtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -152,7 +176,9 @@ const THFPtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -162,13 +188,17 @@ const THFPtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editab
 const KRtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -178,7 +208,9 @@ const KRtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable
 const KRSCtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -190,7 +222,9 @@ const KRFPtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -200,13 +234,17 @@ const KRFPtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editab
 const IDtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -216,7 +254,9 @@ const IDtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable
 const IDSCtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -228,7 +268,9 @@ const IDFPtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -238,13 +280,17 @@ const IDFPtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editab
 const KHtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -254,7 +300,9 @@ const KHtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable
 const KHSCtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -265,7 +313,9 @@ const KHFPtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -275,13 +325,17 @@ const KHFPtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editab
 const JPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -291,7 +345,9 @@ const JPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable
 const JPSCtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -303,7 +359,9 @@ const JPFPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -313,13 +371,17 @@ const JPFPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editab
 const INtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -329,7 +391,9 @@ const INtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable
 const INSCtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
-                            <div class="mceEditable">Write/Paste Localized Significant Contents here</div>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
                         </div>
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
@@ -341,7 +405,9 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
                                     <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
                                 </template>
                                 <template #content>
-                                    <div class="full-promotion-content mceEditable">Write/Paste Localized Full Promotion contents here</div>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
                                 </template>
                             </SExpansionPanel>
                         </div>
@@ -351,15 +417,14 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
 //tinymce init (this is where you customize the editor)
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
-    plugins: 'advlist lists code table image link paste noneditable',
-    toolbar: 'code table numlist bullist image link indent outdent alignleft aligncenter alignright forecolor bold italic underline strikethrough',
+    plugins: 'advlist lists code table image link paste noneditable textcolor',
+    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
     //noneditable_class: 'non-editable', //non-editable class tinymce 7
-    noneditable_editable_class: 'mceEditable', //editable class tinymce 5
-    noneditable_noneditable_class: 'non-editable', //non-editable class tinymce 5
-    //valid_elements: '*[*]',
-    //fix_list_elements: true,
+    noneditable_editable_class: 'mceEditable', //editable class tinymce 4 & 5
+    noneditable_noneditable_class: 'non-editable', //non-editable class tinymce 4 & 5
+    fix_list_elements: true,
     paste_merge_formats: true,
     paste_data_images: false, //disable paste of local image
     table_resize_bars: false, //disable resize bars
@@ -389,30 +454,44 @@ tinymce.init({
     content_style: `
                   body {
                     padding: 20px;
-                    font-size: 12px
+                    font-size: 12px;
                   }
                   h2 {
                     font-size: 14px;
                   }
                   table {
                     width: 100%;
+                    text-align: center;
+                  }
+                  img {
+                    max-width: 700px;
+                    height: auto;
                   }`,
 
     setup: function (editor) {
         //BeforeSetContent controls all the set contents before it appears on the editor
         //This is useful when you want to change something upon importing of the file
         editor.on('BeforeSetContent', function (event) {
-            event.content = event.content.trim();
-            //console.log('BeforeSetContent:', event.content);
+            event.content = event.content.trim()
+            .replaceAll('</ol><ul>', '')
+            .replaceAll('</ul><ol>', '')
+
+            console.log(event.content);
+            
         });
     },
 
 });
 
-//close MCE popup
+//close MCE popup v5-7
+// setTimeout(() => {
+//     document.querySelector('.tox-notification__dismiss').click(); //clicking x button for the first editor
+//     document.querySelector('.tox-notification__dismiss').click(); //clicking x button for the second editor
+// }, 1000)
+//close MCE popup v4
 setTimeout(() => {
-    document.querySelector('.tox-notification__dismiss').click(); //clicking x button for the first editor
-    document.querySelector('.tox-notification__dismiss').click(); //clicking x button for the second editor
+    document.querySelector('.mce-close').click();
+    document.querySelector('.mce-close').click();
 }, 1000)
 
 //generate APS to HTML filename
@@ -655,6 +734,7 @@ function previewContent(lang) {
 
         //replacing Full Promotion
         .replaceAll(/<h2 class="m-4 font-semibold text-body-1 mceEditable">/g, '<h2 class="mt-4 mb-4 font-semibold text-body-1 mceEditable">')
+        .replaceAll(/<h2 class="m-4 font-semibold text-body-1">/g, '<h2 class="mt-4 mb-4 font-semibold text-body-1">')
 
         //replacing list styles
         .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
@@ -671,29 +751,33 @@ function previewContent(lang) {
         //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
 
         //replacing paragraph
-        //.replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
-        //.replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
-        //.replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
-        //.replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+        .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
+        .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
+        .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
+        .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
 
-        
+        //replacing list discs
+        .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
 
+        //images
+        .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
+    
 
     document.getElementById('tnc-container').innerHTML = editorContent;
 }
 
 //import TNC
-document.getElementById('import-tnc').addEventListener('click', async (e) => {
+document.getElementById('import-tnc').addEventListener('change', async (e) => {
 
     const tncfile = e.target.files[0]
 
     if (tncfile) {
-        document.getElementById('import-check').checked = true;
+        //document.getElementById('import-check').checked = true;
         const content = await readFile(tncfile);
-        let y = content.replaceAll('<template #header>', '').replaceAll('<template #content>', '').replaceAll('</template>', '');
+        //let y = content.replaceAll('<template #header>', '').replaceAll('<template #content>', '').replaceAll('</template>', '');
 
         const parser = new DOMParser(); //allows to convert the HTML string into a DOM object. Once converted, you can interact with it just like you would with any DOM node.
-        const doc = parser.parseFromString(y, 'text/html');
+        const doc = parser.parseFromString(content, 'text/html');
         const contentEN = doc.querySelector('#content-en-gb');
         const contentCN = doc.querySelector('#content-zh-cn');
         const contentVN = doc.querySelector('#content-vi-vn');
@@ -731,6 +815,8 @@ document.getElementById('import-tnc').addEventListener('click', async (e) => {
         if (contentIN) {
             tinymce.get('mytextarea2').setContent(contentIN.outerHTML);
         }
+        
+
     }
 })
 const readFile = async (file) => {
@@ -745,6 +831,32 @@ const readFile = async (file) => {
         reader.readAsText(file);
     });
 };
+
+//Import DOCX file
+document.getElementById('import-docx').addEventListener('change', (e) => {
+    const fileInput = document.getElementById('import-docx');
+    const file = fileInput.files[0];
+    
+    if (file && file.name.endsWith('.docx')) {
+      const reader = new FileReader();
+      
+      reader.onload = function(event) {
+        const arrayBuffer = reader.result;
+        
+        // Use mammoth.js to convert the DOCX file to HTML
+        mammoth.convertToHtml({arrayBuffer: arrayBuffer})
+          .then(function(result) {
+            // Insert the converted content into the TinyMCE editor
+            tinymce.get('mytextarea').setContent(result.value);
+          })
+          .catch(function(err) {
+            console.error('Error reading DOCX file:', err);
+          });
+      };
+      
+      reader.readAsArrayBuffer(file);
+    }
+  })
 
 //download TNC
 document.getElementById('download').addEventListener('click', () => {
@@ -805,10 +917,16 @@ document.getElementById('download').addEventListener('click', () => {
         
         //replacing paragraph
             //.replace(/<p class="MsoNormal">/g, '<p>')
-            //.replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
-            //.replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
-            //.replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
-            //.replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+            .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
+            .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
+            .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
+            .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+
+        //replacing list discs
+            .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
+
+         //images
+            .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
         
         //removing spans language
             //.replace(/<span lang="EN-US">/g, '')
@@ -834,9 +952,6 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(' class="MsoNormal"', '')
             //.replaceAll(' class="MsoNoSpacing"', '')
             //.replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
-
-        //images
-            .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
 
         let finalContent = mergedContent;
 

@@ -418,7 +418,7 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
     plugins: 'advlist lists code table image link paste noneditable textcolor',
-    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough',
+    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
     //noneditable_class: 'non-editable', //non-editable class tinymce 7
@@ -491,7 +491,45 @@ tinymce.init({
             .replaceAll('</ul><ol>', '')
 
             console.log(event.content);
-            
+        }),
+
+        //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol
+        editor.addButton('sbFreeBetComponent', {
+            text: 'Sportsbook Free Bet',  // Text on the button
+            tooltip: 'Insert Sportsbook Free Bet',
+            icon: false,  // Set an icon (optional)
+            onclick: function() {
+              // Action to perform when the button is clicked
+              editor.insertContent('<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent>');
+            }
+        });
+        editor.addButton('insertComponent', {
+            type: 'menubutton',  // Define the button as a dropdown menu
+            text: 'Insert Component',
+            icon: false,
+            menu: [
+              {
+                text: 'Sportsbook Free Bet',
+                tooltip: 'Insert sportsbook free bet component',
+                onclick: function() {
+                  editor.insertContent('<h5 style="width: 100%; text-align: center; border: 1px black solid;">FreeBet-Component<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5>');  // Insert content on selection
+                }
+              },
+              {
+                text: 'Recommended Casino Games',
+                tooltip: 'Insert recommended games component',
+                onclick: function() {
+                  editor.insertContent('<ol>Option 2 selected!</ol>');
+                }
+              },
+              {
+                text: 'Recommended Live Casino Games',
+                tooltip: 'Insert recommended games component',
+                onclick: function() {
+                  editor.insertContent('<p>Option 2 selected!</p>');
+                }
+              }
+            ]
         });
     },
 
@@ -942,6 +980,9 @@ document.getElementById('download').addEventListener('click', () => {
 
          //images
             .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
+
+        //Sportsbook Free Bet Component
+            .replace(/<h5 style="width: 100%; text-align: center; border: 1px black solid;">FreeBet-Component<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
         
         //removing spans language
             //.replace(/<span lang="EN-US">/g, '')

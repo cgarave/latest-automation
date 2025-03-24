@@ -436,6 +436,7 @@ tinymce.init({
     width: 1000,
     statusbar: false, //disabling status bar
     protect: [
+        //init codes
         /<script src="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.6.0\/jquery.min.js"><\/script>/g,
         /<SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g,
         /<template #header>/g,
@@ -443,6 +444,19 @@ tinymce.init({
         /<template #content>/g,
         /<\/SExpansionPanel>/g,
         /<IncludeContent :url="promoDetail.termsTpl"><\/IncludeContent>/g,
+
+        //where to find sportsbook free bet component
+        /<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent>/g,
+
+        //init codes - import
+        /<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g,
+        /<template #header="">/g,
+        /<template #content="">/g,
+        /<\/sexpansionpanel>/g,
+        /<includecontent :url="promoDetail.termsTpl"><\/includecontent>/g,
+
+        //where to find sportsbook free bet component - import
+        /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'"><\/includecontent>/g,
     ], 
     // valid_styles: {
     //     'ol': 'list-style-type',
@@ -816,6 +830,7 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
             tinymce.get('mytextarea2').setContent(contentIN.outerHTML);
         }
         
+        console.log(doc);
 
     }
 })

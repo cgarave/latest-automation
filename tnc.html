@@ -28,7 +28,7 @@
     <header id="header">
         <nav class="flex flex-row justify-between items-center p-3 border-b border-[#a7a9be] mb-4">
             <ul>
-                <li id="automation-name" class="text-white font-semibold text-lg"><span class="text-[#ff8906]">TNC</span> Automation</li>
+                <li id="automation-name" class="text-white font-semibold text-lg"><span class="text-[#ff9200]">TNC</span> Automation</li>
             </ul>
             <ul class="flex flex-row gap-x-2">
                 <li class="bg-[#381e08] text-[#b4a4a1] font-medium rounded-[4px] px-2 text-xs">
@@ -44,7 +44,7 @@
                     <button id="whats-new" class="bg-[#ff8906] text-black font-medium p-2 rounded-[4px] text-xs relative cursor-pointer">
                         <div class="bg-red-700 w-2 h-2 rounded-full absolute -top-1 -right-1 animate-ping"></div>
                         <div class="bg-red-600 w-2 h-2 rounded-full absolute -top-1 -right-1"></div>
-                        Changelog
+                        CHANGELOG
                     </button>
                 </li>
             </ul>
@@ -55,10 +55,10 @@
         <div class="px-3 mb-4 flex justify-between items-center">
             <div class="flex flex-row gap-x-2 items-center">
                 <input id="filename" type="text" class="rounded-[4px] p-2 h-10 w-80 outline-none font-medium text-xs bg-white" placeholder="TNC Filename" autocomplete="off">
-                <button id="generateFilename" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">Convert APS</button>
+                <button id="generateFilename" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">CONVERT APS</button>
                 <button id="importBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-help-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
-                    Guide
+                    GUIDE
                 </button>
                 <div class="text-xs text-white flex flex-row items-center gap-x-2">
                     <input type="checkbox" id="import-check">
@@ -187,6 +187,10 @@
     <!--PROMOTION AUTOMATION-->
 
     <div id="update-card" class="hidden flex flex-col gap-y-1 w-80 h-fit bg-[#2C1A5A] border-2 border-[#4816C3] rounded-md absolute top-14 right-0 mr-3 p-1"></div>
+    <div id="input-game-codes-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-row shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
+        <input type="text" id="input-game-codes" placeholder="Paste/Insert Game Codes here" class="outline-none w-full">
+        <button id="gameCodesBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">INSERT</button>
+    </div>
 </body>
 
 <!--Scripts-->

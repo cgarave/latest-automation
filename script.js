@@ -1,4 +1,5 @@
 const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
                     <div id="content-en-gb" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
@@ -20,6 +21,7 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                     </div>`
 
 const ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                        <script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
                         <div id="content-en-gb" class="tnc-content-wrap non-editable">
                             <div class="contentwrap tnc-content-format non-editable">
                                 <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
@@ -31,6 +33,7 @@ const ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquer
                         </div>`
 
 const ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                      <script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
                       <div id="content-en-gb" class="tnc-content-wrap non-editable">
                           <div class="contentwrap tnc-content-format non-editable">
                               <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
@@ -414,6 +417,10 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
+let gameCodes = document.getElementById('input-game-codes');
+const gameCodesBtn = document.getElementById('gameCodesBtn');
+const gameCodesInput = document.getElementById('input-game-codes-container')
+
 //tinymce init (this is where you customize the editor)
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
@@ -438,6 +445,7 @@ tinymce.init({
     protect: [
         //init codes
         /<script src="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.6.0\/jquery.min.js"><\/script>/g,
+        /<script>\$\(function \(\) { \$\("#webteam-ss"\).attr\("href", "https:\/\/doc.188contents.com\/contents\/Components\/webteam\/webteam.css\?" \+ \$.now\(\)\); }\);<\/script>/g,
         /<SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g,
         /<template #header>/g,
         /<\/template>/g,
@@ -448,6 +456,10 @@ tinymce.init({
         //where to find sportsbook free bet component
         /<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent>/g,
 
+        //custom games
+        /<CustomGames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)"><\/CustomGames>/g,
+        /<CustomGames  product="live"  title="(.*?)"  games="(.*?)"  show-game-subtitle  type="table"><\/CustomGames>/g,
+
         //init codes - import
         /<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g,
         /<template #header="">/g,
@@ -457,6 +469,10 @@ tinymce.init({
 
         //where to find sportsbook free bet component - import
         /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'"><\/includecontent>/g,
+
+        //custom games - import
+        /<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table"><\/customgames>/g,
+        /<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)"><\/customgames>/g,
     ], 
     // valid_styles: {
     //     'ol': 'list-style-type',
@@ -489,6 +505,8 @@ tinymce.init({
             event.content = event.content.trim()
             .replaceAll('</ol><ul>', '')
             .replaceAll('</ul><ol>', '')
+            .replace(/<ul>/g, '<ol>')
+            .replace(/<\/ul>/g, '</ol>')
 
             console.log(event.content);
         }),
@@ -519,14 +537,22 @@ tinymce.init({
                 text: 'Recommended Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
-                  editor.insertContent('<ol>Option 2 selected!</ol>');
+                    gameCodesInput.classList.remove('hidden');
+                    gameCodesBtn.onclick = () => {
+                        document.getElementById('input-game-codes-container').classList.add('hidden');
+                        editor.insertContent(`<table id="casino-icons"><tbody><tr><td>Recommended Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table>`)
+                    }
                 }
               },
               {
                 text: 'Recommended Live Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
-                  editor.insertContent('<p>Option 2 selected!</p>');
+                    gameCodesInput.classList.remove('hidden');
+                    gameCodesBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
+                        document.getElementById('input-game-codes-container').classList.add('hidden');
+                        editor.insertContent(`<table id="live-casino-icons"><tbody><tr><td>Recommended Live Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table>`)
+                    }
                 }
               }
             ]
@@ -830,6 +856,7 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
 
         const parser = new DOMParser(); //allows to convert the HTML string into a DOM object. Once converted, you can interact with it just like you would with any DOM node.
         const doc = parser.parseFromString(content, 'text/html');
+        const contentScripts = doc.getElementsByTagName('head')[0].innerHTML;
         const contentEN = doc.querySelector('#content-en-gb');
         const contentCN = doc.querySelector('#content-zh-cn');
         const contentVN = doc.querySelector('#content-vi-vn');
@@ -841,7 +868,7 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         const contentIN = doc.querySelector('#content-hi-in');
 
         if (contentEN) {
-            tinymce.get('mytextarea').setContent(contentEN.outerHTML);
+            tinymce.get('mytextarea').setContent(contentScripts + contentEN.outerHTML);
         }
         if (contentCN) {
             tinymce.get('mytextarea2').setContent(contentCN.outerHTML);
@@ -867,9 +894,6 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         if (contentIN) {
             tinymce.get('mytextarea2').setContent(contentIN.outerHTML);
         }
-        
-        console.log(doc);
-
     }
 })
 const readFile = async (file) => {
@@ -948,7 +972,7 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<a href="https:\/\/www.my188promo.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.188family.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.188sukses.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
-            .replace('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function(){$("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?"+$.now());});</script>')
+            //.replace('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function(){$("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?"+$.now());});</script>')
         
         //replacing list styles
             .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
@@ -961,6 +985,10 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
             //.replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
+
+        //replacing recommended game icons
+            .replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="table" class="tnc-multiple-games" :limit="200" />')
+            .replace(/<table id="live-casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames  product="live"  title="$1"  games="$2"  show-game-subtitle  type="table"></CustomGames>')
         
         //replacing tables
             .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
@@ -1003,8 +1031,9 @@ document.getElementById('download').addEventListener('click', () => {
             //.replace(/<\/span>/g, '')
 
         //cleaning up some mess
-            //.replaceAll('<br />', '')
-            //.replaceAll('<br/>', '')
+            .replaceAll('<br />', '')
+            .replaceAll('<br/>', '')
+            .replaceAll('<p> </p>', '')
             //.replaceAll(' class="MsoNormal"', '')
             //.replaceAll(' class="MsoNoSpacing"', '')
             //.replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')

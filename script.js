@@ -1,5 +1,5 @@
-const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                    <script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
+//These are templates that will be set to the two editors
+const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
                     <div id="content-en-gb" class="tnc-content-wrap non-editable">
                         <div class="contentwrap tnc-content-format non-editable">
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
@@ -20,8 +20,7 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
-const ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                        <script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
+const ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
                         <div id="content-en-gb" class="tnc-content-wrap non-editable">
                             <div class="contentwrap tnc-content-format non-editable">
                                 <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
@@ -32,8 +31,7 @@ const ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquer
                             <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                         </div>`
 
-const ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                      <script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
+const ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
                       <div id="content-en-gb" class="tnc-content-wrap non-editable">
                           <div class="contentwrap tnc-content-format non-editable">
                               <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
@@ -417,15 +415,40 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
-let gameCodes = document.getElementById('input-game-codes');
-const gameCodesBtn = document.getElementById('gameCodesBtn');
-const gameCodesInput = document.getElementById('input-game-codes-container')
+let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
+let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
+
+// Create a custom plugin, use PluginManager.add then connect sa plugins and contextmenu
+tinymce.PluginManager.add('customcontextmenu', function(editor) {
+    editor.addMenuItem('editNumbering', {
+      text: 'Edit Numbering',
+      context: 'contextmenu',
+      onclick: function() {
+        const editNumberBtn = document.getElementById('editNumberBtn');
+        const editedNumberContainer = document.getElementById('edit-numbering-container');
+        const selectedNode = editor.selection.getNode(); //returning selected Nodes gaya ng <p>, <li>, etc.
+        editedNumberContainer.classList.remove('hidden');
+        editNumberBtn.onclick = () => { //I used onclick instead of addEventListener kasi nasa loob na ito ng function. The button fires twice once clicked when addEventListener were used thus making weird errors
+            if (selectedNode.parentElement.nodeName === 'OL') {
+                // You can add additional logic here for when the parent node is an <ol>
+                editor.dom.setAttrib(selectedNode.parentElement, 'start', editedNumberInput.value);
+                editedNumberContainer.classList.add('hidden');
+                console.log('The selected node is an ordered list (OL)');
+            }  else {
+                console.log(selectedNode.parentElement);
+
+            }
+        }
+      }
+    });
+  });
 
 //tinymce init (this is where you customize the editor)
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
-    plugins: 'advlist lists code table image link paste noneditable textcolor',
+    plugins: 'advlist lists code table image link paste noneditable textcolor contextmenu customcontextmenu',
     toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent',
+    contextmenu: 'link editNumbering',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
     //noneditable_class: 'non-editable', //non-editable class tinymce 7
@@ -502,14 +525,13 @@ tinymce.init({
         //BeforeSetContent controls all the set contents before it appears on the editor
         //This is useful when you want to change something upon importing of the file
         editor.on('BeforeSetContent', function (event) {
-            event.content = event.content.trim()
+            event.content = event.content
             .replaceAll('</ol><ul>', '')
             .replaceAll('</ul><ol>', '')
-            .replace(/<ul>/g, '<ol>')
-            .replace(/<\/ul>/g, '</ol>')
+            .replaceAll('<p> </p>', '')
 
             console.log(event.content);
-        }),
+        });
 
         //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol
         editor.addButton('sbFreeBetComponent', {
@@ -537,6 +559,8 @@ tinymce.init({
                 text: 'Recommended Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
+                    const gameCodesBtn = document.getElementById('gameCodesBtn');
+                    const gameCodesInput = document.getElementById('input-game-codes-container')
                     gameCodesInput.classList.remove('hidden');
                     gameCodesBtn.onclick = () => {
                         document.getElementById('input-game-codes-container').classList.add('hidden');
@@ -548,6 +572,8 @@ tinymce.init({
                 text: 'Recommended Live Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
+                    const gameCodesBtn = document.getElementById('gameCodesBtn');
+                    const gameCodesInput = document.getElementById('input-game-codes-container')
                     gameCodesInput.classList.remove('hidden');
                     gameCodesBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
                         document.getElementById('input-game-codes-container').classList.add('hidden');
@@ -557,8 +583,8 @@ tinymce.init({
               }
             ]
         });
+        
     },
-
 });
 
 //close MCE popup v5-7
@@ -590,13 +616,25 @@ generateFilenameBtn.addEventListener('click', () => {
     fileNameAPS.value = country + promoType + '_' + day + '_' + stringMonth[month - 1] + '_' + year + '_' + promoNumber
 })
 
+//reset content button
+document.getElementById('resetBtn').addEventListener('click', () => {
+    document.getElementById('import-tnc').value = ''
+    tinymce.get('mytextarea').setContent('')
+    tinymce.get('mytextarea2').setContent('')
+    tncRegionDropdown.value = '#'
+    tncTemplateDropdown.value = '#'
+    document.getElementById('template-container').classList.add('hidden')
+    document.getElementById('import-check').checked = false;
+    document.getElementById('filename').value = '';
+})
+
 //guide button
 document.getElementById('importBtn').addEventListener('click', () => {
 })
 
 //dropdown region option
-const tncRegionDropdown = document.getElementById('tnc-regions-dropdown');
-const tncTemplateDropdown = document.getElementById('template-dropdown');
+var tncRegionDropdown = document.getElementById('tnc-regions-dropdown');
+var tncTemplateDropdown = document.getElementById('template-dropdown');
 tncRegionDropdown.addEventListener('change', () => {
     const selectedRegion = tncRegionDropdown.value;
     switch (selectedRegion) {

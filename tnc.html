@@ -22,6 +22,9 @@
             text-decoration: underline;
             color: lightskyblue;
         }
+        div, table, tbody, tr, td {
+            border-color: #e5e7eb;
+        }
     </style>
 </head>
 <body class="bg-[#0f0e17] h-screen overflow-hidden">
@@ -199,9 +202,10 @@
         <input type="text" id="input-game-codes" placeholder="Paste/Insert Game Codes here" class="outline-none w-full">
         <button id="gameCodesBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">INSERT</button>
     </div>
-    <div id="edit-numbering-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-row shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
-        <input type="text" id="input-number" placeholder="Input number" class="outline-none w-full">
+    <div id="edit-numbering-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-row gap-x-1 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
+        <input type="text" id="input-number" placeholder="Enter number" class="outline-none w-full">
         <button id="editNumberBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">SAVE</button>
+        <button id="cancelEditNumberBtn" class="bg-neutral-200 rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-neutral-300 cursor-pointer">CANCEL</button>
     </div>
 </body>
 

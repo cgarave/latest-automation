@@ -1,16 +1,45 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<div id="content-en-gb" class="tnc-content-wrap non-editable">
-    <div class="contentwrap tnc-content-format non-editable">
-        <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
-        <div class="mceEditable">Write/Paste Significant Contents here</div>
-        <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-            <template #header>
-                <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
-            </template>
-            <template #content>
-                <div class="full-promotion-content mceEditable">Write/Paste Full Promotion contents here</div>
-            </template>
-        </SExpansionPanel>
+<SContainer class="p-4">
+    <SSectionHeading class="mx-auto">Regional Partners</SSectionHeading>
+    <div class="flex flex-col gap-y-4 justify-center md:flex-row md:gap-x-4">
+
+        <RouterLink v-wave :to="'/en-gb/partnership/fcbayern'"
+            class="block col-span-12 md:col-span-4 h-28 md:h-[14.6875rem] text-inherit">
+
+            <SCard class="h-full">
+                <SCardBody class="h-full flex md:flex-col p-4">
+                    <div class="flex items-center justify-center w-20 md:w-auto shrink-0 md:grow">
+                        <img alt="" class="max-w-full md:w-[6.25rem]"
+                            src="https://doc.188contents.com/star4-content/images/partnership/logo_partner_bayern_1x1.webp" />
+                    </div>
+                    <p class="text-body font-semibold mt-2 px-4">
+                        Official Regional Partner of FC Bayern Munich
+                    </p>
+                </SCardBody>
+            </SCard>
+
+        </RouterLink>
+        <RouterLink v-wave :to="'/en-gb/partnership/fcbayern'"
+            class="block col-span-12 md:col-span-4 h-28 md:h-[14.6875rem] text-inherit">
+
+            <SCard class="h-full">
+                <SCardBody class="h-full flex md:flex-col p-4">
+                    <div class="flex items-center justify-center w-20 md:w-auto shrink-0 md:grow">
+                        <img alt="" class="max-w-full md:w-[6.25rem]"
+                            src="https://doc.188contents.com/star4-content/images/partnership/logo_partner_bayern_1x1.webp" />
+                    </div>
+                    <p class="text-body font-semibold mt-2 px-4">
+                        Official Regional Partner of FC Bayern Munich
+                    </p>
+                </SCardBody>
+            </SCard>
+
+        </RouterLink>
     </div>
-    <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-</div>
+
+</SContainer>
+
+
+<CustomLink data-track-content data-content-name="Virtual Football World Cup(gamename) - (PD-WDGT-Virtual)"
+    data-content-piece="Virtual Football World Cup(gamename) - Catalog - (PD-WDGT-Virtual)"
+    title="Virtual Football World Cup(localize)" :link="`/${langCode}/virtual#gameName=VFWC(gamecode)`"
+    class="prepend-hot-badge"></CustomLink>

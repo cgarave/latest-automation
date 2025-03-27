@@ -425,6 +425,7 @@ tinymce.PluginManager.add('customcontextmenu', function(editor) {
       context: 'contextmenu',
       onclick: function() {
         const editNumberBtn = document.getElementById('editNumberBtn');
+        const cancelEditNumberBtn = document.getElementById('cancelEditNumberBtn');
         const editedNumberContainer = document.getElementById('edit-numbering-container');
         const selectedNode = editor.selection.getNode(); //returning selected Nodes gaya ng <p>, <li>, etc.
         editedNumberContainer.classList.remove('hidden');
@@ -433,11 +434,22 @@ tinymce.PluginManager.add('customcontextmenu', function(editor) {
                 // You can add additional logic here for when the parent node is an <ol>
                 editor.dom.setAttrib(selectedNode.parentElement, 'start', editedNumberInput.value);
                 editedNumberContainer.classList.add('hidden');
+                editedNumberInput.value = ''
                 console.log('The selected node is an ordered list (OL)');
-            }  else {
+            } else if (selectedNode.parentElement.parentElement.nodeName === 'OL') {
+                // You can add additional logic here for when the parent node is an <ol>
+                editor.dom.setAttrib(selectedNode.parentElement.parentElement, 'start', editedNumberInput.value);
+                editedNumberContainer.classList.add('hidden');
+                editedNumberInput.value = ''
+            } else {
                 console.log(selectedNode.parentElement);
-
+                editedNumberInput.value = ''
+                editedNumberContainer.classList.add('hidden');
             }
+        }
+        cancelEditNumberBtn.onclick = () => {
+            editedNumberInput.value = ''
+            editedNumberContainer.classList.add('hidden');
         }
       }
     });
@@ -481,7 +493,7 @@ tinymce.init({
 
         //custom games
         /<CustomGames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)"><\/CustomGames>/g,
-        /<CustomGames  product="live"  title="(.*?)"  games="(.*?)"  show-game-subtitle  type="table"><\/CustomGames>/g,
+        /<CustomGames product="live"  title="(.*?)" games="(.*?)" show-game-subtitle type="table"><\/CustomGames>/g,
 
         //init codes - import
         /<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g,
@@ -497,6 +509,26 @@ tinymce.init({
         /<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table"><\/customgames>/g,
         /<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)"><\/customgames>/g,
     ], 
+    link_list: [
+        { title: '[EN-GB]Promotion General Terms and Conditions', value: 'https://www.188bet.com/en-gb/promotions#promo_gen_terms' },
+        { title: '[EN-GB]Standard Terms and Conditions', value: 'https://www.188bet.com/en-gb/corporate-affairs/terms-and-conditions' },
+        { title: '[ZH-CN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/zh-cn/promotions#promo_gen_terms' },
+        { title: '[ZH-CN]Standard Terms and Conditions', value: 'https://www.188bet.com/zh-cn/corporate-affairs/terms-and-conditions' },
+        { title: '[VI-VN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/vi-vn/promotions#promo_gen_terms' },
+        { title: '[VI-VN]Standard Terms and Conditions', value: 'https://www.188bet.com/vi-vn/corporate-affairs/terms-and-conditions' },
+        { title: '[TH-TH]Promotion General Terms and Conditions', value: 'https://www.188bet.com/th-th/promotions#promo_gen_terms' },
+        { title: '[TH-TH]Standard Terms and Conditions', value: 'https://www.188bet.com/th-th/corporate-affairs/terms-and-conditions' },
+        { title: '[KO-KR]Promotion General Terms and Conditions', value: 'https://www.188bet.com/ko-kr/promotions#promo_gen_terms' },
+        { title: '[KO-KR]Standard Terms and Conditions', value: 'https://www.188bet.com/ko-kr/corporate-affairs/terms-and-conditions' },
+        { title: '[ID-ID]Promotion General Terms and Conditions', value: 'https://www.188bet.com/id-id/promotions#promo_gen_terms' },
+        { title: '[ID-ID]Standard Terms and Conditions', value: 'https://www.188bet.com/id-id/corporate-affairs/terms-and-conditions' },
+        { title: '[KM-KH]Promotion General Terms and Conditions', value: 'https://www.188bet.com/km-kh/promotions#promo_gen_terms' },
+        { title: '[KM-KH]Standard Terms and Conditions', value: 'https://www.188bet.com/km-kh/corporate-affairs/terms-and-conditions' },
+        { title: '[JA-JP]Promotion General Terms and Conditions', value: 'https://www.188bet.com/ja-jp/promotions#promo_gen_terms' },
+        { title: '[JA-JP]Standard Terms and Conditions', value: 'https://www.188bet.com/ja-jp/corporate-affairs/terms-and-conditions' },
+        { title: '[HI-IN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/hi-in/promotions#promo_gen_terms' },
+        { title: '[HI-IN]Standard Terms and Conditions', value: 'https://www.188bet.com/hi-in/corporate-affairs/terms-and-conditions' },
+    ],
     // valid_styles: {
     //     'ol': 'list-style-type',
     //     'p': 'text-align',
@@ -529,6 +561,12 @@ tinymce.init({
             .replaceAll('</ol><ul>', '')
             .replaceAll('</ul><ol>', '')
             .replaceAll('<p> </p>', '')
+
+            .replace(/<span data-contrast="(.*?)">/g, '')
+            .replace(/<span data-fontsize="(.*?)">/g, '')
+            .replace(/<span data-ccp-props="(.*?)">/g, '')
+            .replace(/<tr(.*?)>/g, '<tr>')
+            .replace(/<td(.*?)>/g, '<td>')
 
             console.log(event.content);
         });
@@ -932,6 +970,7 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         if (contentIN) {
             tinymce.get('mytextarea2').setContent(contentIN.outerHTML);
         }
+        console.log(doc.getElementsByTagName('includecontent')[0]);
     }
 })
 const readFile = async (file) => {
@@ -1025,8 +1064,8 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
         //replacing recommended game icons
-            .replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="table" class="tnc-multiple-games" :limit="200" />')
-            .replace(/<table id="live-casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames  product="live"  title="$1"  games="$2"  show-game-subtitle  type="table"></CustomGames>')
+            .replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="table" class="tnc-multiple-games" :limit="200"></CustomGames>')
+            .replace(/<table id="live-casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames  product="live"  title="$1"  games="$2"  show-game-subtitle  type="table"></CustomGames>')
         
         //replacing tables
             .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
@@ -1075,6 +1114,12 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(' class="MsoNormal"', '')
             //.replaceAll(' class="MsoNoSpacing"', '')
             //.replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
+
+        //imports
+            .replaceAll('sexpansionpanel', 'SExpansionPanel')
+            .replaceAll('#header=""', '#header')
+            .replaceAll('#content=""', '#content')
+            .replaceAll('includecontent', 'IncludeContent')
 
         let finalContent = mergedContent;
 

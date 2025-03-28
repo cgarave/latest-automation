@@ -415,6 +415,7 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
                         <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
                     </div>`
 
+
 let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
 let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
 
@@ -565,6 +566,10 @@ tinymce.init({
             .replace(/<span data-contrast="(.*?)">/g, '')
             .replace(/<span data-fontsize="(.*?)">/g, '')
             .replace(/<span data-ccp-props="(.*?)">/g, '')
+            .replace(/<span data-ccp-charstyle="(.*?)">/g, '')
+            .replace(/<span class="(.*?)" lang="(.*?)" xml:lang="(.*?)" data-contrast="(.*?)">/g, '')
+            .replace(/<span class="(.*?)">/g, '')
+            .replace(/<span class="(.*?)" data-ccp-props="(.*?)"> /g, '')
             .replace(/<tr(.*?)>/g, '<tr>')
             .replace(/<td(.*?)>/g, '<td>')
 
@@ -898,6 +903,9 @@ function previewContent(lang) {
         .replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
         .replaceAll(/<ol start="(.*?)">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
 
+        //replacing customGames
+        //.replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="flex flex-col w-full text-center bg-neutral-100"><div>$1</div><div>$2</div></div>')
+
         //replacing tables
         .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
         .replaceAll('<tbody>', '<tbody class="divide-y">')
@@ -915,6 +923,9 @@ function previewContent(lang) {
 
         //images
         .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
+
+        //Sportsbook Free Bet Component
+        .replace(/<h5 style="width: 100%; text-align: center; border: 1px black solid;">FreeBet-Component<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<div class="w-full p-4 bg-neutral-100 border-l-5 border-blue-400">Where to find your Sportbook Free Bet</div>')
     
 
     document.getElementById('tnc-container').innerHTML = editorContent;

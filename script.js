@@ -504,11 +504,11 @@ tinymce.init({
         /<includecontent :url="promoDetail.termsTpl"><\/includecontent>/g,
 
         //where to find sportsbook free bet component - import
-        /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'"><\/includecontent>/g,
+        /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, //without space
 
         //custom games - import
-        /<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table"><\/customgames>/g,
-        /<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)"><\/customgames>/g,
+        /<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g,
+        /<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)">\s*<\/customgames>/g,
     ], 
     link_list: [
         { title: '[EN-GB]Promotion General Terms and Conditions', value: 'https://www.188bet.com/en-gb/promotions#promo_gen_terms' },
@@ -572,6 +572,11 @@ tinymce.init({
             .replace(/<span class="(.*?)" data-ccp-props="(.*?)"> /g, '')
             .replace(/<tr(.*?)>/g, '<tr>')
             .replace(/<td(.*?)>/g, '<td>')
+            
+            //finding imported component then replace it with the component style
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
+            .replace(/<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)">\s*<\/customgames>/g, '<table id="casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr></tbody></table><br>')
+            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr></tbody></table><br>')
 
             console.log(event.content);
         });
@@ -595,19 +600,23 @@ tinymce.init({
                 text: 'Sportsbook Free Bet',
                 tooltip: 'Insert sportsbook free bet component',
                 onclick: function() {
-                  editor.insertContent('<h5 style="width: 100%; text-align: center; border: 1px black solid;">FreeBet-Component<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5>');  // Insert content on selection
+                  editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
                 }
               },
               {
                 text: 'Recommended Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
-                    const gameCodesBtn = document.getElementById('gameCodesBtn');
-                    const gameCodesInput = document.getElementById('input-game-codes-container')
+                    const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
+                    const gameCodesInput = document.getElementById('input-game-codes-container');
+                    const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
                     gameCodesInput.classList.remove('hidden');
-                    gameCodesBtn.onclick = () => {
+                    gameCodesInsertBtn.onclick = () => {
                         document.getElementById('input-game-codes-container').classList.add('hidden');
-                        editor.insertContent(`<table id="casino-icons"><tbody><tr><td>Recommended Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table>`)
+                        editor.insertContent(`<table id="casino-icons" class="non-editable"><tbody><tr><td>Recommended Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table><br>`)
+                    }
+                    cancelGameCodesBtn.onclick = () => {
+                        gameCodesInput.classList.add('hidden');
                     }
                 }
               },
@@ -615,12 +624,16 @@ tinymce.init({
                 text: 'Recommended Live Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
-                    const gameCodesBtn = document.getElementById('gameCodesBtn');
-                    const gameCodesInput = document.getElementById('input-game-codes-container')
+                    const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
+                    const gameCodesInput = document.getElementById('input-game-codes-container');
+                    const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
                     gameCodesInput.classList.remove('hidden');
-                    gameCodesBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
+                    gameCodesInsertBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
                         document.getElementById('input-game-codes-container').classList.add('hidden');
-                        editor.insertContent(`<table id="live-casino-icons"><tbody><tr><td>Recommended Live Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table>`)
+                        editor.insertContent(`<table id="live-casino-icons" class="non-editable"><tbody><tr><td>Recommended Live Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table><br>`)
+                    }
+                    cancelGameCodesBtn.onclick = () => {
+                        gameCodesInput.classList.add('hidden');
                     }
                 }
               }
@@ -924,10 +937,6 @@ function previewContent(lang) {
         //images
         .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
 
-        //Sportsbook Free Bet Component
-        .replace(/<h5 style="width: 100%; text-align: center; border: 1px black solid;">FreeBet-Component<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<div class="w-full p-4 bg-neutral-100 border-l-5 border-blue-400">Where to find your Sportbook Free Bet</div>')
-    
-
     document.getElementById('tnc-container').innerHTML = editorContent;
 }
 
@@ -955,7 +964,7 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         const contentIN = doc.querySelector('#content-hi-in');
 
         if (contentEN) {
-            tinymce.get('mytextarea').setContent(contentScripts + contentEN.outerHTML);
+            tinymce.get('mytextarea').setContent(contentScripts.trim() + contentEN.outerHTML);
         }
         if (contentCN) {
             tinymce.get('mytextarea2').setContent(contentCN.outerHTML);
@@ -981,7 +990,8 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         if (contentIN) {
             tinymce.get('mytextarea2').setContent(contentIN.outerHTML);
         }
-        console.log(doc.getElementsByTagName('includecontent')[0]);
+        
+        //console.log(doc.getElementsByTagName('includecontent')[0]);
     }
 })
 const readFile = async (file) => {
@@ -1075,8 +1085,8 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
         //replacing recommended game icons
-            .replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="table" class="tnc-multiple-games" :limit="200"></CustomGames>')
-            .replace(/<table id="live-casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames  product="live"  title="$1"  games="$2"  show-game-subtitle  type="table"></CustomGames>')
+            .replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="table" class="tnc-multiple-games" :limit="200"></CustomGames>')
+            .replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames  product="live"  title="$1"  games="$2"  show-game-subtitle  type="table"></CustomGames>')
         
         //replacing tables
             .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
@@ -1098,7 +1108,7 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
 
         //Sportsbook Free Bet Component
-            .replace(/<h5 style="width: 100%; text-align: center; border: 1px black solid;">FreeBet-Component<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
+            .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
         
         //removing spans language
             //.replace(/<span lang="EN-US">/g, '')
@@ -1131,6 +1141,7 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('#header=""', '#header')
             .replaceAll('#content=""', '#content')
             .replaceAll('includecontent', 'IncludeContent')
+            .replaceAll('customgames', 'CustomGames')
 
         let finalContent = mergedContent;
 

@@ -416,7 +416,10 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
                     </div>`
 
 
+//This is for game components
 let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
+let gameTitle = document.getElementById('input-game-title');
+let gameType = document.getElementById('input-game-type');
 let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
 
 // Create a custom plugin, use PluginManager.add then connect sa plugins and contextmenu
@@ -475,7 +478,8 @@ tinymce.init({
     encoding: 'xml',
     element_format: 'html',
     entity_encoding: 'raw',
-    height: 650,
+    height: 700,
+    max_height: 700,
     width: 1000,
     statusbar: false, //disabling status bar
     protect: [
@@ -509,6 +513,8 @@ tinymce.init({
         //custom games - import
         /<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g,
         /<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)">\s*<\/customgames>/g,
+        //incase
+        /<customgames(.*?)>\s*<\/customgames>/g,
     ], 
     link_list: [
         { title: '[EN-GB]Promotion General Terms and Conditions', value: 'https://www.188bet.com/en-gb/promotions#promo_gen_terms' },
@@ -567,6 +573,7 @@ tinymce.init({
             .replace(/<span data-fontsize="(.*?)">/g, '')
             .replace(/<span data-ccp-props="(.*?)">/g, '')
             .replace(/<span data-ccp-charstyle="(.*?)">/g, '')
+            .replace(/<span data-ccp-parastyle="(.*?)">/g, '')
             .replace(/<span class="(.*?)" lang="(.*?)" xml:lang="(.*?)" data-contrast="(.*?)">/g, '')
             .replace(/<span class="(.*?)">/g, '')
             .replace(/<span class="(.*?)" data-ccp-props="(.*?)"> /g, '')
@@ -575,8 +582,8 @@ tinymce.init({
             
             //finding imported component then replace it with the component style
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
-            .replace(/<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)">\s*<\/customgames>/g, '<table id="casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr></tbody></table><br>')
-            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr></tbody></table><br>')
+            .replace(/<customgames product="casino" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>/g, '<table id="casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
+            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="(.*?)">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
 
             console.log(event.content);
         });
@@ -613,7 +620,7 @@ tinymce.init({
                     gameCodesInput.classList.remove('hidden');
                     gameCodesInsertBtn.onclick = () => {
                         document.getElementById('input-game-codes-container').classList.add('hidden');
-                        editor.insertContent(`<table id="casino-icons" class="non-editable"><tbody><tr><td>Recommended Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table><br>`)
+                        editor.insertContent(`<table id="casino-icons" class="non-editable"><tbody><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr><tr><td>${gameType.value}</td></tr></tbody></table><br>`)
                     }
                     cancelGameCodesBtn.onclick = () => {
                         gameCodesInput.classList.add('hidden');
@@ -630,7 +637,7 @@ tinymce.init({
                     gameCodesInput.classList.remove('hidden');
                     gameCodesInsertBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
                         document.getElementById('input-game-codes-container').classList.add('hidden');
-                        editor.insertContent(`<table id="live-casino-icons" class="non-editable"><tbody><tr><td>Recommended Live Casino Games</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table><br>`)
+                        editor.insertContent(`<table id="live-casino-icons" class="non-editable"><tbody><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr><tr><td>${gameType.value}</td></tr></tbody></table><br>`)
                     }
                     cancelGameCodesBtn.onclick = () => {
                         gameCodesInput.classList.add('hidden');
@@ -639,7 +646,6 @@ tinymce.init({
               }
             ]
         });
-        
     },
 });
 
@@ -883,6 +889,7 @@ tncRegionDropdown.addEventListener('change', () => {
 
 //preview button
 document.getElementById('previewBtn').addEventListener('click', () => {
+    document.getElementById('preview-section').classList.toggle('hidden');
     if(document.getElementById('preview-dropdown').value == '#'){
         document.getElementById('tnc-container').innerHTML = '';
     } else if (document.getElementById('preview-dropdown').value == 'prev-en-gb'){
@@ -920,9 +927,8 @@ function previewContent(lang) {
         //.replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="flex flex-col w-full text-center bg-neutral-100"><div>$1</div><div>$2</div></div>')
 
         //replacing tables
-        .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
+        .replace(/<table(.*?)>/g, '<table class="border rounded w-full border-collapse border-spacing-0 text-center">')
         .replaceAll('<tbody>', '<tbody class="divide-y">')
-        .replaceAll('</table>', '</table></div>')
         //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
 
         //replacing paragraph
@@ -936,6 +942,14 @@ function previewContent(lang) {
 
         //images
         .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
+
+        //preview import
+        .replaceAll('<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">', '')
+        .replaceAll('<template #header="">', '')
+        .replaceAll('<template #content="">', '')
+        .replaceAll('<template #content="">', '')
+        .replaceAll('</sexpansionpanel>', '')
+        .replaceAll('<includecontent :url="promoDetail.termsTpl"></includecontent>', '')
 
     document.getElementById('tnc-container').innerHTML = editorContent;
 }
@@ -1085,8 +1099,8 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
         //replacing recommended game icons
-            .replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="table" class="tnc-multiple-games" :limit="200"></CustomGames>')
-            .replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames  product="live"  title="$1"  games="$2"  show-game-subtitle  type="table"></CustomGames>')
+            .replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames>')
+            .replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="live" title="$1" games="$2" show-game-subtitle type="$3"></CustomGames>')
         
         //replacing tables
             .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
@@ -1131,6 +1145,7 @@ document.getElementById('download').addEventListener('click', () => {
         //cleaning up some mess
             .replaceAll('<br />', '')
             .replaceAll('<br/>', '')
+            .replaceAll('<br><br>', '<br>')
             .replaceAll('<p> </p>', '')
             //.replaceAll(' class="MsoNormal"', '')
             //.replaceAll(' class="MsoNoSpacing"', '')
@@ -1142,6 +1157,7 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('#content=""', '#content')
             .replaceAll('includecontent', 'IncludeContent')
             .replaceAll('customgames', 'CustomGames')
+            .replaceAll('show-game-subtitle=""', 'show-game-subtitle')
 
         let finalContent = mergedContent;
 
@@ -1166,4 +1182,9 @@ document.getElementById('preview-dropdown').addEventListener('change', () => {
             previewContent('mytextarea2');
             break;
     }
+})
+
+//close preview
+document.getElementById('hidePreview').addEventListener('click', () => {
+    document.getElementById('preview-section').classList.toggle('hidden');
 })

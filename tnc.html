@@ -58,20 +58,11 @@
         <div class="px-3 mb-4 flex justify-between items-center">
             <div class="flex flex-row gap-x-2 items-center">
                 <input id="filename" type="text" class="rounded-[4px] p-2 h-10 w-80 outline-none font-medium text-xs bg-white" placeholder="TNC Filename" autocomplete="off">
-                <button id="generateFilename" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center cursor-pointer">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-switch-horizontal"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 3l4 4l-4 4" /><path d="M10 7l10 0" /><path d="M8 13l-4 4l4 4" /><path d="M4 17l9 0" /></svg>
-                    CONVERT APS
-                </button>
-                <button id="resetBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-back-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
-                    RESET CONTENT
-                </button>    
-                <button id="importBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center cursor-pointer">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-help-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
-                    GUIDE
-                </button>
+                <button id="generateFilename" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center cursor-pointer">CONVERT APS</button>
+                <button id="resetBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center cursor-pointer">RESET CONTENT</button>    
+                <button id="importBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center cursor-pointer">GUIDE</button>
                 
-                <div class="text-xs text-white flex flex-row items-center gap-x-2">
+                <div class="text-xs text-white flex flex-row items-center gap-x-2 hidden">
                     <input type="checkbox" id="import-check">
                     <label for="import-check">Uncheck if not imported</label>
                 </div>
@@ -102,39 +93,16 @@
                         </select>
                     </li>
                 </ol>
-                <a href="#preview-section" style="text-decoration: none;">
-                    <button id="previewBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-                        </svg>
-                        PREVIEW
-                    </button>
-                </a>
+                <button id="previewBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 cursor-pointer">PREVIEW</button>
                 <label for="import-tnc" class="bg-[#ff8906] p-2 rounded-[4px] font-medium text-xs text-black h-fit w-fit flex flex-row gap-x-1 items-center cursor-pointer">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-code"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" /></svg>
                     IMPORT HTML
                     <input type="file" id="import-tnc" accept=".html" class="hidden">
                 </label>
                 <label for="import-docx" class="bg-[#ff8906] p-2 rounded-[4px] font-medium text-xs text-black h-fit w-fit flex flex-row gap-x-1 items-center cursor-pointer">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-word"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /><path d="M9 12l1.333 5l1.667 -4l1.667 4l1.333 -5" /></svg>
                     UPLOAD DOCX
                     <input type="file" id="import-docx" accept=".docx" class="hidden">
                 </label>
-                <button id="download" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-download">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                            <path d="M7 11l5 5l5 -5" />
-                            <path d="M12 4l0 12" />
-                    </svg>
-                    DOWNLOAD
-                </button>
+                <button id="download" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 cursor-pointer">DOWNLOAD</button>
             </div>
         </div>
         <!--WYSIWYG Section-->
@@ -146,9 +114,21 @@
             </div>
         </div>
         <!--Preview Section-->
-        <div id="preview-section" class="mt-20 mx-3 flex flex-row gap-x-3 relative h-screen">
+        <div id="preview-section" class="max-w-7xl w-full h-[900px] p-2 bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-md shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] flex flex-col gap-y-4 hidden">
+            <div class="flex flex-row justify-between items-center">
+                <div class="bg-[#381e08] text-[#b4a4a1] font-medium h-fit w-fit px-2 rounded-[4px] text-xs">
+                    <select name="preview-dropdown" id="preview-dropdown" class="bg-transparent border-none outline-none w-44 py-2 hover:cursor-pointer">
+                        <option value="#">Select language to preview</option>
+                        <option value="prev-en-gb" selected>EN-GB</option>
+                        <option value="prev-localized">LOCALIZED</option>
+                    </select>
+                </div>
+                <button id="hidePreview" class="bg-neutral-200 rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-neutral-300 cursor-pointer">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+                </button>
+            </div>
             <!--Desktop Preview-->
-            <div class="w-full h-screen overflow-scroll bg-white relative">
+            <div class="w-full h-full overflow-scroll bg-white relative">
                 <nav class="w-full h-16 bg-neutral-800 flex flex-row justify-between items-center px-5 sticky top-0">
                     <ul class="flex flex-row gap-x-8 items-center font-semibold text-neutral-400 text-xs">
                         <li><img id="light-logo" style="width: 60px;" src="https://www.sbbanner.com/newsletter/newsletter-template-2024/188-light.png"></li>
@@ -166,7 +146,7 @@
                         <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-grid-dots"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg></li>
                     </ul>
                 </nav>
-                <div class="py-4 px-80">
+                <div class="py-4 px-40">
                     <div class="w-full h-40 bg-neutral-800 flex flex-col p-4 gap-y-3">
                         <div>
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
@@ -177,19 +157,11 @@
                             <p class="text-neutral-400 text-xs">Terms and conditions apply</p>
                         </div>
                     </div>
-                    <div class="bg-[#381e08] text-[#b4a4a1] font-medium h-fit w-fit px-2 rounded-[4px] text-xs mt-4">
-                        <select name="preview-dropdown" id="preview-dropdown" class="bg-transparent border-none outline-none w-44 py-2 hover:cursor-pointer">
-                            <option value="#">Select language to preview</option>
-                            <option value="prev-en-gb" selected>EN-GB</option>
-                            <option value="prev-localized">LOCALIZED</option>
-                        </select>
-                    </div>
                     <div id="tnc-container" class="w-full py-4">
                         
                     </div>
                 </div>
             </div>
-            <a href="#header" style="text-decoration: none; color: black;" class="bg-[#ff8906] rounded-full p-4 font-medium text-xs text-black h-fit flex flex-row gap-x-1 hover:bg-[#ec7f10] absolute right-5 bottom-5 animate-bounce">Back to content editor</a>
         <!--Footer Section-->
         <footer class="px-3 py-5 text-black text-xs font-medium flex flex-row justify-between items-center absolute bottom-0 gap-x-1">
             <p>Created by Rave</p>
@@ -198,10 +170,18 @@
     <!--PROMOTION AUTOMATION-->
 
     <div id="update-card" class="hidden flex flex-col gap-y-1 w-80 h-fit bg-[#2C1A5A] border-2 border-[#4816C3] rounded-md absolute top-14 right-0 mr-3 p-1"></div>
-    <div id="input-game-codes-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-row gap-x-1 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
-        <input type="text" id="input-game-codes" placeholder="Paste/Insert Game Codes here" class="outline-none w-full">
-        <button id="gameCodesInsertBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">INSERT</button>
-        <button id="cancelGameCodesBtn" class="bg-neutral-200 rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-neutral-300 cursor-pointer">CANCEL</button>
+    <div id="input-game-codes-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-col gap-y-4 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
+        <input type="text" id="input-game-title" placeholder="Enter Title (ex. Recommended Games)" class="outline-none w-full border border-[#ff8906] p-2">
+        <input type="text" id="input-game-codes" placeholder="Paste/Enter Game Codes (ex. game,game2,game3)" class="outline-none w-full border border-[#ff8906] p-2">
+        <select id="input-game-type" class="outline-none w-full">
+            <option value="">Select type</option>
+            <option value="table">Table</option>
+            <option value="trending-list-full">List</option>
+        </select>
+        <div class="flex flex-row gap-x-2 justify-end">
+            <button id="gameCodesInsertBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">INSERT</button>
+            <button id="cancelGameCodesBtn" class="bg-neutral-200 rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-neutral-300 cursor-pointer">CANCEL</button>
+        </div>
     </div>
     <div id="edit-numbering-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-row gap-x-1 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
         <input type="text" id="input-number" placeholder="Enter number" class="outline-none w-full">

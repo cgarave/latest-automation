@@ -479,7 +479,6 @@ tinymce.init({
     element_format: 'html',
     entity_encoding: 'raw',
     height: 700,
-    max_height: 700,
     width: 1000,
     statusbar: false, //disabling status bar
     protect: [
@@ -511,10 +510,13 @@ tinymce.init({
         /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, //without space
 
         //custom games - import
-        /<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g,
-        /<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)">\s*<\/customgames>/g,
-        //incase
+        //<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g,
+        //<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table" class="tnc-multiple-games">\s*<\/customgames>/g,
+        //<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)">\s*<\/customgames>/g,
         /<customgames(.*?)>\s*<\/customgames>/g,
+
+        //vue href
+        /<a :href="(.*?)">/g,
     ], 
     link_list: [
         { title: '[EN-GB]Promotion General Terms and Conditions', value: 'https://www.188bet.com/en-gb/promotions#promo_gen_terms' },
@@ -578,13 +580,16 @@ tinymce.init({
             .replace(/<span class="(.*?)">/g, '')
             .replace(/<span class="(.*?)" data-ccp-props="(.*?)"> /g, '')
             .replace(/<tr(.*?)>/g, '<tr>')
-            .replace(/<td(.*?)>/g, '<td>')
+            //.replace(/<td(.*?)>/g, '<td>')
             
             //finding imported component then replace it with the component style
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
             .replace(/<customgames product="casino" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>/g, '<table id="casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
-            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="(.*?)">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
-
+            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
+            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="(.*?)" class="(.*?)">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
+            
+            //imported file links
+            .replace(/<a :href="`(.*?)`">/g, '<a href="`$1`">')
             console.log(event.content);
         });
 
@@ -658,7 +663,7 @@ tinymce.init({
 setTimeout(() => {
     document.querySelector('.mce-close').click();
     document.querySelector('.mce-close').click();
-}, 1000)
+}, 800)
 
 //generate APS to HTML filename
 let fileNameAPS = document.getElementById('filename');
@@ -927,7 +932,7 @@ function previewContent(lang) {
         //.replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="flex flex-col w-full text-center bg-neutral-100"><div>$1</div><div>$2</div></div>')
 
         //replacing tables
-        .replace(/<table(.*?)>/g, '<table class="border rounded w-full border-collapse border-spacing-0 text-center">')
+        .replace(/<table(.*?)>/g, '<table class="border w-full border-collapse border-spacing-0 text-center">')
         .replaceAll('<tbody>', '<tbody class="divide-y">')
         //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
 
@@ -1084,7 +1089,6 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<a href="https:\/\/www.my188promo.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.188family.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.188sukses.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
-            //.replace('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function(){$("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?"+$.now());});</script>')
         
         //replacing list styles
             .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
@@ -1099,8 +1103,8 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
         //replacing recommended game icons
-            .replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames>')
-            .replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="live" title="$1" games="$2" show-game-subtitle type="$3"></CustomGames>')
+            .replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="casino" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
+            .replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="live" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
         
         //replacing tables
             .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
@@ -1158,6 +1162,8 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('includecontent', 'IncludeContent')
             .replaceAll('customgames', 'CustomGames')
             .replaceAll('show-game-subtitle=""', 'show-game-subtitle')
+
+            .replace(/<a href="&#96;(.*?)&#96;">/g, '<a :href="`$1`">')
 
         let finalContent = mergedContent;
 

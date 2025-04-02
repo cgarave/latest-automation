@@ -419,10 +419,11 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
 //This is for game components
 let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
 let gameTitle = document.getElementById('input-game-title');
+gameTitle.value = 'Recommended Games';
 let gameType = document.getElementById('input-game-type');
 let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
 
-// Create a custom plugin, use PluginManager.add then connect sa plugins and contextmenu
+// Creating a custom plugin: use PluginManager.add then connect sa plugins and contextmenu
 tinymce.PluginManager.add('customcontextmenu', function(editor) {
     editor.addMenuItem('editNumbering', {
       text: 'Edit Numbering',
@@ -471,10 +472,16 @@ tinymce.init({
     noneditable_editable_class: 'mceEditable', //editable class tinymce 4 & 5
     noneditable_noneditable_class: 'non-editable', //non-editable class tinymce 4 & 5
     fix_list_elements: true,
+    advlist_bullet_styles: 'disc', //limit the bullet option to disc only
+    advlist_number_styles: 'default,lower-alpha,lower-roman', //limit the list option to three options only
     paste_merge_formats: true,
     paste_data_images: false, //disable paste of local image
+    image_description: false, //disable image description input
+    image_dimensions: false, //disable image dimension input
     table_resize_bars: false, //disable resize bars
     object_resizing: 'img', //disable table resizing
+    link_title: false, //disable link title
+    target_list: false, //disable link target
     encoding: 'xml',
     element_format: 'html',
     entity_encoding: 'raw',
@@ -571,6 +578,7 @@ tinymce.init({
             .replaceAll('</ul><ol>', '')
             .replaceAll('<p> </p>', '')
 
+            //this removes the span shits that occurs when a user copy/paste text from sharepoint link
             .replace(/<span data-contrast="(.*?)">/g, '')
             .replace(/<span data-fontsize="(.*?)">/g, '')
             .replace(/<span data-ccp-props="(.*?)">/g, '')
@@ -590,6 +598,11 @@ tinymce.init({
             
             //imported file links
             .replace(/<a :href="`(.*?)`">/g, '<a href="`$1`">')
+            
+            //imported tables
+            .replace(/<div class="border rounded mb-4 table-responsive">\s*<table class="w-full border-collapse border-spacing-0 text-center">/g, '<table class="w-full border-collapse border-spacing-0 text-center">')
+            .replace(/<\/table>\s*<\/div>/g, '</table>')
+
             console.log(event.content);
         });
 
@@ -691,7 +704,7 @@ document.getElementById('resetBtn').addEventListener('click', () => {
     tncRegionDropdown.value = '#'
     tncTemplateDropdown.value = '#'
     document.getElementById('template-container').classList.add('hidden')
-    document.getElementById('import-check').checked = false;
+    //document.getElementById('import-check').checked = false;
     document.getElementById('filename').value = '';
 })
 
@@ -726,7 +739,7 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
         case 'vi-vn':
             document.getElementById('filename').value = 'Vietnam_'
@@ -749,7 +762,7 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
         case 'th-th':
             document.getElementById('filename').value = 'Thailand_'
@@ -772,7 +785,7 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
         case 'ko-kr':
             document.getElementById('filename').value = 'Korea_'
@@ -795,7 +808,7 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
         case 'id-id':
             document.getElementById('filename').value = 'Indonesia_'
@@ -818,7 +831,7 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
         case 'km-kh':
             document.getElementById('filename').value = 'Cambodia_'
@@ -841,7 +854,7 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
         case 'ja-jp':
             document.getElementById('filename').value = 'Japan_'
@@ -864,7 +877,7 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
         case 'hi-in':
             document.getElementById('filename').value = 'India_'
@@ -887,13 +900,14 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            document.getElementById('import-check').checked = false;
+            //document.getElementById('import-check').checked = false;
             break;
     }
 })
 
 //preview button
 document.getElementById('previewBtn').addEventListener('click', () => {
+    document.getElementById('preview-overlay').classList.toggle('hidden');
     document.getElementById('preview-section').classList.toggle('hidden');
     if(document.getElementById('preview-dropdown').value == '#'){
         document.getElementById('tnc-container').innerHTML = '';
@@ -907,7 +921,7 @@ document.getElementById('previewBtn').addEventListener('click', () => {
 //preview TNC
 function previewContent(lang) {
     let editorContent = tinymce.get(lang).getContent();
-
+    
     editorContent = editorContent
         .replaceAll('<SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">', '')
         .replaceAll('<template #header>', '')
@@ -1193,4 +1207,5 @@ document.getElementById('preview-dropdown').addEventListener('change', () => {
 //close preview
 document.getElementById('hidePreview').addEventListener('click', () => {
     document.getElementById('preview-section').classList.toggle('hidden');
+    document.getElementById('preview-overlay').classList.toggle('hidden');
 })

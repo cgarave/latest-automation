@@ -600,9 +600,18 @@ tinymce.init({
             .replace(/<a :href="`(.*?)`">/g, '<a href="`$1`">')
             
             //imported tables
+            .replaceAll('<div class="md:w-1/2 w-full m-auto">', '')
+            .replaceAll('<div class="md:w-1/3 w-full m-auto">', '')
             .replace(/<div class="border rounded mb-4 table-responsive">\s*<table class="w-full border-collapse border-spacing-0 text-center">/g, '<table class="w-full border-collapse border-spacing-0 text-center">')
             .replace(/<\/table>\s*<\/div>/g, '</table>')
 
+            //import
+            .replace(/<div id="(.*?)" class="tnc-content-wrap">/g, '<div id="$1" class="tnc-content-wrap non-editable">')
+            .replaceAll('<div class="contentwrap tnc-content-format">', '<div class="contentwrap tnc-content-format non-editable">')
+            .replaceAll('<h2 class="mb-4 font-semibold text-body-1">', '<h2 class="mb-4 font-semibold text-body-1 mceEditable">')
+            .replaceAll('<div class="">', '<div class="mceEditable">')
+            .replaceAll('<h2 class="m-4 font-semibold text-body-1">', '<h2 class="m-4 font-semibold text-body-1 mceEditable">')
+            .replaceAll('<div class="full-promotion-content">', '<div class="full-promotion-content mceEditable">')
             console.log(event.content);
         });
 
@@ -960,7 +969,8 @@ function previewContent(lang) {
         .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
 
         //images
-        .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
+        .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto" $1/>')
+        .replace(/<img(.*?)>/g, '<img class="my-2 mx-auto h-auto" $1/>')
 
         //preview import
         .replaceAll('<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">', '')
@@ -1137,7 +1147,8 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
 
          //images
-            .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto rounded-lg" $1/>')
+            .replace(/<img(.*?)\/>/g, '<img class="my-2 mx-auto h-auto" $1/>')
+            .replace(/<img(.*?)>/g, '<img class="my-2 mx-auto h-auto" $1/>')
 
         //Sportsbook Free Bet Component
             .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')

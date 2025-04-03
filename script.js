@@ -673,6 +673,12 @@ tinymce.init({
               }
             ]
         });
+        editor.on('keydown', function(event) { //this stop the user from using ctrl+A or cmd+A
+            if ((event.ctrlKey || event.metaKey) && event.keyCode === 65) {
+              event.preventDefault();
+              editor.selection.collapse();
+            }
+        });
     },
 });
 

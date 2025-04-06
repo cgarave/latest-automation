@@ -1071,7 +1071,12 @@ document.getElementById('import-docx').addEventListener('change', (e) => {
         mammoth.convertToHtml({arrayBuffer: arrayBuffer})
           .then(function(result) {
             // Insert the converted content into the TinyMCE editor
-            tinymce.get('mytextarea').setContent(result.value);
+            const docparser = new DOMParser();
+            const convertedDocs = docparser.parseFromString(result.value, 'text/html');
+            console.log(convertedDocs.getElementsByTagName('body')[0]);
+            
+            tinymce.get('mytextarea').setContent(convertedDocs.getElementsByTagName('body')[0].innerHTML);
+            
           })
           .catch(function(err) {
             console.error('Error reading DOCX file:', err);

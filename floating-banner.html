@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="sys/style.css">
+    <link href="sys/src/output.css" rel="stylesheet">
+</head>
+<body class="bg-neutral-900 h-screen overflow-hidden">
+    <header id="header">
+        <nav class="flex flex-row justify-between items-center p-3 border-b border-[#a7a9be] mb-4">
+            <ul>
+                <li id="automation-name" class="text-white font-semibold text-lg"><span class="text-[#ff9200]">Floating Banner</span> Automation</li>
+            </ul>
+            <ul class="flex flex-row gap-x-2">
+                <li class="bg-neutral-900 text-white font-semibold rounded-[4px] px-2 text-xs border border-neutral-500">
+                    <select id="automation-dropdown" class="bg-transparent border-none outline-none w-44 h-full hover:cursor-pointer">
+                        <option value="index.html">Terms and Conditions</option>
+                        <option value="newsletter.html">Newsletter</option>
+                        <option value="floating-banner.html" selected>Floating Banner</option>
+                        <option value="landing-page.html">Landing Page</option>
+                        <option value="widgets.html">Widgets</option>
+                    </select>
+                </li>
+                <li>
+                    <button id="whats-new" class="bg-neutral-800 text-white font-medium p-3 rounded-[4px] text-xs relative cursor-pointer hover:outline outline-[#ff9200] flex flex-row gap-x-1 items-center group w-10 hover:w-33 transition-translate duration-300 ease-in-out">
+                        <div class="bg-red-700 w-2 h-2 rounded-full absolute -top-1 -right-1 animate-ping"></div>
+                        <div class="bg-red-600 w-2 h-2 rounded-full absolute -top-1 -right-1"></div>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-progress-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 20.777a8.942 8.942 0 0 1 -2.48 -.969" /><path d="M14 3.223a9.003 9.003 0 0 1 0 17.554" /><path d="M4.579 17.093a8.961 8.961 0 0 1 -1.227 -2.592" /><path d="M3.124 10.5c.16 -.95 .468 -1.85 .9 -2.675l.169 -.305" /><path d="M6.907 4.579a8.954 8.954 0 0 1 3.093 -1.356" /><path d="M9 12l2 2l4 -4" /></svg>
+                        <p class="truncate hidden group-hover:block">CHANGELOGS</p>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--FLOATING BANNER AUTOMATION-->
+    <div class="px-3 mb-4 flex items-center gap-x-2">
+        <div class="flex flex-row gap-x-2 items-center">
+            <input id="game-name" type="text" class="rounded-[4px] p-2 h-10 w-80 outline-none font-medium text-xs bg-white placeholder:text-gray-500" placeholder="Game Name" autocomplete="off">
+        </div>
+        <div class="flex flex-row gap-x-2 items-center">
+            <input id="game-code" type="text" class="rounded-[4px] p-2 h-10 w-80 outline-none font-medium text-xs bg-white placeholder:text-gray-500" placeholder="Game Code" autocomplete="off">
+        </div>
+        <ol class="flex gap-x-2 h-10">
+            <li class="bg-neutral-900 text-white font-semibold rounded-[4px] px-2 text-xs border border-neutral-500">
+                <select id="game-category" class="bg-transparent border-none outline-none w-44 h-10 py-2 cursor-pointer">
+                    <option value="#">Select game category</option>
+                    <option value="casino">Casino</option>
+                    <option value="live">Live Casino</option>
+                    <option value="chess">Chess</option>
+                    <option value="lotto">Lotto</option>
+                </select>
+            </li>
+            <li class="bg-neutral-900 text-white font-semibold rounded-[4px] px-2 text-xs border border-neutral-500">
+                <select id="game-provider" class="bg-transparent border-none outline-none w-44 h-10 py-2 cursor-pointer">
+                    <option value="#">Select game provider</option>
+                    <optgroup label="Casino" class="hidden">
+                        <option value="advantplay">Advant Play</option>
+                        <option value="betsoft">Betsoft</option>
+                        <option value="bigtimegaming">Big Time Gaming</option>
+                        <option value="evolution">Evolution</option>
+                        <option value="galaxsys">Galaxsys</option>
+                        <option value="genesis">Genesis</option>
+                        <option value="habanero">Habanero</option>
+                        <option value="isoftbet">Isoftbet</option>
+                        <option value="jili">Jili</option>
+                        <option value="leap">Leap</option>
+                        <option value="microgaming">Microgaming</option>
+                        <option value="netent">Netent</option>
+                        <option value="nolimitcity">Nolimit City</option>
+                        <option value="pgsoft">Pocket Games Soft UAT</option>
+                        <option value="pocketgames">Pocket Games Soft Prod</option>
+                        <option value="playngo">Play N Go</option>
+                        <option value="playtech">PlayTech</option>
+                        <option value="pragmatic">Pragmatic Play</option>
+                        <option value="quickspin">Quick Spin</option>
+                        <option value="redtiger">Red Tiger</option>
+                        <option value="skywind">SkyWind</option>
+                        <option value="spribe">Spribe</option>
+                    </optgroup>
+                    <optgroup label="Live Casino" class="hidden">
+                        <option value="aesexy">Aesexy</option>
+                        <option value="agiledeal">Agile Deal</option>
+                        <option value="asiagaming">Asia Gaming</option>
+                        <option value="db">DB</option>
+                        <option value="dblive">DB Live</option>
+                        <option value="evolution">Evolution</option>
+                        <option value="ezugi">Ezugi</option>
+                        <option value="n2live">N2 Live</option>
+                        <option value="oncasino">ON Casino</option>
+                        <option value="pragmatic">Pragmatic Play</option>
+                        <option value="sexybaccarat">Sexy Baccarat</option>
+                        <option value="wmcasino">WM Casino</option>
+                        <option value="worldentertainment">World Entertainment</option>
+                        <option value="zodiacracing">Zodiac Racing</option>
+                    </optgroup>
+                    <optgroup label="Chess" class="hidden">
+                        <option value="jili">Jili</option>
+                        <option value="kaiyuan">Kaiyuan</option>
+                        <option value="kingmidas">King Midas</option>
+                        <option value="mpoker">Millionaire Poker</option>
+                        <option value="v8poker">V8 Poker</option>
+                    </optgroup>
+                    <optgroup label="Lotto" class="hidden">
+                        <option value="7star">7 Star</option>
+                        <option value="agiledeal">Agile Deal</option>
+                        <option value="australia">Australia</option>
+                        <option value="australialucky28">Australia Lucky 28</option>
+                        <option value="canada">Canada</option>
+                        <option value="india-lottery">India Lottery</option>
+                        <option value="keno">Keno</option>
+                        <option value="lotto">Lotto</option>
+                        <option value="lucky28">Lucky 28</option>
+                        <option value="lucky5">Lucky 5</option>
+                        <option value="p3">P3</option>
+                        <option value="pk10">PK10</option>
+                        <option value="rapid5d">Rapid 5D</option>
+                        <option value="sea-lottery">Sea Lottery</option>
+                        <option value="sode">Sode</option>
+                        <option value="super-lottery">Super Lottery</option>
+                        <option value="tc-gaming">TC Gaming</option>
+                        <option value="tcg_cn">TCG CN</option>
+                        <option value="tcg_sea">TCG SEA</option>
+                        <option value="tcg_vn">TCG VN</option>
+                        <option value="xj">XJ</option>
+                    </optgroup>
+                </select>
+            </li>
+        </ol>
+    </div>
+    <div class="px-3 flex flex-col gap-y-2">
+        <h1 id="advert-name" class="font-semibold text-sm text-[#ff9200]">Advert Name: </h1>
+        <div class="flex flex-row gap-x-2 w-full">
+            <textarea name="" id="outputArea" class="rounded-[4px] w-1/2 h-52 p-2 bg-neutral-800 text-[#ff9200] text-xs resize-none" readonly></textarea>
+            <textarea name="" id="outputAL" class="rounded-[4px] w-1/2 h-52 p-2 bg-neutral-800 text-[#ff9200] text-xs resize-none" readonly></textarea>
+        </div>
+
+        <div id="preview" class="w-40"></div>
+    </div>
+    <!--FLOATING BANNER AUTOMATION-->
+    <div id="update-card" class="hidden flex flex-col gap-y-1 w-80 h-fit bg-neutral-900 rounded-md absolute top-14 right-0 mr-3 p-1 outline-2 outline-neutral-800"></div>
+</body>
+
+<!--Scripts-->
+<script src="sys/homepage.js"></script>
+<script src="sys/floating-banner.js"></script>
+<script src="sys/updates.js"></script>
+</html>

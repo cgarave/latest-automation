@@ -1,65 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
+    <!--te167wk1fiddsv5gf6bf7yi169ojp0pclg2kksirxrl0w9lg-->
+    <!--ldulyemdcowuica6ruhomm3wkbvanafvrfno7b2xsiiafmiv-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tiny.cloud/1/te167wk1fiddsv5gf6bf7yi169ojp0pclg2kksirxrl0w9lg/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-</head>
-
-<body>
-    
-        <textarea id="mytextarea">
-           
-        </textarea>
-
-    <button id="set">set</button>
-    <input type="file" id="import" accept=".html" class="hidden">
-</body>
-<script>
-    tinymce.init({
-        selector: '#mytextarea',
-        plugins: 'advlist lists code table',
-        toolbar: 'code table numlist bullist',
-
-
-        setup: function (editor) {
-            editor.on('BeforeSetContent', function (event) {
-
-                console.log('BeforeSetContent:', event.content);
-            });
-        },
-
-    });
-    document.getElementById('set').addEventListener('click', () => {
-        tinymce.get('mytextarea').setContent(x);
-    })
-
-    document.getElementById('import').addEventListener('click', async (e) => {
-        const tncfile = e.target.files[0]
-        if (tncfile) {
-            const content = await readFile(tncfile);
-            let y = content.replaceAll('<template #header>', '').replaceAll('<template #content>', '').replaceAll('</template>', '')
-            tinymce.get('mytextarea').setContent(y);
-        } else {
-            //document.getElementById('output').innerHTML = 'No file selected';
-            console.log('error');
+    <title>Automation</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tiny.cloud/1/te167wk1fiddsv5gf6bf7yi169ojp0pclg2kksirxrl0w9lg/tinymce/4/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="sys/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Libre Franklin", sans-serif;
         }
-    })
+        a {
+            text-decoration: underline;
+            color: lightskyblue;
+        }
+        div, table, tbody, tr, td {
+            border-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="bg-neutral-900 h-screen overflow-hidden">
+    <header id="header">
+        <nav class="flex flex-row justify-between items-center p-3 border-b border-[#a7a9be] mb-4">
+            <ul>
+                <li id="automation-name" class="text-white font-semibold text-lg"><span class="text-[#ff9200]">TNC</span> Automation</li>
+            </ul>
+            <ul class="flex flex-row gap-x-2">
+                <li class="bg-neutral-900 text-white font-semibold rounded-[4px] px-2 text-xs border border-neutral-500">
+                    <select id="automation-dropdown" class="bg-transparent border-none outline-none w-44 h-full hover:cursor-pointer">
+                        <option value="index.html" selected>Terms and Conditions</option>
+                        <option value="newsletter.html">Newsletter</option>
+                        <option value="floating-banner.html">Floating Banner</option>
+                        <option value="landing-page.html">Landing Page</option>
+                        <option value="widgets.html">Widgets</option>
+                    </select>
+                </li>
+                <li>
+                    <button id="whats-new" class="bg-neutral-800 text-white font-medium p-3 rounded-[4px] text-xs relative cursor-pointer hover:outline outline-[#ff9200] flex flex-row gap-x-1 items-center group w-10 hover:w-33 transition-translate duration-300 ease-in-out">
+                        <div class="bg-red-700 w-2 h-2 rounded-full absolute -top-1 -right-1 animate-ping"></div>
+                        <div class="bg-red-600 w-2 h-2 rounded-full absolute -top-1 -right-1"></div>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-progress-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 20.777a8.942 8.942 0 0 1 -2.48 -.969" /><path d="M14 3.223a9.003 9.003 0 0 1 0 17.554" /><path d="M4.579 17.093a8.961 8.961 0 0 1 -1.227 -2.592" /><path d="M3.124 10.5c.16 -.95 .468 -1.85 .9 -2.675l.169 -.305" /><path d="M6.907 4.579a8.954 8.954 0 0 1 3.093 -1.356" /><path d="M9 12l2 2l4 -4" /></svg>
+                        <p class="truncate hidden group-hover:block">CHANGELOGS</p>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    const readFile = async (file) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                resolve(event.target.result);
-            };
-            reader.onerror = (error) => {
-                reject(error);
-            };
-            reader.readAsText(file);
-        });
-    };
-</script>
+    <!--PROMOTION AUTOMATION-->
+        <div class="px-3 mb-4 flex justify-between items-center">
+            <div class="flex flex-row gap-x-2 items-center">
+                <input id="filename" type="text" class="rounded-[4px] p-2 h-10 w-80 outline-none font-medium text-xs bg-white placeholder:text-gray-500" placeholder="TNC Filename" autocomplete="off">
+                <button id="generateFilename" class="bg-neutral-800 rounded-[4px] p-3 font-medium text-xs text-white flex flex-row gap-x-1 items-center cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-34 transition-translate duration-300 ease-in-out">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-switch-horizontal"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 3l4 4l-4 4" /><path d="M10 7l10 0" /><path d="M8 13l-4 4l4 4" /><path d="M4 17l9 0" /></svg>
+                    <p class="truncate hidden group-hover:block">CONVERT APS</p>
+                </button>
+                <button id="resetBtn" class="bg-neutral-800 rounded-[4px] p-3 font-medium text-xs text-white h-fit flex flex-row gap-x-1 items-center cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-37 transition-translate duration-300 ease-in-out">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
+                    <p class="truncate hidden group-hover:block">RESET CONTENT</p>
+                </button>    
+                <button id="importBtn" class="bg-neutral-800 rounded-[4px] p-3 font-medium text-xs text-white h-fit flex flex-row gap-x-1 items-center cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-22 transition-translate duration-300 ease-in-out">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-help-square-rounded"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
+                    <p class="truncate hidden group-hover:block">GUIDE</p>
+                </button>
+                
+                <div class="text-xs text-white flex flex-row items-center gap-x-2 hidden">
+                    <input type="checkbox" id="import-check">
+                    <label for="import-check">Uncheck if not imported</label>
+                </div>
+            </div>
+            <div class="flex gap-x-2">
+                <ol>
+                    <li id="region-container" class="bg-neutral-900 text-white font-semibold rounded-[4px] px-2 text-xs border border-neutral-500">
+                        <select id="tnc-regions-dropdown" class="bg-transparent border-none outline-none w-44 h-10 py-2 cursor-pointer">
+                            <option value="#">Select region</option>
+                            <option value="zh-cn">China - CN</option>
+                            <option value="vi-vn">Vietnam - VN</option>
+                            <option value="th-th">Thailand - TH</option>
+                            <option value="ko-kr">Korea - KR</option>
+                            <option value="id-id">Indonesia - ID</option>
+                            <option value="km-kh">Cambodia - KH</option>
+                            <option value="ja-jp">Japan - JP</option>
+                            <option value="hi-in">India - IN</option>
+                        </select>
+                    </li>
+                </ol>
+                <ol>
+                    <li id="template-container" class="bg-neutral-900 text-white font-semibold rounded-[4px] px-2 text-xs border border-neutral-500 hidden">
+                        <select id="template-dropdown" class="bg-transparent border-none outline-none w-44 h-10 py-2 cursor-pointer">
+                            <option value="#">Select template</option>
+                            <option value="SC">Significant Conditions only</option>
+                            <option value="FP">Full Promotion only</option>
+                            <option value="SCFP">Significant Conditions and Full Promotion</option>
+                        </select>
+                    </li>
+                </ol>
+                <button id="previewBtn" class="bg-neutral-800 rounded-[4px] p-3 font-medium text-xs text-white h-fit flex flex-row gap-x-1 cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-26 transition-translate duration-300 ease-in-out">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                    <p class="truncate hidden group-hover:block">PREVIEW</p>
+                </button>
+                <label for="import-tnc" class="bg-neutral-800 p-3 rounded-[4px] font-medium text-xs text-white h-fit flex flex-row gap-x-1 items-center cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-33 transition-translate duration-300 ease-in-out">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-upload"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg>
+                    <input type="file" id="import-tnc" accept=".html" class="hidden">
+                    <p class="truncate hidden group-hover:block">IMPORT HTML</p>
+                </label>
+                <label for="import-docx" class="bg-neutral-800 p-2 rounded-[4px] font-medium text-xs text-white h-fit w-fit flex flex-row gap-x-1 items-center cursor-pointer hidden">
+                    UPLOAD DOCX
+                    <input type="file" id="import-docx" accept=".docx" class="hidden">
+                </label>
+                <button id="download" class="bg-neutral-800 rounded-[4px] p-3 font-medium text-xs text-white h-fit flex flex-row gap-x-1 cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-30 transition-translate duration-300 ease-in-out">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-download"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+                    <p class="truncate hidden group-hover:block">DOWNLOAD</p>
+                </button>
+            </div>
+        </div>
+        <!--WYSIWYG Section-->
+        <div id="container" class="flex flex-row w-full justify-center relative">
+            
+            <div id="editor-container" class="w-full h-full overflow-hidden rounded-xl flex flex-row gap-x-3 p-3">
+                <textarea id="mytextarea"></textarea>
+                <textarea id="mytextarea2"></textarea>
+            </div>
+        </div>
+        <!--Preview Section-->
+        <div id="preview-overlay" class="absolute top-0 left-0 bg-neutral-900 opacity-70 h-full w-full z-2 hidden"></div>
+        <div id="preview-section" class="max-w-7xl w-full h-full max-h-[800px] p-2 bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-md shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] flex flex-col gap-y-4 z-3 hidden">
+            <div class="flex flex-row justify-between items-center">
+                <div class="bg-neutral-900 text-white font-semibold rounded-[4px] px-2 text-xs border border-neutral-500">
+                    <select name="preview-dropdown" id="preview-dropdown" class="bg-transparent border-none outline-none w-44 h-10 py-2 cursor-pointer">
+                        <option value="#">Select language to preview</option>
+                        <option value="prev-en-gb" selected>EN-GB</option>
+                        <option value="prev-localized">LOCALIZED</option>
+                    </select>
+                </div>
+                <button id="hidePreview" class="bg-neutral-900 rounded-[4px] p-3 text-white h-fit flex items-center cursor-pointer">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <!--Desktop Preview-->
+            <div class="w-full h-full overflow-scroll bg-white relative">
+                <nav class="w-full h-16 bg-neutral-800 flex flex-row justify-between items-center px-5 sticky top-0">
+                    <ul class="flex flex-row gap-x-8 items-center font-semibold text-neutral-400 text-xs">
+                        <li><img id="light-logo" style="width: 60px;" src="https://www.sbbanner.com/newsletter/newsletter-template-2024/188-light.png"></li>
+                        <li>Sports</li>
+                        <li>Casino</li>
+                        <li>Live Casino</li>
+                        <li>Chess Game</li>
+                        <li>Virtual</li>
+                        <li>Lotto</li>
+                        <li class="text-white">Promotions</li>
+                        <li>App</li>
+                    </ul>
+                    <ul class="flex flex-row gap-x-2 items-center">
+                        <li class="bg-neutral-700 p-2 rounded-[4px] font-semibold text-white text-xs">LOG IN</li>
+                        <li><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-grid-dots"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M19 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg></li>
+                    </ul>
+                </nav>
+                <div class="py-4 px-40">
+                    <div class="w-full h-40 bg-neutral-800 flex flex-col p-4 gap-y-3">
+                        <div>
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="#FFFFFF"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></svg>
+                        </div>
+                        <div>
+                            <h1 class="text-white font-semibold text-lg">Promotion Title</h1>
+                            <p class="text-neutral-400 text-xs mb-9">Description</p>
+                            <p class="text-neutral-400 text-xs">Terms and conditions apply</p>
+                        </div>
+                    </div>
+                    <div id="tnc-container" class="w-full py-4">
+                        
+                    </div>
+                </div>
+            </div>
+        <!--Footer Section-->
+        <footer class="px-3 py-5 text-black text-xs font-medium flex flex-row justify-between items-center absolute bottom-0 gap-x-1">
+            <p>Created by Rave</p>
+        </footer>
+        </div>
+    <!--PROMOTION AUTOMATION-->
+
+    <div id="update-card" class="hidden flex flex-col gap-y-1 w-80 h-fit bg-neutral-900 rounded-md absolute top-14 right-0 mr-3 p-1 outline-2 outline-neutral-800"></div>
+
+    <div id="input-game-codes-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-col gap-y-4 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
+        <input type="text" id="input-game-title" placeholder="Enter Title (ex. Recommended Games)" class="outline-none w-full border border-[#ff8906] p-2">
+        <input type="text" id="input-game-codes" placeholder="Paste/Enter Game Codes (ex. game,game2,game3)" class="outline-none w-full border border-[#ff8906] p-2">
+        <select id="input-game-type" class="outline-none w-full">
+            <option value="">Select type</option>
+            <option value="table">Table</option>
+            <option value="trending-list-full">List</option>
+        </select>
+        <div class="flex flex-row gap-x-2 justify-end">
+            <button id="gameCodesInsertBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">INSERT</button>
+            <button id="cancelGameCodesBtn" class="bg-neutral-200 rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-neutral-300 cursor-pointer">CANCEL</button>
+        </div>
+    </div>
+
+    <div id="edit-numbering-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-row gap-x-1 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
+        <input type="text" id="input-number" placeholder="Enter number" class="outline-none w-full">
+        <button id="editNumberBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">SAVE</button>
+        <button id="cancelEditNumberBtn" class="bg-neutral-200 rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-neutral-300 cursor-pointer">CANCEL</button>
+    </div>
+</body>
+
+<!--Scripts-->
+<script src="sys/homepage.js"></script>
+<script src="sys/tnc.js"></script>
+<script src="sys/updates.js"></script>
 
 </html>

@@ -141,7 +141,7 @@
                         <option value="prev-localized">LOCALIZED</option>
                     </select>
                 </div>
-                <button id="hidePreview" class="bg-neutral-900 rounded-[4px] p-3 text-white h-fit flex items-center cursor-pointer">
+                <button id="hidePreview" class="bg-neutral-900 rounded-[4px] p-3 text-white h-fit flex items-center cursor-pointer hover:outline outline-[#ff9200]">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
                 </button>
             </div>
@@ -190,6 +190,7 @@
     <div id="update-card" class="hidden flex flex-col gap-y-1 w-80 h-fit bg-neutral-900 rounded-md absolute top-14 right-0 mr-3 p-1 outline-2 outline-neutral-800"></div>
 
     <div id="input-game-codes-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-col gap-y-4 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
+        <h1 id="inputGameCodesTitle" class="text-md text-black font-semibold"></h1>
         <input type="text" id="input-game-title" placeholder="Enter Title (ex. Recommended Games)" class="outline-none w-full border border-[#ff8906] p-2">
         <input type="text" id="input-game-codes" placeholder="Paste/Enter Game Codes (ex. game,game2,game3)" class="outline-none w-full border border-[#ff8906] p-2">
         <select id="input-game-type" class="outline-none w-full">

@@ -419,7 +419,6 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
 //This is for game components
 let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
 let gameTitle = document.getElementById('input-game-title');
-gameTitle.value = 'Recommended Games';
 let gameType = document.getElementById('input-game-type');
 let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
 
@@ -578,6 +577,11 @@ tinymce.init({
             .replaceAll('</ul><ol>', '')
             .replaceAll('<p> </p>', '')
 
+            //this section is for removing unnecessary html elements exported from my old automation
+            .replace(/<div id="(.*?)" class="hidden" style="visibility: hidden; display: none;">1<\/div>/g, '')
+            .replace(/<div id="(.*?)" class="hidden" style="visibility: hidden;">1<\/div>/g, '')
+
+
             //this removes the span shits that occurs when a user copy/paste text from sharepoint link
             .replace(/<span data-contrast="(.*?)">/g, '')
             .replace(/<span data-fontsize="(.*?)">/g, '')
@@ -605,14 +609,24 @@ tinymce.init({
             .replace(/<div class="border rounded mb-4 table-responsive">\s*<table class="w-full border-collapse border-spacing-0 text-center">/g, '<table class="w-full border-collapse border-spacing-0 text-center">')
             .replace(/<\/table>\s*<\/div>/g, '</table>')
 
-            //import
-            .replace(/<div id="(.*?)" class="tnc-content-wrap">/g, '<div id="$1" class="tnc-content-wrap non-editable">')
-            .replaceAll('<div class="contentwrap tnc-content-format">', '<div class="contentwrap tnc-content-format non-editable">')
-            .replaceAll('<h2 class="mb-4 font-semibold text-body-1">', '<h2 class="mb-4 font-semibold text-body-1 mceEditable">')
-            .replaceAll('<div class="">', '<div class="mceEditable">')
-            .replaceAll('<h2 class="m-4 font-semibold text-body-1">', '<h2 class="m-4 font-semibold text-body-1 mceEditable">')
-            .replaceAll('<div class="full-promotion-content">', '<div class="full-promotion-content mceEditable">')
-            console.log(event.content);
+            //This section is to add the editable class to the imported file
+
+            .replace(/<div id="(.*?)" class="tnc-content-wrap\s*">/g, '<div id="$1" class="tnc-content-wrap non-editable">')
+            .replace(/<div class="contentwrap tnc-content-format\s*">/g, '<div class="contentwrap tnc-content-format non-editable">')
+
+            //.replace(/<h2 class="mb-4 font-semibold text-body-1\s*">/g, '<h2 class="mb-4 font-semibold text-body-1 mceEditable">') //significant conditions title backup
+            //.replaceAll('<div class="">', '<div class="mceEditable">')
+
+            //this supports the importing of old automations
+            //adding editable class for significant contents
+            .replaceAll('<div class="">', '')
+            .replace(/<h2 class="mb-4 font-semibold text-body-1\s*">(.*?)<\/h2>/g, '<h2 class="mb-4 font-semibold text-body-1 mceEditable">$1</h2><div class="mceEditable">')
+            .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
+            .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
+
+            .replace(/<h2 class="m-4 font-semibold text-body-1\s*">/g, '<h2 class="m-4 font-semibold text-body-1 mceEditable">') //full promotion title
+            .replace(/<div class="full-promotion-content\s*">/g, '<div class="full-promotion-content mceEditable">') //full promotion content
+            //console.log(event.content);
         });
 
         //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol
@@ -641,6 +655,7 @@ tinymce.init({
                 text: 'Recommended Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
+                    document.getElementById('inputGameCodesTitle').innerHTML = 'Casino Game Icons'
                     const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
                     const gameCodesInput = document.getElementById('input-game-codes-container');
                     const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
@@ -658,6 +673,7 @@ tinymce.init({
                 text: 'Recommended Live Casino Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
+                    document.getElementById('inputGameCodesTitle').innerHTML = 'Live Casino Game Icons'
                     const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
                     const gameCodesInput = document.getElementById('input-game-codes-container');
                     const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
@@ -737,6 +753,10 @@ tncRegionDropdown.addEventListener('change', () => {
             document.getElementById('filename').value = 'china_'
             document.getElementById('template-container').classList.remove('hidden')
 
+            tncTemplateDropdown.value = '#'; //resets the value of template dropdown when a user switches the region dropdown value. 
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
+
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
                 switch(selectedTemplate) {
@@ -759,6 +779,10 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'vi-vn':
             document.getElementById('filename').value = 'Vietnam_'
             document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.value = '#';
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
 
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
@@ -783,6 +807,10 @@ tncRegionDropdown.addEventListener('change', () => {
             document.getElementById('filename').value = 'Thailand_'
             document.getElementById('template-container').classList.remove('hidden')
 
+            tncTemplateDropdown.value = '#';
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
+
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
                 switch(selectedTemplate) {
@@ -805,6 +833,10 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'ko-kr':
             document.getElementById('filename').value = 'Korea_'
             document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.value = '#';
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
 
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
@@ -829,6 +861,10 @@ tncRegionDropdown.addEventListener('change', () => {
             document.getElementById('filename').value = 'Indonesia_'
             document.getElementById('template-container').classList.remove('hidden')
 
+            tncTemplateDropdown.value = '#';
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
+
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
                 switch(selectedTemplate) {
@@ -851,6 +887,10 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'km-kh':
             document.getElementById('filename').value = 'Cambodia_'
             document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.value = '#';
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
 
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
@@ -875,6 +915,10 @@ tncRegionDropdown.addEventListener('change', () => {
             document.getElementById('filename').value = 'Japan_'
             document.getElementById('template-container').classList.remove('hidden')
 
+            tncTemplateDropdown.value = '#';
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
+
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
                 switch(selectedTemplate) {
@@ -897,6 +941,10 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'hi-in':
             document.getElementById('filename').value = 'India_'
             document.getElementById('template-container').classList.remove('hidden')
+
+            tncTemplateDropdown.value = '#';
+            tinymce.get('mytextarea').setContent('');
+            tinymce.get('mytextarea2').setContent('');
 
             tncTemplateDropdown.addEventListener('change', () => {
                 const selectedTemplate = tncTemplateDropdown.value;
@@ -946,8 +994,8 @@ function previewContent(lang) {
         .replaceAll('<IncludeContent :url="promoDetail.termsTpl"></IncludeContent>', '')
 
         //replacing Full Promotion
-        .replaceAll(/<h2 class="m-4 font-semibold text-body-1 mceEditable">/g, '<h2 class="mt-4 mb-4 font-semibold text-body-1 mceEditable">')
-        .replaceAll(/<h2 class="m-4 font-semibold text-body-1">/g, '<h2 class="mt-4 mb-4 font-semibold text-body-1">')
+        .replaceAll(/<h2 class="m-4 font-semibold text-body-1 mceEditable">(.*?)<\/h2>/g, '<div class="p-2 border-b border-b-gray-300 flex flex-row justify-between items-center font-semibold my-6"><h2 class="font-semibold text-body-1 mceEditable">$1</h2><svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="#8C8F93"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 15l6 -6l6 6" /></svg></div>')
+        .replaceAll(/<h2 class="m-4 font-semibold text-body-1">(.*?)<\/h2>/g, '<div class="p-2 border-b border-b-gray-300 flex flex-row justify-between items-center font-semibold my-6"><h2 class="font-semibold text-body-1">$1</h2><svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="#8C8F93"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 15l6 -6l6 6" /></svg></div>')
 
         //replacing list styles
         .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
@@ -956,6 +1004,7 @@ function previewContent(lang) {
         .replaceAll('<ol style="list-style-type: lower-alpha;">', '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
         .replaceAll('<ol style="list-style-type: upper-alpha;">', '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;">')
         .replaceAll(/<ol start="(.*?)">/g, '<ol class="list-decimal pl-8 mb-4" start="$1">')
+        .replaceAll('<li>', '<li class="mb-4">')
 
         //replacing customGames
         //.replace(/<table id="casino-icons">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="flex flex-col w-full text-center bg-neutral-100"><div>$1</div><div>$2</div></div>')
@@ -970,6 +1019,7 @@ function previewContent(lang) {
         .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
         .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
         .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+        .replaceAll('<p>', '<p class="mb-4">')
 
         //replacing list discs
         .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
@@ -993,6 +1043,7 @@ function previewContent(lang) {
 document.getElementById('import-tnc').addEventListener('change', async (e) => {
 
     const tncfile = e.target.files[0]
+    document.getElementById('filename').value = tncfile.name.replace('.html', '');
 
     if (tncfile) {
         //document.getElementById('import-check').checked = true;
@@ -1001,7 +1052,7 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
 
         const parser = new DOMParser(); //allows to convert the HTML string into a DOM object. Once converted, you can interact with it just like you would with any DOM node.
         const doc = parser.parseFromString(content, 'text/html');
-        const contentScripts = doc.getElementsByTagName('head')[0].innerHTML;
+        //const contentScripts = doc.getElementsByTagName('head')[0].innerHTML;
         const contentEN = doc.querySelector('#content-en-gb');
         const contentCN = doc.querySelector('#content-zh-cn');
         const contentVN = doc.querySelector('#content-vi-vn');
@@ -1013,7 +1064,8 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         const contentIN = doc.querySelector('#content-hi-in');
 
         if (contentEN) {
-            tinymce.get('mytextarea').setContent(contentScripts.trim() + contentEN.outerHTML);
+            //tinymce.get('mytextarea').setContent(contentScripts.trim() + contentEN.outerHTML);
+            tinymce.get('mytextarea').setContent('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>' + contentEN.outerHTML); //this resolves the missing scripts when importing old tncs
         }
         if (contentCN) {
             tinymce.get('mytextarea2').setContent(contentCN.outerHTML);

@@ -464,7 +464,7 @@ tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
     plugins: 'advlist lists code table image link paste noneditable textcolor contextmenu customcontextmenu',
     toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent',
-    contextmenu: 'link editNumbering',
+    contextmenu: 'editNumbering link image',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
     //noneditable_class: 'non-editable', //non-editable class tinymce 7
@@ -543,6 +543,20 @@ tinymce.init({
         { title: '[JA-JP]Standard Terms and Conditions', value: 'https://www.188bet.com/ja-jp/corporate-affairs/terms-and-conditions' },
         { title: '[HI-IN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/hi-in/promotions#promo_gen_terms' },
         { title: '[HI-IN]Standard Terms and Conditions', value: 'https://www.188bet.com/hi-in/corporate-affairs/terms-and-conditions' },
+    ],
+    image_list: [
+        {title: 'CN TNC Assets',
+          menu: [
+            {title: 'EN free bet 1', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-1.jpg'},
+            {title: 'EN free bet 2', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-2.jpg'},
+            {title: 'ZH free bet 2', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-1-cn.jpg'},
+            {title: 'ZH free bet 2', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-2-cn.jpg'},
+            {title: 'EN USDT Image', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/REDP-0624/en-gb_tnc_image.png'},
+            {title: 'ZH USDT Image', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/REDP-0624/zh-cn_tnc_image.png'},
+            {title: 'EN USDT Logo', value: 'https://doc.188contents.com/star4-content/templates/promotions/images/en-USDT.png'},
+            {title: 'ZH USDT Logo', value: 'https://doc.188contents.com/star4-content/templates/promotions/images/cn-USDT.png'},
+          ]
+        }
     ],
     // valid_styles: {
     //     'ol': 'list-style-type',

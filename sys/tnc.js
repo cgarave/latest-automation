@@ -1,3 +1,16 @@
+const image_lib = {
+    china: ['https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-1.jpg',
+            'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-2.jpg',
+            'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-1-cn.jpg',
+            'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-2-cn.jpg',
+            'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/REDP-0624/en-gb_tnc_image.png',
+            'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/REDP-0624/zh-cn_tnc_image.png',
+            'https://doc.188contents.com/star4-content/templates/promotions/images/en-USDT.png',
+            'https://doc.188contents.com/star4-content/templates/promotions/images/cn-USDT.png',
+            ]
+}
+document.getElementById('zh-image-array-container').innerHTML = `${image_lib.china.map(chinaAssets => `<img src="${chinaAssets}" class="zh-image rounded-md hover:outline-2 outline-[#ff9200] cursor-pointer">`).join('')}`
+
 //These are templates that will be set to the two editors
 const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
                     <div id="content-en-gb" class="tnc-content-wrap non-editable">
@@ -419,6 +432,7 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
 //This is for game components
 let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
 let gameTitle = document.getElementById('input-game-title');
+let gameProduct = document.getElementById('input-game-product');
 let gameType = document.getElementById('input-game-type');
 let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
 
@@ -463,7 +477,7 @@ tinymce.PluginManager.add('customcontextmenu', function(editor) {
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
     plugins: 'advlist lists code table image link paste noneditable textcolor contextmenu customcontextmenu',
-    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent',
+    toolbar: 'code table | numlist bullist | insertImage link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent',
     contextmenu: 'editNumbering link image',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
@@ -514,6 +528,7 @@ tinymce.init({
 
         //where to find sportsbook free bet component - import
         /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, //without space
+        /<includecontent(.*?)>\s*<\/includecontent>/g,
 
         //custom games - import
         //<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g,
@@ -544,20 +559,6 @@ tinymce.init({
         { title: '[HI-IN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/hi-in/promotions#promo_gen_terms' },
         { title: '[HI-IN]Standard Terms and Conditions', value: 'https://www.188bet.com/hi-in/corporate-affairs/terms-and-conditions' },
     ],
-    image_list: [
-        {title: 'CN TNC Assets',
-          menu: [
-            {title: 'EN free bet 1', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-1.jpg'},
-            {title: 'EN free bet 2', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-2.jpg'},
-            {title: 'ZH free bet 2', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-1-cn.jpg'},
-            {title: 'ZH free bet 2', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2022-08-Aug/FTDP-0822/FTDP-0822-2-cn.jpg'},
-            {title: 'EN USDT Image', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/REDP-0624/en-gb_tnc_image.png'},
-            {title: 'ZH USDT Image', value: 'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/REDP-0624/zh-cn_tnc_image.png'},
-            {title: 'EN USDT Logo', value: 'https://doc.188contents.com/star4-content/templates/promotions/images/en-USDT.png'},
-            {title: 'ZH USDT Logo', value: 'https://doc.188contents.com/star4-content/templates/promotions/images/cn-USDT.png'},
-          ]
-        }
-    ],
     // valid_styles: {
     //     'ol': 'list-style-type',
     //     'p': 'text-align',
@@ -578,8 +579,10 @@ tinymce.init({
                     text-align: center;
                   }
                   img {
-                    max-width: 700px;
+                    max-width: 500px;
                     height: auto;
+                    margin: 10px auto;
+                    display: block;
                   }`,
 
     setup: function (editor) {
@@ -608,11 +611,10 @@ tinymce.init({
             .replace(/<tr(.*?)>/g, '<tr>')
             //.replace(/<td(.*?)>/g, '<td>')
             
-            //finding imported component then replace it with the component style
+            //finding imported game icon components then replace it with the editor component style
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
-            .replace(/<customgames product="casino" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>/g, '<table id="casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
-            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
-            .replace(/<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="(.*?)" class="(.*?)">\s*<\/customgames>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
+            .replace(/<div class="md:w-1\/2 w-full m-auto">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr><tr><td style="display: none;">$4</td></tr></tbody></table><br>')
+            .replace(/<div class="md:w-1\/2 w-full m-auto">\s*<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="(.*?)" class="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
             
             //imported file links
             .replace(/<a :href="`(.*?)`">/g, '<a href="`$1`">')
@@ -628,8 +630,8 @@ tinymce.init({
             .replace(/<div id="(.*?)" class="tnc-content-wrap\s*">/g, '<div id="$1" class="tnc-content-wrap non-editable">')
             .replace(/<div class="contentwrap tnc-content-format\s*">/g, '<div class="contentwrap tnc-content-format non-editable">')
 
-            //.replace(/<h2 class="mb-4 font-semibold text-body-1\s*">/g, '<h2 class="mb-4 font-semibold text-body-1 mceEditable">') //significant conditions title backup
-            //.replaceAll('<div class="">', '<div class="mceEditable">')
+            // .replace(/<h2 class="mb-4 font-semibold text-body-1\s*">/g, '<h2 class="mb-4 font-semibold text-body-1 mceEditable">') //significant conditions title backup
+            // .replaceAll('<div class="">', '<div class="mceEditable">')
 
             //this supports the importing of old automations
             //adding editable class for significant contents
@@ -640,19 +642,29 @@ tinymce.init({
 
             .replace(/<h2 class="m-4 font-semibold text-body-1\s*">/g, '<h2 class="m-4 font-semibold text-body-1 mceEditable">') //full promotion title
             .replace(/<div class="full-promotion-content\s*">/g, '<div class="full-promotion-content mceEditable">') //full promotion content
-            //console.log(event.content);
+            console.log(event.content);
         });
 
         //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol
-        editor.addButton('sbFreeBetComponent', {
-            text: 'Sportsbook Free Bet',  // Text on the button
-            tooltip: 'Insert Sportsbook Free Bet',
-            icon: false,  // Set an icon (optional)
+        editor.addButton('insertImage', {
+            text: false,  // Text on the button
+            icon: 'image',  // Set an icon (optional)
             onclick: function() {
-              // Action to perform when the button is clicked
-              editor.insertContent('<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent>');
+                // Action to perform when the button is clicked
+                //Dear Programmer,
+                //When I wrote this code, only god and I knew how it worked.
+                //Now, only god knows it!
+                //Therefore, if you are trying to optimize this routine and it fails,
+                //Please increase this counter as a warning for the next person:
+                //total_hours_wasted: 53
+                document.getElementById('insert-image-container').classList.remove('hidden');
+                document.getElementById('close-insert-image-container').onclick = () => document.getElementById('insert-image-container').classList.add('hidden');
+                document.querySelectorAll('.zh-image').forEach(zh => {
+                    zh.onclick = () => editor.insertContent(`<img src="${zh.src}"><br>`)
+                })
             }
         });
+
         editor.addButton('insertComponent', {
             type: 'menubutton',  // Define the button as a dropdown menu
             text: 'Insert Component',
@@ -666,41 +678,23 @@ tinymce.init({
                 }
               },
               {
-                text: 'Recommended Casino Games',
+                text: 'Recommended Games',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
-                    document.getElementById('inputGameCodesTitle').innerHTML = 'Casino Game Icons'
-                    const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
-                    const gameCodesInput = document.getElementById('input-game-codes-container');
-                    const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
-                    gameCodesInput.classList.remove('hidden');
-                    gameCodesInsertBtn.onclick = () => {
-                        document.getElementById('input-game-codes-container').classList.add('hidden');
-                        editor.insertContent(`<table id="casino-icons" class="non-editable"><tbody><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr><tr><td>${gameType.value}</td></tr></tbody></table><br>`)
-                    }
-                    cancelGameCodesBtn.onclick = () => {
-                        gameCodesInput.classList.add('hidden');
-                    }
-                }
-              },
-              {
-                text: 'Recommended Live Casino Games',
-                tooltip: 'Insert recommended games component',
-                onclick: function() {
-                    document.getElementById('inputGameCodesTitle').innerHTML = 'Live Casino Game Icons'
+                    document.getElementById('inputGameCodesTitle').innerHTML = 'Recommended Game Icons'
                     const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
                     const gameCodesInput = document.getElementById('input-game-codes-container');
                     const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
                     gameCodesInput.classList.remove('hidden');
                     gameCodesInsertBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
                         document.getElementById('input-game-codes-container').classList.add('hidden');
-                        editor.insertContent(`<table id="live-casino-icons" class="non-editable"><tbody><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr><tr><td>${gameType.value}</td></tr></tbody></table><br>`)
+                        editor.insertContent(`<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">${gameProduct.value}</td></tr><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr><tr><td style="display: none;">${gameType.value}</td></tr></tbody></table><br>`)
                     }
                     cancelGameCodesBtn.onclick = () => {
                         gameCodesInput.classList.add('hidden');
                     }
                 }
-              }
+              },
             ]
         });
         editor.on('keydown', function(event) { //this stop the user from using ctrl+A or cmd+A
@@ -748,6 +742,7 @@ document.getElementById('resetBtn').addEventListener('click', () => {
     tinymce.get('mytextarea2').setContent('')
     tncRegionDropdown.value = '#'
     tncTemplateDropdown.value = '#'
+    tncRegionDropdown.parentElement.classList.remove('hidden');
     document.getElementById('template-container').classList.add('hidden')
     //document.getElementById('import-check').checked = false;
     document.getElementById('filename').value = '';
@@ -1062,7 +1057,8 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
     if (tncfile) {
         //document.getElementById('import-check').checked = true;
         const content = await readFile(tncfile);
-        //let y = content.replaceAll('<template #header>', '').replaceAll('<template #content>', '').replaceAll('</template>', '');
+        tncRegionDropdown.parentElement.classList.add('hidden'); //hide dropdowns to prevent users from selecting regions, mas madali na to kesa ilagay pa region ng naimport na tnc sa dropdown haha
+        tncTemplateDropdown.parentElement.classList.add('hidden');
 
         const parser = new DOMParser(); //allows to convert the HTML string into a DOM object. Once converted, you can interact with it just like you would with any DOM node.
         const doc = parser.parseFromString(content, 'text/html');
@@ -1204,9 +1200,11 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
         //replacing recommended game icons
-            .replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="casino" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
-            .replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="live" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
-        
+            .replace(/<table id="game-icons-1" class="non-editable">\s*<tbody>\s*<tr>\s*<td style="display: none;">(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td style="display: none;">(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="$1" title="$2" games="$3" type="$4" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
+            //.replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="live" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
+            //.replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames>')
+            //.replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="live" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames>')
+
         //replacing tables
             .replace(/<table(.*?)>/g, '<div class="border rounded mb-4 table-responsive"><table class="w-full border-collapse border-spacing-0 text-center">')
             .replaceAll('<tbody>', '<tbody class="divide-y">')

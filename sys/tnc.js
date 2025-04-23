@@ -430,11 +430,15 @@ const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editab
 
 
 //This is for game components
+//table
 let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
 let gameTitle = document.getElementById('input-game-title');
 let gameProduct = document.getElementById('input-game-product');
-let gameType = document.getElementById('input-game-type');
+let numberOfGames = document.getElementById('input-numberOf-games');
 let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
+
+//list
+
 
 // Creating a custom plugin: use PluginManager.add then connect sa plugins and contextmenu
 tinymce.PluginManager.add('customcontextmenu', function(editor) {
@@ -477,7 +481,7 @@ tinymce.PluginManager.add('customcontextmenu', function(editor) {
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
     plugins: 'advlist lists code table image link paste noneditable textcolor contextmenu customcontextmenu',
-    toolbar: 'code table | numlist bullist | insertImage link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent',
+    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent insertImage',
     contextmenu: 'editNumbering link image',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
@@ -531,9 +535,6 @@ tinymce.init({
         /<includecontent(.*?)>\s*<\/includecontent>/g,
 
         //custom games - import
-        //<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table">\s*<\/customgames>/g,
-        //<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="table" class="tnc-multiple-games">\s*<\/customgames>/g,
-        //<customgames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)">\s*<\/customgames>/g,
         /<customgames(.*?)>\s*<\/customgames>/g,
 
         //vue href
@@ -609,12 +610,15 @@ tinymce.init({
             .replace(/<span class="(.*?)">/g, '')
             .replace(/<span class="(.*?)" data-ccp-props="(.*?)"> /g, '')
             .replace(/<tr(.*?)>/g, '<tr>')
+            .replace(/data-celllook="(.*?)"/g, '')
+            .replaceAll('<em>', '')
+            .replaceAll('</em>', '')
             //.replace(/<td(.*?)>/g, '<td>')
             
             //finding imported game icon components then replace it with the editor component style
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
-            .replace(/<div class="md:w-1\/2 w-full m-auto">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr><tr><td style="display: none;">$4</td></tr></tbody></table><br>')
-            .replace(/<div class="md:w-1\/2 w-full m-auto">\s*<customgames product="live" title="(.*?)" games="(.*?)" show-game-subtitle="" type="(.*?)" class="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="live-casino-icons" class="non-editable"><tbody><tr><td>$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr></tbody></table><br>')
+            //BACKUP.replace(/<div class="md:w-1\/2 w-full m-auto">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr><tr><td style="display: none;">$4</td></tr></tbody></table><br>')
+            .replace(/<div class="(.*?)">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td style="display: none;">$2</td></tr><tr><td>$3</td></tr><tr><td>$4</td></tr></tbody></table><br>')
             
             //imported file links
             .replace(/<a :href="`(.*?)`">/g, '<a href="`$1`">')
@@ -647,7 +651,7 @@ tinymce.init({
 
         //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol
         editor.addButton('insertImage', {
-            text: false,  // Text on the button
+            text: 'Image Library',  // Text on the button
             icon: 'image',  // Set an icon (optional)
             onclick: function() {
                 // Action to perform when the button is clicked
@@ -678,20 +682,33 @@ tinymce.init({
                 }
               },
               {
-                text: 'Recommended Games',
+                text: 'Recommended Games Table',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
-                    document.getElementById('inputGameCodesTitle').innerHTML = 'Recommended Game Icons'
                     const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
                     const gameCodesInput = document.getElementById('input-game-codes-container');
                     const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
                     gameCodesInput.classList.remove('hidden');
                     gameCodesInsertBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
                         document.getElementById('input-game-codes-container').classList.add('hidden');
-                        editor.insertContent(`<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">${gameProduct.value}</td></tr><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr><tr><td style="display: none;">${gameType.value}</td></tr></tbody></table><br>`)
+                        console.log(numberOfGames.dataset);
+                        editor.insertContent(`<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">${numberOfGames.value}</td></tr><tr><td style="display: none;">${gameProduct.value}</td></tr><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table><br>`)
                     }
                     cancelGameCodesBtn.onclick = () => {
                         gameCodesInput.classList.add('hidden');
+                    }
+                }
+              },
+              {
+                text: 'Recommended Games List',
+                tooltip: 'Insert recommended games component',
+                onclick: function() {
+                    const gameListInput = document.getElementById('input-game-list-container');
+                    const gameListInsertBtn = document.getElementById('gameListInsertBtn');
+                    const cancelGameListBtn = document.getElementById('cancelGameListBtn');
+                    gameListInput.classList.remove('hidden');
+                    cancelGameListBtn.onclick = () => {
+                        gameListInput.classList.add('hidden');
                     }
                 }
               },
@@ -1008,6 +1025,8 @@ function previewContent(lang) {
 
         //replacing list styles
         .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
+        .replaceAll(/<ol style="list-style-type: lower-roman;">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
+        .replaceAll(/<ol style="list-style-type: lower-alpha;">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
         .replaceAll(/<ol style="list-style-type: lower-roman;" start="(.*?)">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
         .replaceAll(/<ol style="list-style-type: upper-roman;" start="(.*?)">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
         .replaceAll(/<ol style="list-style-type: lower-alpha;" start="(.*?)">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
@@ -1189,6 +1208,8 @@ document.getElementById('download').addEventListener('click', () => {
         
         //replacing list styles
             .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
+            .replaceAll(/<ol style="list-style-type: lower-roman;">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;">')
+            .replaceAll(/<ol style="list-style-type: lower-alpha;">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;">')
             .replaceAll(/<ol style="list-style-type: lower-roman;" start="(.*?)">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
             .replaceAll(/<ol style="list-style-type: upper-roman;" start="(.*?)">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
             .replaceAll(/<ol style="list-style-type: lower-alpha;" start="(.*?)">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
@@ -1200,7 +1221,7 @@ document.getElementById('download').addEventListener('click', () => {
             //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
 
         //replacing recommended game icons
-            .replace(/<table id="game-icons-1" class="non-editable">\s*<tbody>\s*<tr>\s*<td style="display: none;">(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td style="display: none;">(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="$1" title="$2" games="$3" type="$4" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
+            .replace(/<table id="game-icons-1" class="non-editable">\s*<tbody>\s*<tr>\s*<td style="display: none;">(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td style="display: none;">(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="$1"><CustomGames product="$2" title="$3" games="$4" type="table" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
             //.replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<div class="md:w-1/2 w-full m-auto"><CustomGames product="live" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames></div>')
             //.replace(/<table id="casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="casino" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames>')
             //.replace(/<table id="live-casino-icons" class="non-editable">\s*<tbody>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<tr>\s*<td>(.*?)<\/td>\s*<\/tr>\s*<\/tbody>\s*<\/table>/g, '<CustomGames product="live" title="$1" games="$2" type="$3" class="tnc-multiple-games" :limit="200"></CustomGames>')

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert Column Example</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Dynamic Table Column Insertion</h2>
+<table id="myTable">
+  <tr>
+    <th>Header 1</th>
+    <th>Header 2</th>
+  </tr>
+  <tr>
+    <td>Row 1</td>
+    <td>Row 1</td>
+  </tr>
+  <tr>
+    <td>Row 2</td>
+    <td>Row 2</td>
+  </tr>
+</table>
+
+<br>
+<button onclick="addColumn()">Insert Column</button>
+
+<script>
+  function addColumn() {
+    const table = document.getElementById("myTable");
+    const rowCount = table.rows.length;
+
+    for (let i = 0; i < rowCount; i++) {
+      const row = table.rows[i];
+      const cell = row.insertCell(-1); // -1 adds to the end
+      if (i === 0) {
+        cell.outerHTML = "<th>New Header</th>"; // for header row
+      } else {
+        cell.innerHTML = `Row ${i}`; // for data rows
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -440,6 +440,12 @@ let editedNumberInput = document.getElementById('input-number'); //variable that
 //list
 
 
+let gameListProduct = document.getElementById('input-list-game-product');
+let gameListProvider = document.getElementById('input-list-game-providers');
+let gameListCTA = document.getElementById('input-cta-text');
+let gameListName = document.getElementById('input-list-game-name');
+let gameListCode = document.getElementById('input-list-game-codes');
+
 // Creating a custom plugin: use PluginManager.add then connect sa plugins and contextmenu
 tinymce.PluginManager.add('customcontextmenu', function(editor) {
     editor.addMenuItem('editNumbering', {
@@ -578,6 +584,7 @@ tinymce.init({
                   table {
                     width: 100%;
                     text-align: center;
+                    table-layout: fixed;
                   }
                   img {
                     max-width: 500px;
@@ -704,9 +711,15 @@ tinymce.init({
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
                     const gameListInput = document.getElementById('input-game-list-container');
+                    const addGameList = document.getElementById('addGameList');
                     const gameListInsertBtn = document.getElementById('gameListInsertBtn');
                     const cancelGameListBtn = document.getElementById('cancelGameListBtn');
                     gameListInput.classList.remove('hidden');
+                    addGameList.onclick = () => {
+                    }
+                    gameListInsertBtn.onclick = () => {
+                        console.log(newList[0]);
+                    }
                     cancelGameListBtn.onclick = () => {
                         gameListInput.classList.add('hidden');
                     }

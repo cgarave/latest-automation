@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Insert Column Example</title>
+  <title>Insert Row and Column Example</title>
   <style>
     table, th, td {
       border: 1px solid black;
@@ -13,7 +13,8 @@
 </head>
 <body>
 
-<h2>Dynamic Table Column Insertion</h2>
+<h2>Dynamic Table Row and Column Insertion</h2>
+
 <table id="myTable">
   <tr>
     <th>Header 1</th>
@@ -31,6 +32,7 @@
 
 <br>
 <button onclick="addColumn()">Insert Column</button>
+<button onclick="addRow()">Insert Row</button>
 
 <script>
   function addColumn() {
@@ -39,15 +41,159 @@
 
     for (let i = 0; i < rowCount; i++) {
       const row = table.rows[i];
-      const cell = row.insertCell(-1); // -1 adds to the end
+      const cell = row.insertCell(-1); // Add at end
       if (i === 0) {
-        cell.outerHTML = "<th>New Header</th>"; // for header row
+        cell.outerHTML = "<th>New Header</th>";
       } else {
-        cell.innerHTML = `Row ${i}`; // for data rows
+        cell.innerHTML = `Row ${i}`;
       }
     }
   }
+
+  function addRow() {
+    const table = document.getElementById("myTable");
+    const colCount = table.rows[0].cells.length; // Get number of columns from header
+    const newRow = table.insertRow(-1); // Insert at end
+
+    for (let i = 0; i < colCount; i++) {
+      const newCell = newRow.insertCell(i);
+      newCell.innerHTML = `Row ${table.rows.length - 1}`;
+    }
+  }
 </script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object Inputs to Table</title>
+  <style>
+    .input-group {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .input-group input {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin: 10px 5px 0 0;
+    }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: left;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="input-container"></div>
+
+  <button id="add-btn">Add</button>
+  <button id="insert-btn">Insert</button>
+
+  <div id="output"></div>
+
+  <script>
+    const inputContainer = document.getElementById('input-container');
+    const addBtn = document.getElementById('add-btn');
+    const insertBtn = document.getElementById('insert-btn');
+    const output = document.getElementById('output');
+
+    const fieldNames = ['name', 'email', 'age', 'city'];
+
+    function addInputGroup() {
+      const groupDiv = document.createElement('div');
+      groupDiv.className = 'input-group';
+
+      fieldNames.forEach(field => {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = field;
+        input.name = field;
+        groupDiv.appendChild(input);
+      });
+
+      inputContainer.appendChild(groupDiv);
+    }
+
+    // Initial group
+    addInputGroup();
+
+    // Add more groups
+    addBtn.addEventListener('click', () => {
+      addInputGroup();
+    });
+
+    // Insert & display table
+    insertBtn.addEventListener('click', () => {
+      const groups = inputContainer.querySelectorAll('.input-group');
+      const data = [];
+
+      groups.forEach(group => {
+        const obj = {};
+        fieldNames.forEach(field => {
+          const input = group.querySelector(`input[name="${field}"]`);
+          obj[field] = input ? input.value : '';
+        });
+        data.push(obj);
+      });
+
+      // Clear previous table
+      output.innerHTML = '';
+
+      // Create table title
+      const title = document.createElement('h2');
+      title.textContent = 'Clients';
+      output.appendChild(title);
+
+      // Create table
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      const headerRow = document.createElement('tr');
+
+      fieldNames.forEach(field => {
+        const th = document.createElement('th');
+        th.textContent = field.charAt(0).toUpperCase() + field.slice(1);
+        headerRow.appendChild(th);
+      });
+
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      // Table body
+      const tbody = document.createElement('tbody');
+
+      data.forEach(obj => {
+        const row = document.createElement('tr');
+        fieldNames.forEach(field => {
+          const td = document.createElement('td');
+          td.textContent = obj[field];
+          row.appendChild(td);
+        });
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+      output.appendChild(table);
+
+      // Optional: Also log to console
+      console.log(data);
+    });
+  </script>
 
 </body>
 </html>

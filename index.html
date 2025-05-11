@@ -192,14 +192,14 @@
     <!--Recommended Game Icons-->
     <div id="input-game-codes-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-neutral-800 text-white overflow-hidden p-4 rounded-md h-auto w-[600px] flex flex-col gap-y-4 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
         <h1 class="text-md font-semibold">Recommended Game Icons</h1>
-        <select id="input-game-product" class="outline-none w-full">
+        <select id="input-game-product" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
             <option value="">Select product</option>
             <option value="casino">Casino</option>
             <option value="live">Live Casino</option>
         </select>
         <input type="text" id="input-game-title" placeholder="Enter Title (ex. Recommended Games)" class="outline-none w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
         <input type="text" id="input-game-codes" placeholder="Enter Game Codes (ex. game,game2,game3)" class="outline-none w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-        <select id="input-numberOf-games" class="outline-none w-full">
+        <select id="input-numberOf-games" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
             <option value="">Number of games</option>
             <option value="md:w-1/3 w-full m-auto">3 below</option>
             <option value="md:w-1/2 w-full m-auto">4 and above</option>
@@ -212,67 +212,15 @@
     <!--Recommended Game List-->
     <div id="input-game-list-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-neutral-800 text-white overflow-hidden p-4 rounded-md h-auto w-[800px] flex flex-col gap-y-4 shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none hidden">
         <h1 class="text-md font-semibold">Recommended Game List</h1>
-        <div class="flex flex-col gap-y-2">
-            <div class="flex flex-row gap-x-2">
-                <select id="input-list-game-product" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-                    <option value="">Select product</option>
-                    <option value="casino">Casino</option>
-                    <option value="live">Live Casino</option>
-                </select>
-                <select id="input-list-game-providers" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-                    <option value="">Select Game Provider</option>
-                    <optgroup label="Casino Providers">
-                        <option value="advantplay">Advant Play</option>
-                                <option value="betsoft">Betsoft</option>
-                                <option value="bigtimegaming">Big Time Gaming</option>
-                                <option value="evolution">Evolution</option>
-                                <option value="galaxsys">Galaxsys</option>
-                                <option value="genesis">Genesis</option>
-                                <option value="habanero">Habanero</option>
-                                <option value="isoftbet">Isoftbet</option>
-                                <option value="jili">Jili</option>
-                                <option value="leap">Leap</option>
-                                <option value="microgaming">Microgaming</option>
-                                <option value="netent">Netent</option>
-                                <option value="nolimitcity">Nolimit City</option>
-                                <option value="pocketgames">Pocket Games Soft</option>
-                                <option value="playngo">Play N Go</option>
-                                <option value="playtech">PlayTech</option>
-                                <option value="pragmatic">Pragmatic Play</option>
-                                <option value="quickspin">Quick Spin</option>
-                                <option value="redtiger">Red Tiger</option>
-                                <option value="skywind">SkyWind</option>
-                                <option value="spribe">Spribe</option>
-                    </optgroup>
-                    <optgroup label="Live Casino Providers">
-                        <option value="aesexy">Aesexy</option>
-                                <option value="agiledeal">Agile Deal</option>
-                                <option value="asiagaming">Asia Gaming</option>
-                                <option value="db">DB</option>
-                                <option value="dblive">DB Live</option>
-                                <option value="evolution">Evolution</option>
-                                <option value="ezugi">Ezugi</option>
-                                <option value="n2live">N2 Live</option>
-                                <option value="oncasino">ON Casino</option>
-                                <option value="pragmatic">Pragmatic Play</option>
-                                <option value="sexybaccarat">Sexy Baccarat</option>
-                                <option value="wmcasino">WM Casino</option>
-                                <option value="worldentertainment">World Entertainment</option>
-                                <option value="zodiacracing">Zodiac Racing</option>
-                    </optgroup>
-                </select>
-                <select id="input-cta-text" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-                    <option value="">Select button text</option>
-                    <option value="Play Now">Play Now</option>
-                    <option value="More Info">More Info</option>
-                </select>
-            </div>
-            <div class="flex flex-row gap-x-2 ">
-                <input type="text" id="input-list-game-name" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-                <input type="text" id="input-list-game-codes" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-            </div>
-        </div>
-        <button id="addGameList" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center justify-center hover:bg-[#ec7f10] cursor-pointer">Add</button>
+        <select id="input-list-numberOf-games" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
+            <option value="">Number of games</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <div id="div-list-container" class="flex flex-col gap-y-2"></div>
         <div class="flex flex-row gap-x-2 justify-end">
             <button id="gameListInsertBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">INSERT</button>
             <button id="cancelGameListBtn" class="bg-neutral-800 rounded-[4px] p-2 font-medium text-xs text-white h-fit flex flex-row gap-x-1 items-center cursor-pointer outline outline-[#ff9200]">CANCEL</button>

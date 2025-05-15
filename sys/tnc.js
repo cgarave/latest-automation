@@ -7,9 +7,13 @@ const image_lib = {
             'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/REDP-0624/zh-cn_tnc_image.png',
             'https://doc.188contents.com/star4-content/templates/promotions/images/en-USDT.png',
             'https://doc.188contents.com/star4-content/templates/promotions/images/cn-USDT.png',
+            ],
+    indonesia: ['https://doc-cdn.stcb18x1.com/star4-content/images/banners/promotion/2025-03-Mar/BDAYPROMO-0225/BDAYPROMO-0225.png?v=7',
+                'https://doc-cdn.stcb18x1.com/star4-content/images/banners/promotion/2024-06-Jun/EUROREDEPOLEJ-0624/EUROREDEPOLEJ-0624-image01.webp'
             ]
 }
 document.getElementById('zh-image-array-container').innerHTML = `${image_lib.china.map(chinaAssets => `<img src="${chinaAssets}" class="zh-image rounded-md hover:outline-2 outline-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('id-image-array-container').innerHTML = `${image_lib.indonesia.map(indonesiaAssets => `<img src="${indonesiaAssets}" class="id-image rounded-md hover:outline-2 outline-[#ff9200] cursor-pointer">`).join('')}`
 
 //These are templates that will be set to the two editors
 const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
@@ -485,8 +489,8 @@ const gameListTemplates = {
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>`,
 
@@ -546,8 +550,8 @@ const gameListTemplates = {
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -607,8 +611,8 @@ const gameListTemplates = {
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>`,
 
@@ -668,8 +672,8 @@ const gameListTemplates = {
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -729,8 +733,8 @@ const gameListTemplates = {
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -790,8 +794,8 @@ const gameListTemplates = {
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>`,
 
@@ -851,8 +855,8 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -912,8 +916,8 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -973,8 +977,8 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -1034,8 +1038,8 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>`,
 
@@ -1095,8 +1099,8 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -1156,8 +1160,8 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -1217,8 +1221,8 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -1278,8 +1282,8 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>
 
@@ -1339,8 +1343,8 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
       </select>
   </div>
   <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-5" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
-      <input type="text" id="game-code-5" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500">
+      <input type="text" id="game-name-5" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+      <input type="text" id="game-code-5" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
   </div>
 </div>`
 }
@@ -1351,7 +1355,7 @@ let gameCodes = document.getElementById('input-game-codes'); //variable that sto
 let gameTitle = document.getElementById('input-game-title');
 let gameProduct = document.getElementById('input-game-product');
 let numberOfGames = document.getElementById('input-numberOf-games');
-let editedNumberInput = document.getElementById('input-number'); //variable that stores inputed game codes from the 'Component' buttons
+let editedNumberInput = document.getElementById('input-number');
 
 // Creating a custom plugin: use PluginManager.add then connect sa plugins and contextmenu
 tinymce.PluginManager.add('customcontextmenu', function(editor) {
@@ -1364,6 +1368,7 @@ tinymce.PluginManager.add('customcontextmenu', function(editor) {
         const editedNumberContainer = document.getElementById('edit-numbering-container');
         const selectedNode = editor.selection.getNode(); //returning selected Nodes gaya ng <p>, <li>, etc.
         editedNumberContainer.classList.remove('hidden');
+        editedNumberInput.focus();
         editNumberBtn.onclick = () => { //I used onclick instead of addEventListener kasi nasa loob na ito ng function. The button fires twice once clicked when addEventListener were used thus making weird errors
             if (selectedNode.parentElement.nodeName === 'OL') {
                 // You can add additional logic here for when the parent node is an <ol>
@@ -1431,6 +1436,7 @@ tinymce.init({
 
         //where to find sportsbook free bet component
         /<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent>/g,
+        /<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent>/g,
 
         //custom games
         /<CustomGames product="casino" title="(.*?)" games="(.*?)" type="table" class="tnc-multiple-games" :limit="(.*?)"><\/CustomGames>/g,
@@ -1445,6 +1451,7 @@ tinymce.init({
 
         //where to find sportsbook free bet component - import
         /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, //without space
+        /<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, //without space
         /<includecontent(.*?)>\s*<\/includecontent>/g,
 
         //custom games - import
@@ -1494,7 +1501,7 @@ tinymce.init({
                     table-layout: fixed;
                   }
                   img {
-                    max-width: 500px;
+                    max-width: 800px;
                     height: auto;
                     margin: 10px auto;
                     display: block;
@@ -1531,6 +1538,7 @@ tinymce.init({
             
             //finding imported game icon components then replace it with the editor component style
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
             //BACKUP.replace(/<div class="md:w-1\/2 w-full m-auto">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr><tr><td style="display: none;">$4</td></tr></tbody></table><br>')
             .replace(/<div class="(.*?)">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td style="display: none;">$2</td></tr><tr><td>$3</td></tr><tr><td>$4</td></tr></tbody></table><br>')
             
@@ -1577,8 +1585,14 @@ tinymce.init({
                 //total_hours_wasted: 53
                 document.getElementById('insert-image-container').classList.remove('hidden');
                 document.getElementById('close-insert-image-container').onclick = () => document.getElementById('insert-image-container').classList.add('hidden');
+
+                //China click listener
                 document.querySelectorAll('.zh-image').forEach(zh => {
                     zh.onclick = () => editor.insertContent(`<img src="${zh.src}"><br>`)
+                })
+                //Indonesia click listener
+                document.querySelectorAll('.id-image').forEach(id => {
+                    id.onclick = () => editor.insertContent(`<img src="${id.src}"><br>`)
                 })
             }
         });
@@ -1589,10 +1603,17 @@ tinymce.init({
             icon: false,
             menu: [
               {
-                text: 'Sportsbook Free Bet',
+                text: 'Sportsbook Free Bet ENG',
                 tooltip: 'Insert sportsbook free bet component',
                 onclick: function() {
                   editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                }
+              },
+              {
+                text: 'Sportsbook Free Bet ID',
+                tooltip: 'Insert sportsbook free bet component',
+                onclick: function() {
+                  editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
                 }
               },
               {
@@ -2097,6 +2118,7 @@ function previewContent(lang) {
         //replacing tables
         .replace(/<table(.*?)>/g, '<table class="border w-full border-collapse border-spacing-0 text-center">')
         .replaceAll('<tbody>', '<tbody class="divide-y">')
+        .replaceAll('</table>', '</table><br>')
         //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
 
         //replacing paragraph
@@ -2321,6 +2343,7 @@ document.getElementById('download').addEventListener('click', () => {
 
         //Sportsbook Free Bet Component
             .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
+            .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga\?<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/><\/IncludeContent><\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
         
         //removing spans language
             //.replace(/<span lang="EN-US">/g, '')

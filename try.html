@@ -1,118 +1,33 @@
-<div class="absolute top-0 left-0 right-0 bottom-0">
-    <div class="image-background relative bg-no-repeat bg-center"
-        :style="{backgroundImage:breakpoints.smAndUp ? `url(${gv.domains.content}/MB/common/images/refer-a-friend/raf_bg-desktop.webp)` : `url(${gv.domains.content}/MB/common/images/refer-a-friend/raf_bg-mobile.webp)`,backgroundSize:breakpoints.mdAndUp ? 'auto 340px' : 'auto 292px',height:breakpoints.mdAndUp ? '340px' : '292px'  }">
-    </div>
-</div>
-
-<div class="z-[1] relative mx-auto" style="max-width: 440px; width: 100%">
-    <section class="pt-6 pb-4 px-4">
-        <h1 class="text-h6 md:text-h5 text-light--high text-center font-semibold mb-2">
-            Get USD 50,000 Each!
-        </h1>
-        <p class="text-center text-body-2 text-light--high">
-            Refer your friends to 188BET and get rewarded together!
-        </p>
-    </section>
-    <ReferAFriendInfo></ReferAFriendInfo>
-</div>
-
-<div class="z-[1] relative mx-auto" style="max-width: 440px; width: 100%">
-    <SCard class="relative mx-4 sm:mx-0 sm:pb-0 mb-6">
-        <SCardBody class="text-dark--high">
-            <h2 class="text-subtitle-1 font-semibold text-center mb-4">
-                How does it work?
-            </h2>
-            <ol class="text-body-2 circled-numbers list-inside relative z-[1]">
-                <li class="mb-5">Invite your friend using your unique referral link or code.</li>
-                <li class="mb-5">Your friend must make a minimum deposit USD 1,000,000 and place at least one stake.</li>
-                <li class="mb-5">Once verified, both you and your friend will receive the USD 50,000 bonus.</li>
-            </ol>
-        </SCardBody>
-        <img src="http://doc.188contents.com/star4-content/images/refer-a-friend/blurred-gift.webp" class="absolute"
-            alt="blurred-gift" style="width: 67.5px; height: 70.5px; left: -40px; bottom: 30%" />
-        <img src="http://doc.188contents.com/star4-content/images/refer-a-friend/refer-handshake.webp" class="absolute"
-            alt="refer-handshake" style="width: 160px; height: 120px; right: -40px; bottom: -30px" />
-    </SCard>
-    <section class="refer-a-friend-faqs relative z-[1]text-dark--high">
-        <h2
-            class="text-subtitle-1 md:text-h6 text-dark--high font-semibold px-6 md:px-0 pb-4 h-10 flex items-center border-b border-secondary--lighten-2">
-            Refer A Friend
-        </h2>
-        <details class="border-b border-secondary--lighten-2 group">
-            <summary
-                class="flex justify-between items-center text-subtitle-2 font-semibold cursor-pointer select-none px-6 py-3 md:hover:bg-[#f2f2f2] relative">
-                Who is eligible?
-                <span class="transition-transform group-open:rotate-180">
-                    <SIcon class="opacity-60">icon-chevron-down</SIcon>
-                </span>
-            </summary>
-            <p class="mx-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">All 188BET active members with deposit and stake are eligible to refer friends.</p>
-            <p class="mx-2 mb-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">Referred friends (referees) must be new users who have never registered or played on 188BET before.</p>
-        </details>
-        <details class="border-b border-secondary--lighten-2 group">
-            <summary
-                class="flex justify-between items-center text-subtitle-2 font-semibold cursor-pointer select-none px-6 py-3 md:hover:bg-[#f2f2f2] relative">
-                What is the offer?
-                <span class="transition-transform group-open:rotate-180">
-                    <SIcon class="opacity-60">icon-chevron-down</SIcon>
-                </span>
-            </summary>
-            <p class="mx-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">Both the referrer and the referee will receive a bonus of USD 50,000.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">The bonus is credited only once per successful referral.</p>
-            <p class="mx-2 mb-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">There is no limit to the number of friends you can refer.</p>
-        </details>
-        <details class="border-b border-secondary--lighten-2 group">
-            <summary
-                class="flex justify-between items-center text-subtitle-2 font-semibold cursor-pointer select-none px-6 py-3 md:hover:bg-[#f2f2f2] relative">
-                When will the bonus credited?
-                <span class="transition-transform group-open:rotate-180">
-                    <SIcon class="opacity-60">icon-chevron-down</SIcon>
-                </span>
-            </summary>
-            <p class="mx-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">The bonus will be credited to both accounts within 24–48 hours after all conditions are fulfilled and verified.</p>
-            <p class="mx-2 mb-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">188BET Standard Terms and Conditions apply.</p>
-        </details>
-
-        <details class="border-b border-secondary--lighten-2 group">
-            <summary
-                class="flex justify-between items-center text-subtitle-2 font-semibold cursor-pointer select-none px-6 py-3 md:hover:bg-[#f2f2f2] relative">
-                Where does the referral take place?
-                <span class="transition-transform group-open:rotate-180">
-                    <SIcon class="opacity-60">icon-chevron-down</SIcon>
-                </span>
-            </summary>
-            <p class="mx-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">The program runs exclusively on the 188BET official website or mobile app.</p>
-            <p class="mx-2 mb-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">Referral tracking is only valid via the official referral link or code provided in your account dashboard.</p>
-        </details>
-
-        <details class="border-b border-secondary--lighten-2 group">
-            <summary
-                class="flex justify-between items-center text-subtitle-2 font-semibold cursor-pointer select-none px-6 py-3 md:hover:bg-[#f2f2f2] relative">
-                Why should you join this program?
-                <span class="transition-transform group-open:rotate-180">
-                    <SIcon class="opacity-60">icon-chevron-down</SIcon>
-                </span>
-            </summary>
-            <p class="mx-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">The Refer A Friend program is designed to reward loyal members who share the excitement of 188BET with others.</p>
-            <p class="mx-2 mb-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">It&apos;s a simple way to earn real rewards while helping your friends discover a trusted platform for betting and gaming.</p>
-        </details>
-        <details class="border-b border-secondary--lighten-2 group">
-            <summary
-                class="flex justify-between items-center text-subtitle-2 font-semibold cursor-pointer select-none px-6 py-3 md:hover:bg-[#f2f2f2] relative">
-                Full Terms & Conditions
-                <span class="transition-transform group-open:rotate-180">
-                    <SIcon class="opacity-60">icon-chevron-down</SIcon>
-                </span>
-            </summary>
-            <p class="mx-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">To qualify as a referrer, you must be an active member with at least one deposit and one placed bet.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">The referee must be a genuine new user and not previously registered on any 188BET platform.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">The referee must deposit of IDR 1,000,000 must be made in a single transaction.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">Both referrer and referee are entitled to a USD 50,000 bonus upon successful referral.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">Only one bonus per successful referral is allowed.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">The Bonus is subject to a 3X rollover requirement on any 188BET products before any withdrawals can be made.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">188BET reserves the right to amend or withdraw the Promotion at any time.</p>
-            <p class="mx-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">188BET is the sole arbiter of this Promotion and its decision is final.</p>
-            <p class="mx-2 mb-2 border-t border-secondary--lighten-2 px-4 py-2 text-body-2 text-dark--medium bg-secondary--lighten-4">188BET Standard Terms and Conditions apply.</p>
-        </details>
-    </section>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td colspan="2">3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td colspan="2">6</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -3,7 +3,7 @@ let region = ''
 
 
 let landingPageInputBox = `<div class="flex flex-col gap-y-2">
-                            <input type="text" id="landingTitle" class="rounded-[4px] p-2 h-10 w-80 outline-none font-medium text-xs" placeholder="Title" autocomplete="off">
+                            <input type="text" id="landingTitle" class="rounded-[4px] p-2 h-10 w-80 outline-none font-medium text-xs bg-white placeholder:text-gray-500" placeholder="Title" autocomplete="off">
                             <textarea id="landingGameCodes" class="rounded-[4px] w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
                         </div>`
 
@@ -15,6 +15,7 @@ let qualifyGames1 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes1" class="rounded-[4px] w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -28,6 +29,7 @@ let qualifyGames2 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes1" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -40,6 +42,7 @@ let qualifyGames2 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes2" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -53,6 +56,7 @@ let qualifyGames3 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes1" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -65,6 +69,7 @@ let qualifyGames3 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes2" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -77,6 +82,7 @@ let qualifyGames3 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes3" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -90,6 +96,7 @@ let qualifyGames4 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes1" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -102,6 +109,7 @@ let qualifyGames4 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes2" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -114,6 +122,7 @@ let qualifyGames4 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes3" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>
@@ -126,6 +135,7 @@ let qualifyGames4 = `<div class="flex flex-col gap-y-2">
                                     <option value="Big Time Gaming">Big Time Gaming</option>
                                     <option value="Nolimit City">NoLimit City</option>
                                     <option value="Red Tiger">Red Tiger</option>
+                                    <option value="SkyWind">SkyWind</option>
                                 </select>
                             </div>
                             <textarea id="qualifyGameCodes4" class="rounded-[4px] mb-4 w-full h-36 p-2 text-xs resize-none bg-white placeholder:text-gray-500"></textarea>

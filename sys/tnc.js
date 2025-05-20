@@ -22,6 +22,9 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                             <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
                             <div class="mceEditable">
                                 <p>Write/Paste Significant Contents here</p>
+                                <ol>
+                                    <li>text</li>
+                                </ol>
                             </div>
                             <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
                                 <template #header>
@@ -29,7 +32,10 @@ const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.
                                 </template>
                                 <template #content>
                                     <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Full Promotion contents here</p>
+                                        <p>Write/Paste Significant Contents here</p>
+                                <ol>
+                                    <li>text</li>
+                                </ol>
                                     </div>
                                 </template>
                             </SExpansionPanel>
@@ -1423,7 +1429,7 @@ tinymce.init({
     height: 700,
     width: 1000,
     statusbar: false, //disabling status bar
-    protect: [
+    protect: [ //protects the codes from deletion when inserting content to the editors. Tinymce doesn't accept these type of codes and will delete upon importing unless declared to protect plugin.
         //init codes
         /<script src="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.6.0\/jquery.min.js"><\/script>/g,
         /<script>\$\(function \(\) { \$\("#webteam-ss"\).attr\("href", "https:\/\/doc.188contents.com\/contents\/Components\/webteam\/webteam.css\?" \+ \$.now\(\)\); }\);<\/script>/g,
@@ -1563,12 +1569,20 @@ tinymce.init({
             //adding editable class for significant contents
             .replaceAll('<div class="">', '')
             .replace(/<h2 class="mb-4 font-semibold text-body-1\s*">(.*?)<\/h2>/g, '<h2 class="mb-4 font-semibold text-body-1 mceEditable">$1</h2><div class="mceEditable">')
-            .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
-            .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
+
+            //backup -- this causes the IMPORT of full promotion only template to break
+            // .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
+            // .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
 
             .replace(/<h2 class="m-4 font-semibold text-body-1\s*">/g, '<h2 class="m-4 font-semibold text-body-1 mceEditable">') //full promotion title
             .replace(/<div class="full-promotion-content\s*">/g, '<div class="full-promotion-content mceEditable">') //full promotion content
-            console.log(event.content);
+            // console.log(event.content);
+
+            if(event.content.match(/<div class="mceEditable">/g)){ //fixes the issues when importing full promotion only template. It will add </div> at the start of SExpansionPanel when the imported content has Significant Conditions
+                event.content = event.content
+                .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
+                .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
+            }
         });
 
         //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol
@@ -1792,10 +1806,18 @@ tinymce.init({
               },
             ]
         });
+
         editor.on('keydown', function(event) { //this stop the user from using ctrl+A or cmd+A
             if ((event.ctrlKey || event.metaKey) && event.keyCode === 65) {
-              event.preventDefault();
-              editor.selection.collapse();
+
+                const selectedNode = editor.selection.getNode();    
+                // event.preventDefault();
+                // editor.selection.collapse();
+                
+                if(selectedNode.childNodes.length == 0){
+                    editor.insertContent('<p></p>')
+                }
+                
             }
         });
     },

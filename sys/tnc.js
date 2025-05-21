@@ -1801,15 +1801,28 @@ tinymce.init({
             ]
         });
 
+        // editor.on('keydown', function(event) { //this stop the user from using ctrl+A or cmd+A
+        //     if ((event.ctrlKey || event.metaKey) && event.keyCode === 65) {
+              
+        //         event.preventDefault();
+        //         editor.selection.collapse();
+        //     }
+        // });
+
         editor.on('NodeChange', function(event) {
             // console.log('Node changed:', event);
-            // console.log(event.element);
 
             //Nodechange prevents the users to accidentally break the HTML when highlighting the input box using ctrl+A and add numbered/bullet list 
-            const selectedNode = editor.selection.getNode();  
             if(event.element.nodeName == 'DIV'){
                 if(event.element.className.match('mceEditable')){
-                    event.element.innerHTML = '<p><br></p>'
+                    if(event.element.children.length < 2){
+                        event.element.innerHTML = '<p><br></p>'
+                        console.log('editable input box content is maybe deleted or empty, automatically add <p>');
+                    } else {
+                        console.log('contents are preserved');
+                        console.log(event.element.children.length);
+                    }
+
                 }
             }
         });

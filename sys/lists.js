@@ -1,3 +1,421 @@
+//These are templates that will be set to the two editors
+var ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
+                    <div id="content-en-gb" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Significant Contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
+                        <div id="content-en-gb" class="tnc-content-wrap non-editable">
+                            <div class="contentwrap tnc-content-format non-editable">
+                                <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
+                                <div class="mceEditable">
+                                    <p>Write/Paste Significant Contents here</p>
+                                </div>
+                            </div>
+                            <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                        </div>`
+
+var ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
+                      <div id="content-en-gb" class="tnc-content-wrap non-editable">
+                          <div class="contentwrap tnc-content-format non-editable">
+                              <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                  <template #header>
+                                      <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
+                                  </template>
+                                  <template #content>
+                                      <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Full Promotion contents here</p>
+                                      </div>
+                                  </template>
+                              </SExpansionPanel>
+                          </div>
+                          <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                      </div>`
+
+var CNtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var CNSCtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
+                            <div class="mceEditable">
+                                 <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var CNFPtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var VNtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var VNSCtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var VNFPtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var THtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var THSCtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var THFPtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var KRtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var KRSCtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var KRFPtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var IDtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var IDSCtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var IDFPtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var KHtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var KHSCtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+var KHFPtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var JPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var JPSCtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var JPFPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var INtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var INSCtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
+                            <div class="mceEditable">
+                                <p>Write/Paste Localized Significant Contents here</p>
+                            </div>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+var INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
+                        <div class="contentwrap tnc-content-format non-editable">
+                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
+                                <template #header>
+                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
+                                </template>
+                                <template #content>
+                                    <div class="full-promotion-content mceEditable">
+                                        <p>Write/Paste Localized Full Promotion contents here</p>
+                                    </div>
+                                </template>
+                            </SExpansionPanel>
+                        </div>
+                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
+                    </div>`
+
+//for inserting game list 
 var gameListTemplates = {
     list1: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
     <div class="flex flex-row gap-x-2">
@@ -70,6 +488,7 @@ var gameListTemplates = {
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-1" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -146,6 +565,7 @@ list2: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-1" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -222,6 +642,7 @@ list2: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-2" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -298,6 +719,7 @@ list3: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-1" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -374,6 +796,7 @@ list3: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-2" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -450,6 +873,7 @@ list3: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-3" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -526,6 +950,7 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-1" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -602,6 +1027,7 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-2" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -678,6 +1104,7 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-3" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -754,6 +1181,7 @@ list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-4" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -830,6 +1258,7 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-1" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -906,6 +1335,7 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-2" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -982,6 +1412,7 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-3" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -1058,6 +1489,7 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-4" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -1134,6 +1566,7 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
         </select>
     </div>
     <div class="flex flex-row gap-x-2 ">
+        <input type="text" id="game-image-5" placeholder="Enter English Game Name for icon" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-name-5" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
         <input type="text" id="game-code-5" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
     </div>
@@ -1141,18 +1574,3 @@ list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
 }
 
 
-var gameTable1 = `<table id="game-list-1" class="non-editable">
-    <tbody>
-        <tr>
-            <td>${gameListTitle.value}</td>
-        </tr>
-        <tr>
-            <td>${gameProduct.value}</td>
-            <td>${gameProvider.value}</td>
-            <td>${gameImage}</td>
-            <td>${gameName.value}</td>
-            <td>${gameCode.value}</td>
-            <td>${gameCTA.value}</td>
-        </tr>
-    </tbody>
-</table><br>`

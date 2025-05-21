@@ -219,12 +219,14 @@
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
-        <input type="text" id="gameListTitle" placeholder="Recommended Games" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-        <select id="game-product" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-            <option value="">Select product</option>
-            <option value="casino">Casino</option>
-            <option value="live">Live Casino</option>
-        </select>
+        <div class="flex flex-row gap-x-2">
+            <input type="text" id="gameListTitle" placeholder="Recommended Games" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
+            <select id="game-product" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
+                <option value="">Select product</option>
+                <option value="casino">Casino</option>
+                <option value="live">Live Casino</option>
+            </select>
+        </div>
         <div id="div-list-container" class="flex flex-col gap-y-2"></div>
         <div class="flex flex-row gap-x-2 justify-end">
             <button id="gameListInsertBtn" class="bg-[#ff8906] rounded-[4px] p-2 font-medium text-xs text-black h-fit flex flex-row gap-x-1 items-center hover:bg-[#ec7f10] cursor-pointer">INSERT</button>

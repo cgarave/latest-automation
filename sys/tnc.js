@@ -15,1340 +15,6 @@ const image_lib = {
 document.getElementById('zh-image-array-container').innerHTML = `${image_lib.china.map(chinaAssets => `<img src="${chinaAssets}" class="zh-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
 document.getElementById('id-image-array-container').innerHTML = `${image_lib.indonesia.map(indonesiaAssets => `<img src="${indonesiaAssets}" class="id-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
 
-//These are templates that will be set to the two editors
-const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
-                    <div id="content-en-gb" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Significant Contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const ENSCtemplate =   `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
-                        <div id="content-en-gb" class="tnc-content-wrap non-editable">
-                            <div class="contentwrap tnc-content-format non-editable">
-                                <h2 class="mb-4 font-semibold text-body-1 mceEditable">Significant Conditions</h2>
-                                <div class="mceEditable">
-                                    <p>Write/Paste Significant Contents here</p>
-                                </div>
-                            </div>
-                            <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                        </div>`
-
-const ENFPtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>
-                      <div id="content-en-gb" class="tnc-content-wrap non-editable">
-                          <div class="contentwrap tnc-content-format non-editable">
-                              <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                  <template #header>
-                                      <h2 class="m-4 font-semibold text-body-1 mceEditable">Full Promotion Specific Terms and Conditions</h2>
-                                  </template>
-                                  <template #content>
-                                      <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Full Promotion contents here</p>
-                                      </div>
-                                  </template>
-                              </SExpansionPanel>
-                          </div>
-                          <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                      </div>`
-
-const CNtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const CNSCtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">主要规则</h2>
-                            <div class="mceEditable">
-                                 <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const CNFPtemplate = `<div id="content-zh-cn" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">完整优惠标准规则</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const VNtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const VNSCtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Điều Kiện Tóm Lược</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const VNFPtemplate = `<div id="content-vi-vn" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Điều Khoản và Điều Kiện Hoàn Chỉnh</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const THtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const THSCtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขฉบับย่อ</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const THFPtemplate = `<div id="content-th-th" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">ข้อกำหนดและเงื่อนไขแบบเฉพาะเจาะจง</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const KRtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const KRSCtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">약관 주요내용</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const KRFPtemplate = `<div id="content-ko-kr" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">본 프로모션 이용약관</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const IDtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const IDSCtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Penting</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const IDFPtemplate = `<div id="content-id-id" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">Syarat dan Kondisi Spesifik promosi Lengkap</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const KHtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const KHSCtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌសំខាន់ៗ</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-const KHFPtemplate = `<div id="content-km-kh" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">លក្ខខណ្ឌ និងកិច្ចព្រមព្រៀងជាក់លាក់នៃការផ្តល់រង្វាន់ទាំងអស</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const JPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const JPSCtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">キャンペーン概要</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const JPFPtemplate = `<div id="content-ja-jp" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">全てのプロモーション－特定の利用規約</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const INtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const INSCtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <h2 class="mb-4 font-semibold text-body-1 mceEditable">टमहत्वपूर्ण स्थितियां</h2>
-                            <div class="mceEditable">
-                                <p>Write/Paste Localized Significant Contents here</p>
-                            </div>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const INFPtemplate = `<div id="content-hi-in" class="tnc-content-wrap non-editable">
-                        <div class="contentwrap tnc-content-format non-editable">
-                            <SExpansionPanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">
-                                <template #header>
-                                    <h2 class="m-4 font-semibold text-body-1 mceEditable">पूर्ण प्रमोशन-विशिष्ट नियम और शर्तें</h2>
-                                </template>
-                                <template #content>
-                                    <div class="full-promotion-content mceEditable">
-                                        <p>Write/Paste Localized Full Promotion contents here</p>
-                                    </div>
-                                </template>
-                            </SExpansionPanel>
-                        </div>
-                        <IncludeContent :url="promoDetail.termsTpl"></IncludeContent>
-                    </div>`
-
-const gameListTemplates = {
-    list1: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>`,
-
-    list2: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>`,
-
-    list3: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>`,
-
-list4: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-4" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-4" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-4" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>`,
-
-list5: `<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-1" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-1" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-1" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-2" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-2" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-2" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-3" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-3" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-3" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-4" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-4" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-4" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-4" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-4" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>
-
-<div class="flex flex-col gap-y-2 bg-neutral-900 rounded-md p-2">
-  <div class="flex flex-row gap-x-2">
-      <select id="game-product-5" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select product</option>
-          <option value="casino">Casino</option>
-          <option value="live">Live Casino</option>
-      </select>
-      <select id="game-provider-5" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select Game Provider</option>
-          <optgroup label="Casino Providers">
-              <option value="advantplay">Advant Play</option>
-                      <option value="betsoft">Betsoft</option>
-                      <option value="bigtimegaming">Big Time Gaming</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="galaxsys">Galaxsys</option>
-                      <option value="genesis">Genesis</option>
-                      <option value="habanero">Habanero</option>
-                      <option value="isoftbet">Isoftbet</option>
-                      <option value="jili">Jili</option>
-                      <option value="leap">Leap</option>
-                      <option value="microgaming">Microgaming</option>
-                      <option value="netent">Netent</option>
-                      <option value="nolimitcity">Nolimit City</option>
-                      <option value="pocketgames">Pocket Games Soft</option>
-                      <option value="playngo">Play N Go</option>
-                      <option value="playtech">PlayTech</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="quickspin">Quick Spin</option>
-                      <option value="redtiger">Red Tiger</option>
-                      <option value="skywind">SkyWind</option>
-                      <option value="spribe">Spribe</option>
-          </optgroup>
-          <optgroup label="Live Casino Providers">
-              <option value="aesexy">Aesexy</option>
-                      <option value="agiledeal">Agile Deal</option>
-                      <option value="asiagaming">Asia Gaming</option>
-                      <option value="db">DB</option>
-                      <option value="dblive">DB Live</option>
-                      <option value="evolution">Evolution</option>
-                      <option value="ezugi">Ezugi</option>
-                      <option value="n2live">N2 Live</option>
-                      <option value="oncasino">ON Casino</option>
-                      <option value="pragmatic">Pragmatic Play</option>
-                      <option value="sexybaccarat">Sexy Baccarat</option>
-                      <option value="wmcasino">WM Casino</option>
-                      <option value="worldentertainment">World Entertainment</option>
-                      <option value="zodiacracing">Zodiac Racing</option>
-          </optgroup>
-      </select>
-      <select id="cta-5" class="bg-neutral-900 text-white font-semibold text-xs rounded-[4px] p-2 border border-transparent w-full outline-none">
-          <option value="">Select button text</option>
-          <option value="Play Now">Play Now</option>
-          <option value="More Info">More Info</option>
-      </select>
-  </div>
-  <div class="flex flex-row gap-x-2 ">
-      <input type="text" id="game-name-5" placeholder="Enter Game Name" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-      <input type="text" id="game-code-5" placeholder="Enter Game Code" class="outline-none text-xs w-full border border-[#ff8906] p-2 placeholder:text-gray-500" autocomplete="off">
-  </div>
-</div>`
-}
-
 //This is for game components
 //table
 let gameCodes = document.getElementById('input-game-codes'); //variable that stores inputed game codes from the 'Component' buttons
@@ -1646,12 +312,15 @@ tinymce.init({
                 text: 'Recommended Games List',
                 tooltip: 'Insert recommended games component',
                 onclick: function() {
+
+                    //variables for card, dropdown, insert/cancel button
                     const gameListInput = document.getElementById('input-game-list-container');
                     const numberOfListGames = document.getElementById('input-list-numberOf-games');
                     const gameListInsertBtn = document.getElementById('gameListInsertBtn');
                     const cancelGameListBtn = document.getElementById('cancelGameListBtn');
                     gameListInput.classList.remove('hidden');
                     
+
                     numberOfListGames.addEventListener('change', () => {
                         let selectedList = numberOfListGames.value;
 
@@ -1659,134 +328,152 @@ tinymce.init({
                             case '1':
                                 document.getElementById('div-list-container').innerHTML = gameListTemplates.list1;
                                 gameListInsertBtn.onclick = () => {
-                                    let gameProduct = document.getElementById('game-product-1');
+                                    let gameListTitle = document.getElementById('gameListTitle');
+                                    let gameProduct = document.getElementById('game-product');
+
                                     let gameProvider = document.getElementById('game-provider-1');
                                     let gameName = document.getElementById('game-name-1');
-                                    let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage = document.getElementById('game-image-1');
+                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    //let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode = document.getElementById('game-code-1');
                                     let gameCTA = document.getElementById('cta-1');
-                                    editor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td>${gameProduct.value}</td><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr></tbody></table><br>`)
+
+                                    tinymce.activeEditor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameName.value}</td><td>${gameImage}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr></tbody></table><br>`)
                                 }
                                 break;
                             case '2':
                                 document.getElementById('div-list-container').innerHTML = gameListTemplates.list2;
                                 gameListInsertBtn.onclick = () => {
-                                    let gameProduct = document.getElementById('game-product-1');
+                                    let gameListTitle = document.getElementById('gameListTitle');
+                                    let gameProduct = document.getElementById('game-product');
+
                                     let gameProvider = document.getElementById('game-provider-1');
-                                    let gameCTA = document.getElementById('cta-1');
                                     let gameName = document.getElementById('game-name-1');
-                                    let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage = document.getElementById('game-image-1');
+                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode = document.getElementById('game-code-1');
+                                    let gameCTA = document.getElementById('cta-1');
 
-                                    let gameProduct2 = document.getElementById('game-product-2');
                                     let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
                                     let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = gameName2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage2 = document.getElementById('game-image-2');
+                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode2 = document.getElementById('game-code-2');
+                                    let gameCTA2 = document.getElementById('cta-2');
 
-                                    editor.insertContent(`<table id="game-list-2" class="non-editable"><tbody><tr><td>${gameProduct.value}</td><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProduct2.value}</td><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr></tbody></table><br>`)
+                                    tinymce.activeEditor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameName.value}</td><td>${gameImage}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameName2.value}</td><td>${gameImage2}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr></tbody></table><br>`)
                                 }
                                 break;
                             case '3':
                                 document.getElementById('div-list-container').innerHTML = gameListTemplates.list3;
                                 gameListInsertBtn.onclick = () => {
-                                    let gameProduct = document.getElementById('game-product-1');
+                                    let gameListTitle = document.getElementById('gameListTitle');
+                                    let gameProduct = document.getElementById('game-product');
+
                                     let gameProvider = document.getElementById('game-provider-1');
-                                    let gameCTA = document.getElementById('cta-1');
                                     let gameName = document.getElementById('game-name-1');
-                                    let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage = document.getElementById('game-image-1');
+                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode = document.getElementById('game-code-1');
+                                    let gameCTA = document.getElementById('cta-1');
 
-                                    let gameProduct2 = document.getElementById('game-product-2');
                                     let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
                                     let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = gameName2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage2 = document.getElementById('game-image-2');
+                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode2 = document.getElementById('game-code-2');
+                                    let gameCTA2 = document.getElementById('cta-2');
 
-                                    let gameProduct3 = document.getElementById('game-product-3');
                                     let gameProvider3 = document.getElementById('game-provider-3');
-                                    let gameCTA3 = document.getElementById('cta-3');
                                     let gameName3 = document.getElementById('game-name-3');
-                                    let gameImage3 = gameName3.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage3 = document.getElementById('game-image-3');
+                                    gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode3 = document.getElementById('game-code-3');
-                                    editor.insertContent(`<table id="game-list-3" class="non-editable"><tbody><tr><td>${gameProduct.value}</td><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProduct2.value}</td><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProduct3.value}</td><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr></tbody></table><br>`)
+                                    let gameCTA3 = document.getElementById('cta-3');
+                                    
+                                    tinymce.activeEditor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameName.value}</td><td>${gameImage}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameName2.value}</td><td>${gameImage2}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameName3.value}</td><td>${gameImage3}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr></tbody></table><br>`)
                                 }
                                 break;
                             case '4':
                                 document.getElementById('div-list-container').innerHTML = gameListTemplates.list4;
                                 gameListInsertBtn.onclick = () => {
-                                    let gameProduct = document.getElementById('game-product-1');
+                                    let gameListTitle = document.getElementById('gameListTitle');
+                                    let gameProduct = document.getElementById('game-product');
+
                                     let gameProvider = document.getElementById('game-provider-1');
-                                    let gameCTA = document.getElementById('cta-1');
                                     let gameName = document.getElementById('game-name-1');
-                                    let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage = document.getElementById('game-image-1');
+                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode = document.getElementById('game-code-1');
+                                    let gameCTA = document.getElementById('cta-1');
 
-                                    let gameProduct2 = document.getElementById('game-product-2');
                                     let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
                                     let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = gameName2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage2 = document.getElementById('game-image-2');
+                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode2 = document.getElementById('game-code-2');
+                                    let gameCTA2 = document.getElementById('cta-2');
 
-                                    let gameProduct3 = document.getElementById('game-product-3');
                                     let gameProvider3 = document.getElementById('game-provider-3');
-                                    let gameCTA3 = document.getElementById('cta-3');
                                     let gameName3 = document.getElementById('game-name-3');
-                                    let gameImage3 = gameName3.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage3 = document.getElementById('game-image-3');
+                                    gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode3 = document.getElementById('game-code-3');
+                                    let gameCTA3 = document.getElementById('cta-3');
 
-                                    let gameProduct4 = document.getElementById('game-product-4');
                                     let gameProvider4 = document.getElementById('game-provider-4');
-                                    let gameCTA4 = document.getElementById('cta-4');
                                     let gameName4 = document.getElementById('game-name-4');
-                                    let gameImage4 = gameName4.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage4 = document.getElementById('game-image-4');
+                                    gameImage4 = gameImage4.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode4 = document.getElementById('game-code-4');
+                                    let gameCTA4 = document.getElementById('cta-4');
 
-                                    editor.insertContent(`<table id="game-list-4" class="non-editable"><tbody><tr><td>${gameProduct.value}</td><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProduct2.value}</td><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProduct3.value}</td><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProduct4.value}</td><td>${gameProvider4.value}</td><td>${gameImage4}</td><td>${gameName4.value}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr></tbody></table><br>`)
+                                    tinymce.activeEditor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameName.value}</td><td>${gameImage}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameName2.value}</td><td>${gameImage2}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameName3.value}</td><td>${gameImage3}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProvider4.value}</td><td>${gameName4.value}</td><td>${gameImage4}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr></tbody></table><br>`)
                                 }
                                 break;
                             case '5':
                                 document.getElementById('div-list-container').innerHTML = gameListTemplates.list5;
                                 gameListInsertBtn.onclick = () => {
-                                    let gameProduct = document.getElementById('game-product-1');
+                                    let gameListTitle = document.getElementById('gameListTitle');
+                                    let gameProduct = document.getElementById('game-product');
+
                                     let gameProvider = document.getElementById('game-provider-1');
-                                    let gameCTA = document.getElementById('cta-1');
                                     let gameName = document.getElementById('game-name-1');
-                                    let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage = document.getElementById('game-image-1');
+                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode = document.getElementById('game-code-1');
+                                    let gameCTA = document.getElementById('cta-1');
 
-                                    let gameProduct2 = document.getElementById('game-product-2');
                                     let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
                                     let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = gameName2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage2 = document.getElementById('game-image-2');
+                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode2 = document.getElementById('game-code-2');
+                                    let gameCTA2 = document.getElementById('cta-2');
 
-                                    let gameProduct3 = document.getElementById('game-product-3');
                                     let gameProvider3 = document.getElementById('game-provider-3');
-                                    let gameCTA3 = document.getElementById('cta-3');
                                     let gameName3 = document.getElementById('game-name-3');
-                                    let gameImage3 = gameName3.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage3 = document.getElementById('game-image-3');
+                                    gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode3 = document.getElementById('game-code-3');
+                                    let gameCTA3 = document.getElementById('cta-3');
 
-                                    let gameProduct4 = document.getElementById('game-product-4');
                                     let gameProvider4 = document.getElementById('game-provider-4');
-                                    let gameCTA4 = document.getElementById('cta-4');
                                     let gameName4 = document.getElementById('game-name-4');
-                                    let gameImage4 = gameName4.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage4 = document.getElementById('game-image-4');
+                                    gameImage4 = gameImage4.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode4 = document.getElementById('game-code-4');
+                                    let gameCTA4 = document.getElementById('cta-4');
 
-                                    let gameProduct5 = document.getElementById('game-product-5');
                                     let gameProvider5 = document.getElementById('game-provider-5');
-                                    let gameCTA5 = document.getElementById('cta-5');
                                     let gameName5 = document.getElementById('game-name-5');
-                                    let gameImage5 = gameName5.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                    let gameImage5 = document.getElementById('game-image-5');
+                                    gameImage5 = gameImage5.value.toLowerCase().replace(/\s+/g, '-').trim();
                                     let gameCode5 = document.getElementById('game-code-5');
+                                    let gameCTA5 = document.getElementById('cta-5');
 
-                                    editor.insertContent(`<table id="game-list-5" class="non-editable"><tbody><tr><td>${gameProduct.value}</td><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProduct2.value}</td><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProduct3.value}</td><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProduct4.value}</td><td>${gameProvider4.value}</td><td>${gameImage4}</td><td>${gameName4.value}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr><tr><td>${gameProduct5.value}</td><td>${gameProvider5.value}</td><td>${gameImage5}</td><td>${gameName5.value}</td><td>${gameCode5.value}</td><td>${gameCTA5.value}</td></tr></tbody></table><br>`)
+                                    tinymce.activeEditor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameName.value}</td><td>${gameImage}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameName2.value}</td><td>${gameImage2}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameName3.value}</td><td>${gameImage3}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProvider4.value}</td><td>${gameName4.value}</td><td>${gameImage4}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr><tr><td>${gameProvider5.value}</td><td>${gameName5.value}</td><td>${gameImage5}</td><td>${gameCode5.value}</td><td>${gameCTA5.value}</td></tr></tbody></table><br>`)
                                 }
                                 break;
                         }
@@ -1826,6 +513,24 @@ tinymce.init({
                 }
             }
         });
+
+        editor.on('focus', function () {
+            console.log('Focused:', editor.id);
+            if (editor.id === 'mytextarea2') {
+                document.getElementById("game-image-1").readOnly = true;
+                document.getElementById("game-image-2").readOnly = true;
+                document.getElementById("game-image-3").readOnly = true;
+                document.getElementById("game-image-4").readOnly = true;
+                document.getElementById("game-image-5").readOnly = true;
+            }
+            if (editor.id === 'mytextarea') {
+                document.getElementById("game-image-1").readOnly = false;
+                document.getElementById("game-image-2").readOnly = false;
+                document.getElementById("game-image-3").readOnly = false;
+                document.getElementById("game-image-4").readOnly = false;
+                document.getElementById("game-image-5").readOnly = false;
+            }
+          });
         
     },
 });
@@ -1877,8 +582,8 @@ document.getElementById('importBtn').addEventListener('click', () => {
 })
 
 //dropdown region option
-var tncRegionDropdown = document.getElementById('tnc-regions-dropdown');
-var tncTemplateDropdown = document.getElementById('template-dropdown');
+let tncRegionDropdown = document.getElementById('tnc-regions-dropdown');
+let tncTemplateDropdown = document.getElementById('template-dropdown');
 tncRegionDropdown.addEventListener('change', () => {
     const selectedRegion = tncRegionDropdown.value;
     switch (selectedRegion) {
@@ -1907,7 +612,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
         case 'vi-vn':
             document.getElementById('filename').value = 'Vietnam_'
@@ -1934,7 +638,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
         case 'th-th':
             document.getElementById('filename').value = 'Thailand_'
@@ -1961,7 +664,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
         case 'ko-kr':
             document.getElementById('filename').value = 'Korea_'
@@ -1988,7 +690,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
         case 'id-id':
             document.getElementById('filename').value = 'Indonesia_'
@@ -2015,7 +716,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
         case 'km-kh':
             document.getElementById('filename').value = 'Cambodia_'
@@ -2042,7 +742,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
         case 'ja-jp':
             document.getElementById('filename').value = 'Japan_'
@@ -2069,7 +768,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
         case 'hi-in':
             document.getElementById('filename').value = 'India_'
@@ -2096,7 +794,6 @@ tncRegionDropdown.addEventListener('change', () => {
                         break;
                 }
             })
-            //document.getElementById('import-check').checked = false;
             break;
     }
 })
@@ -2189,7 +886,7 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
 
         const parser = new DOMParser(); //allows to convert the HTML string into a DOM object. Once converted, you can interact with it just like you would with any DOM node.
         const doc = parser.parseFromString(content, 'text/html');
-        //const contentScripts = doc.getElementsByTagName('head')[0].innerHTML;
+        //const contentScripts = doc.getElementsByTagName('head')[0].innerHTML; //pulling scripts at the header
         const contentEN = doc.querySelector('#content-en-gb');
         const contentCN = doc.querySelector('#content-zh-cn');
         const contentVN = doc.querySelector('#content-vi-vn');
@@ -2201,7 +898,6 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         const contentIN = doc.querySelector('#content-hi-in');
 
         if (contentEN) {
-            //tinymce.get('mytextarea').setContent(contentScripts.trim() + contentEN.outerHTML);
             tinymce.get('mytextarea').setContent('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>' + contentEN.outerHTML); //this resolves the missing scripts when importing old tncs
         }
         if (contentCN) {
@@ -2228,8 +924,6 @@ document.getElementById('import-tnc').addEventListener('change', async (e) => {
         if (contentIN) {
             tinymce.get('mytextarea2').setContent(contentIN.outerHTML);
         }
-        
-        //console.log(doc.getElementsByTagName('includecontent')[0]);
     }
 })
 const readFile = async (file) => {
@@ -2286,19 +980,6 @@ document.getElementById('download').addEventListener('click', () => {
 
         //clean up
         mergedContent = mergedContent.replaceAll(' mceEditable', '').replaceAll(' non-editable', '').replaceAll('mceEditable', '')
-
-        //storing en and local full promotion
-        // let findFullProm = mergedContent.match(/<h2 class="m-4 font-semibold text-body-1">(.*?)<\/h2>/g)
-        // let fullpromEN = findFullProm[0];
-        // let fullpromLOCAL = findFullProm[1];
-
-        //shorten the code to replace full promotion when a user replaced the text of EN and/or Local full promotion
-        // mergedContent = mergedContent
-        //     .replace(fullpromEN, SExpansion.replace('<h2 class="m-4 font-semibold text-body-1">Full Promotion Specific Terms and Conditions</h2>', fullpromEN))
-        //     .replace(fullpromLOCAL, SExpansion.replace('<h2 class="m-4 font-semibold text-body-1">Full Promotion Specific Terms and Conditions</h2>', fullpromLOCAL))
-
-        // mergedContent = mergedContent
-        //     .replaceAll(/<\/div>\s*<div id="closeSExpansion" class="hidden" style="visibility: hidden;">1<\/div>\s*<\/div>/g, closeSExpansion)
 
         //replacing links
         mergedContent = mergedContent

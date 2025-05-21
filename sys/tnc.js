@@ -12,8 +12,8 @@ const image_lib = {
                 'https://doc-cdn.stcb18x1.com/star4-content/images/banners/promotion/2024-06-Jun/EUROREDEPOLEJ-0624/EUROREDEPOLEJ-0624-image01.webp'
             ]
 }
-document.getElementById('zh-image-array-container').innerHTML = `${image_lib.china.map(chinaAssets => `<img src="${chinaAssets}" class="zh-image rounded-md hover:outline-2 outline-[#ff9200] cursor-pointer">`).join('')}`
-document.getElementById('id-image-array-container').innerHTML = `${image_lib.indonesia.map(indonesiaAssets => `<img src="${indonesiaAssets}" class="id-image rounded-md hover:outline-2 outline-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('zh-image-array-container').innerHTML = `${image_lib.china.map(chinaAssets => `<img src="${chinaAssets}" class="zh-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('id-image-array-container').innerHTML = `${image_lib.indonesia.map(indonesiaAssets => `<img src="${indonesiaAssets}" class="id-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
 
 //These are templates that will be set to the two editors
 const ENtemplate = `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(function () { $("#webteam-ss").attr("href", "https://doc.188contents.com/contents/Components/webteam/webteam.css?" + $.now()); });</script>

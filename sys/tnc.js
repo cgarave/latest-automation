@@ -123,28 +123,34 @@ tinymce.init({
         //custom games - import
         /<customgames(.*?)>\s*<\/customgames>/g,
 
+        //game list - import
+        /<scard(.*?)>/g,
+        /<ssectionheading(.*?)>/g,
+        /<\/ssectionheading>/g,
+        /<slist>/g,
+        /<slistitem(.*?)>/g,
+        /<template #prependavatar>/g,
+        /<savatar(.*?)\/>/g,
+        /<\/savatar>/g,
+        /<template #appendaction>/g,
+        /<gamelauncher(.*?)>/g,
+        /<sbutton(.*?)>/g,
+        /<\/sbutton>/g,
+        /<sicon>/g,
+        /<\/sicon>/g,
+        /<\/gamelauncher>/g,
+        /<\/slistitem>/g,
+        /<\/slist>/g,
+        /<\/scard>/g,
+
+
+
         //vue href
         /<a :href="(.*?)">/g,
     ], 
     link_list: [
-        { title: '[EN-GB]Promotion General Terms and Conditions', value: 'https://www.188bet.com/en-gb/promotions#promo_gen_terms' },
-        { title: '[EN-GB]Standard Terms and Conditions', value: 'https://www.188bet.com/en-gb/corporate-affairs/terms-and-conditions' },
-        { title: '[ZH-CN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/zh-cn/promotions#promo_gen_terms' },
-        { title: '[ZH-CN]Standard Terms and Conditions', value: 'https://www.188bet.com/zh-cn/corporate-affairs/terms-and-conditions' },
-        { title: '[VI-VN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/vi-vn/promotions#promo_gen_terms' },
-        { title: '[VI-VN]Standard Terms and Conditions', value: 'https://www.188bet.com/vi-vn/corporate-affairs/terms-and-conditions' },
-        { title: '[TH-TH]Promotion General Terms and Conditions', value: 'https://www.188bet.com/th-th/promotions#promo_gen_terms' },
-        { title: '[TH-TH]Standard Terms and Conditions', value: 'https://www.188bet.com/th-th/corporate-affairs/terms-and-conditions' },
-        { title: '[KO-KR]Promotion General Terms and Conditions', value: 'https://www.188bet.com/ko-kr/promotions#promo_gen_terms' },
-        { title: '[KO-KR]Standard Terms and Conditions', value: 'https://www.188bet.com/ko-kr/corporate-affairs/terms-and-conditions' },
-        { title: '[ID-ID]Promotion General Terms and Conditions', value: 'https://www.188bet.com/id-id/promotions#promo_gen_terms' },
-        { title: '[ID-ID]Standard Terms and Conditions', value: 'https://www.188bet.com/id-id/corporate-affairs/terms-and-conditions' },
-        { title: '[KM-KH]Promotion General Terms and Conditions', value: 'https://www.188bet.com/km-kh/promotions#promo_gen_terms' },
-        { title: '[KM-KH]Standard Terms and Conditions', value: 'https://www.188bet.com/km-kh/corporate-affairs/terms-and-conditions' },
-        { title: '[JA-JP]Promotion General Terms and Conditions', value: 'https://www.188bet.com/ja-jp/promotions#promo_gen_terms' },
-        { title: '[JA-JP]Standard Terms and Conditions', value: 'https://www.188bet.com/ja-jp/corporate-affairs/terms-and-conditions' },
-        { title: '[HI-IN]Promotion General Terms and Conditions', value: 'https://www.188bet.com/hi-in/promotions#promo_gen_terms' },
-        { title: '[HI-IN]Standard Terms and Conditions', value: 'https://www.188bet.com/hi-in/corporate-affairs/terms-and-conditions' },
+        { title: '[Works on both English and Localized]Promotion General Terms and Conditions', value: 'https://www.188bet.com/en-gb/promotions#promo_gen_terms' },
+        { title: '[Works on both English and Localized]Standard Terms and Conditions', value: 'https://www.188bet.com/en-gb/corporate-affairs/terms-and-conditions' },
     ],
     // valid_styles: {
     //     'ol': 'list-style-type',
@@ -194,7 +200,7 @@ tinymce.init({
             .replace(/<span data-ccp-charstyle="(.*?)">/g, '')
             .replace(/<span data-ccp-parastyle="(.*?)">/g, '')
             .replace(/<span class="(.*?)" lang="(.*?)" xml:lang="(.*?)" data-contrast="(.*?)">/g, '')
-            .replace(/<span class="(.*?)">/g, '')
+            // .replace(/<span class="(.*?)">/g, '')
             .replace(/<span class="(.*?)" data-ccp-props="(.*?)"> /g, '')
             .replace(/<tr(.*?)>/g, '<tr>')
             .replace(/data-celllook="(.*?)"/g, '')
@@ -207,6 +213,9 @@ tinymce.init({
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
             //BACKUP.replace(/<div class="md:w-1\/2 w-full m-auto">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td>$2</td></tr><tr><td>$3</td></tr><tr><td style="display: none;">$4</td></tr></tbody></table><br>')
             .replace(/<div class="(.*?)">\s*<customgames product="(.*?)" title="(.*?)" games="(.*?)" type="(.*?)" class="(.*?)" :limit="(.*?)">\s*<\/customgames>\s*<\/div>/g, '<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">$1</td></tr><tr><td style="display: none;">$2</td></tr><tr><td>$3</td></tr><tr><td>$4</td></tr></tbody></table><br>')
+
+            //imported game list convert to table again
+            .replace(/<scard class="my-4 bg-secondary">\s*<ssectionheading dark="" divider="" contained="" title-tag="h4">\s*<span class="text-subtitle-1">\s*(.*?)\s*<\/span>\s*<\/ssectionheading>\s*<slist>\s*<slistitem dark="" class="md:hover:bg-secondary--darken-4">\s*<template #prependavatar="">\s*<savatar src="https:\/\/doc.188contents.com\/star4-content\/images\/live\/(.*?)\/(.*?)-4x3-sm.webp" alt="(.*?)" size="40" class="!rounded-lg ml-6">\s*<\/savatar>\s*<\/template>(.*?)<template #appendaction="">\s*<gamelauncher v-slot="{openGame}" product="live" game="(.*?)">\s*<sbutton @click="openGame()" v-if="breakpoints.smAndUp" color="text-light--high" class="bg-primary--darken-5 hover:text-light--high mr-6">(.*?)<\/sbutton>\s*<sbutton @click="openGame()" v-else="" dark="" icon-only="" flat="" rounded="" class="mr-6">\s*<sicon>icon-arrow-right<\/sicon>\s*<\/sbutton>\s*<\/gamelauncher>\s*<\/template>\s*<\/slistitem>\s*<\/slist>\s*<\/scard>/gs, '<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">$1</td></tr><tr><td colspan="5">live</td></tr><tr><td>$2</td><td>$3</td><td>$5</td><td>$6</td><td>$7</td></tr></tbody></table><br>')
             
             //imported file links
             .replace(/<a :href="`(.*?)`">/g, '<a href="`$1`">')
@@ -236,13 +245,13 @@ tinymce.init({
 
             .replace(/<h2 class="m-4 font-semibold text-body-1\s*">/g, '<h2 class="m-4 font-semibold text-body-1 mceEditable">') //full promotion title
             .replace(/<div class="full-promotion-content\s*">/g, '<div class="full-promotion-content mceEditable">') //full promotion content
-            // console.log(event.content);
-
+            
             if(event.content.match(/<div class="mceEditable">/g)){ //fixes the issues when importing full promotion only template. It will add </div> at the start of SExpansionPanel when the imported content has Significant Conditions
                 event.content = event.content
                 .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
                 .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
             }
+            console.log(event.content);
         });
 
         //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol

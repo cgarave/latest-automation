@@ -9,11 +9,11 @@ let codeLocal = document.getElementById('generatedCodeLocal');
 //copy text
 codeEN.addEventListener('click', () => {
     navigator.clipboard.writeText(codeEN.textContent);
-    alert('EN Copied');
+    //alert('EN Copied');
 })
 codeLocal.addEventListener('click', () => {
     navigator.clipboard.writeText(codeLocal.textContent);
-    alert('Local Copied');
+    //alert('Local Copied');
 })
 
 document.getElementById('widget-en-title').addEventListener('input', (e) => {
@@ -59,10 +59,10 @@ function updateEN(){
     }
 }
 function updateLocal(){
-    let casino = `<CustomGames widget-name="${titleLocal} - (PD-WDGT-Casino)" title="${titleLocal}" product="casino" games="${gameCode}" ${attribs}></CustomGames>`
-    let live = `<CustomGames widget-name="${titleLocal} - (PD-WDGT-LiveCasino)" title="${titleLocal}" product="live" games="${gameCode}" ${attribs} aspect-ratio="3x4" show-game-subtitle></CustomGames>`
-    let chess = `<CustomGames widget-name="${titleLocal} - (PD-WDGT-Chess)" title="${titleLocal}" product="chess" games="${gameCode}"> ${attribs}</CustomGames>`
-    let lotto = `<CustomGames widget-name="${titleLocal} - (PD-WDGT-Lotto)" title="${titleLocal}" product="lotto" games="${gameCode}" ${attribs}></CustomGames>`
+    let casino = `<CustomGames widget-name="${titleEN} - (PD-WDGT-Casino)" title="${titleLocal}" product="casino" games="${gameCode}" ${attribs}></CustomGames>`
+    let live = `<CustomGames widget-name="${titleEN} - (PD-WDGT-LiveCasino)" title="${titleLocal}" product="live" games="${gameCode}" ${attribs} aspect-ratio="3x4" show-game-subtitle></CustomGames>`
+    let chess = `<CustomGames widget-name="${titleEN} - (PD-WDGT-Chess)" title="${titleLocal}" product="chess" games="${gameCode}"> ${attribs}</CustomGames>`
+    let lotto = `<CustomGames widget-name="${titleEN} - (PD-WDGT-Lotto)" title="${titleLocal}" product="lotto" games="${gameCode}" ${attribs}></CustomGames>`
 
     if(product === 'casino'){
         codeLocal.textContent = casino;

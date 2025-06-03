@@ -1,3 +1,5 @@
+//Game List
+
 // live
 // <SCard class="my-4 bg-secondary">
 //   <SSectionHeading dark divider contained title-tag="h4"><span class="text-subtitle-1">Recommended Games</span>
@@ -38,3 +40,23 @@
 //       </template></SListItem>
 //   </SList>
 // </SCard>
+
+
+
+
+//Sportsbook Free Bet
+//Indonesia EN & Local
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
+
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202505/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'" /></IncludeContent>
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202505/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'" /></IncludeContent>
+
+//Japan EN & Local
+//Where to find your sportsbook free bet <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
+//How to use sportsbook free bet  <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/en-jp_JPAFFSNSPROMO_0525_how-use-bet.html'" /></IncludeContent>
+//Where to find your free spins <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/en-jp_JPAFFSNSPROMO_0525_whre-to-find-your-free-spin.html'" /></IncludeContent>
+
+//Where to find your sportsbook free bet LOCAL <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
+//How to use sportsbook free bet LOCAL <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_how-use-bet.html'" /></IncludeContent>
+//Where to find your free spins LOCAL <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_whre-to-find-your-free-spin.html'" /></IncludeContent>

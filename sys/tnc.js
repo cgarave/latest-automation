@@ -276,18 +276,74 @@ tinymce.init({
             icon: false,
             menu: [
               {
-                text: 'Sportsbook Free Bet ENG',
-                tooltip: 'Insert sportsbook free bet component',
-                onclick: function() {
-                  editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
-                }
+                text: 'Indonesia',
+                menu: [
+                    {
+                        text: '[EN-GB] Where to find your Sportbook Free Bet?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[ID-ID] Dimana Anda dapat menemukan Free bet olahraga?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[EN-GB] Where to find your Free Spins?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202505\/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[ID-ID] Where to find your Free Spins?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202505\/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                ]
               },
               {
-                text: 'Sportsbook Free Bet ID',
-                tooltip: 'Insert sportsbook free bet component',
-                onclick: function() {
-                  editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
-                }
+                text: 'Japan',
+                menu: [
+                    {
+                        text: '[EN-GB] Where to find your Sportbook Free Bet?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[JA-JP] Where to find your Sportbook Free Bet?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[EN-GB] How to use Sportbook Free Bet?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to use Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_how-use-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[JA-JP] How to use Sportbook Free Bet?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to use Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_how-use-bet.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[EN-GB] Where to find you Free Spins?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_whre-to-find-your-free-spin.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[JA-JP] Where to find you Free Spins?',
+                        onclick: function() {
+                          editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_whre-to-find-your-free-spin.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                ]
               },
               {
                 text: 'Recommended Games Table',

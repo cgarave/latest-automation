@@ -60,3 +60,34 @@
 //Where to find your sportsbook free bet LOCAL <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
 //How to use sportsbook free bet LOCAL <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_how-use-bet.html'" /></IncludeContent>
 //Where to find your free spins LOCAL <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_whre-to-find-your-free-spin.html'" /></IncludeContent>
+
+
+//Replacing elements for Tinymce version 6 higher>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //.replaceAll(/<ol start="(.*?)" type="i">/g, '<ol class="list-lower-roman pl-8 mb-4" style="list-style-type: lower-roman;" start="$1">')
+    //.replaceAll(/<ol start="(.*?)" type="I">/g, '<ol class="list-upper-roman pl-8 mb-4" style="list-style-type: upper-roman;" start="$1">')
+    //.replaceAll(/<ol start="(.*?)" type="a">/g, '<ol class="list-lower-alpha pl-8 mb-4" style="list-style-type: lower-alpha;" start="$1">')
+    //.replaceAll(/<ol start="(.*?)" type="A">/g, '<ol class="list-upper-alpha pl-8 mb-4" style="list-style-type: upper-alpha;" start="$1">')
+
+    //removing spans language
+        //.replace(/<span lang="EN-US">/g, '')
+        //.replace(/<span lang="EN-GB">/g, '')
+        //.replace(/<span lang="ZH-CN">/g, '')
+        //.replace(/<span lang="JA">/g, '')
+        //.replace(/<span lang="KHM">/g, '')
+        //.replace(/<span lang="TH">/g, '')
+        //.replace(/<span lang="KO">/g, '')
+        //.replace(/<span lang="AR-SA">/g, '')
+        //.replace(/<span data-contrast="auto">/g, '')
+        //.replace(/<span lang="EN-US" style="color: windowtext;">/g, '')
+        //.replace(/<span lang="EN-US" style="color: black;">/g, '')
+        //.replace(/<span lang="EN-GB" style="color: black;">/g, '')
+        //.replace(/<span lang="TH" style="color: black;">/g, '')
+        //.replace(/<span lang="AR-SA" style="color: black;">/g, '')
+        //.replace(/<span style="color: black;">/g, '')
+        //.replace(/<\/span>/g, '')
+
+    //clean up
+        //.replaceAll(' class="MsoNormal"', '')
+        //.replaceAll(' class="MsoNoSpacing"', '')
+        //.replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

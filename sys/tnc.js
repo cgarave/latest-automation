@@ -254,7 +254,7 @@ tinymce.init({
                 .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
                 .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
             }
-            console.log(event.content);
+            //console.log(event.content);
         });
 
         //This function is for tinymce 4 only. version 5 and above have a different function for adding custom toolbar buttons lol
@@ -263,12 +263,6 @@ tinymce.init({
             icon: 'image',  // Set an icon (optional)
             onclick: function() {
                 // Action to perform when the button is clicked
-                //Dear Programmer,
-                //When I wrote this code, only god and I knew how it worked.
-                //Now, only god knows it!
-                //Therefore, if you are trying to optimize this routine and it fails,
-                //Please increase this counter as a warning for the next person:
-                //total_hours_wasted: 53
                 document.getElementById('insert-image-container').classList.remove('hidden');
                 document.getElementById('close-insert-image-container').onclick = () => document.getElementById('insert-image-container').classList.add('hidden');
 
@@ -556,31 +550,54 @@ tinymce.init({
             ]
         });
 
-        // editor.on('keydown', function(event) { //this stop the user from using ctrl+A or cmd+A
-        //     if ((event.ctrlKey || event.metaKey) && event.keyCode === 65) {
+        editor.on('keydown', function(event) { //this stop the user from using ctrl+A or cmd+A
+            if ((event.ctrlKey || event.metaKey) && event.keyCode === 65) {
+                event.preventDefault();
+                editor.selection.collapse();
+            }
+        });
+        editor.on('keyup', function(event) {
+            if (event.keyCode === 8) {
+                const selectedNode = editor.selection.getNode();
+
+                //Dear Programmer,
+                //When I wrote this code, only god and I knew how it worked.
+                //Now, only god knows it!
+                //Therefore, if you are trying to optimize this routine and it fails,
+                //Please increase this counter as a warning for the next person:
+                //total_hours_wasted: 53
               
-        //         event.preventDefault();
-        //         editor.selection.collapse();
+                // Case: parent is mceEditable
+                const parent = selectedNode.parentElement;
+                if (parent.className.match('mceEditable')) {
+                  const text = parent.textContent.trim();
+                  if (text.length === 0) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                }
+              }
+        })
+
+        // editor.on('NodeChange', function(event) {
+        //     console.log('Node changed:', event);
+
+        //     //Nodechange prevents the users to accidentally break the HTML when highlighting the input box using ctrl+A and add numbered/bullet list 
+        //     if(event.element.nodeName == 'DIV'){
+        //         if(event.element.className.match('mceEditable')){
+        //             if(event.element.children.length < 2){
+        //                 event.element.innerHTML = '<p><br></p>'
+        //                 console.log('editable input box content is maybe deleted or empty, automatically add <p>');
+        //             } else {
+        //                 console.log('contents are preserved');
+        //                 console.log(event.element.children.length);
+        //             }
+
+        //         }
         //     }
         // });
 
-        editor.on('NodeChange', function(event) {
-            // console.log('Node changed:', event);
-
-            //Nodechange prevents the users to accidentally break the HTML when highlighting the input box using ctrl+A and add numbered/bullet list 
-            if(event.element.nodeName == 'DIV'){
-                if(event.element.className.match('mceEditable')){
-                    if(event.element.children.length < 2){
-                        event.element.innerHTML = '<p><br></p>'
-                        console.log('editable input box content is maybe deleted or empty, automatically add <p>');
-                    } else {
-                        console.log('contents are preserved');
-                        console.log(event.element.children.length);
-                    }
-
-                }
-            }
-        });
+        
 
         editor.on('focus', function () {
             console.log('Focused:', editor.id);
@@ -598,7 +615,7 @@ tinymce.init({
                 document.getElementById("game-image-4").readOnly = false;
                 document.getElementById("game-image-5").readOnly = false;
             }
-          });
+        });
         
     },
 });

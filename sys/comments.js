@@ -91,3 +91,6 @@
         //.replaceAll(' class="MsoNoSpacing"', '')
         //.replaceAll('<p class="MsoListParagraphCxSpMiddle">', '<p>')
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// 2 table games
+// <div class="md:w-1/2 w-full m-auto" style="width: 30%;”>

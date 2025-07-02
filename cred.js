@@ -316,4 +316,4 @@
 
 // Deployment File Paths
 
-// Banking/Payment Logo - smb://192.168.76.163/webteam/188BET/PCH Logos/Deployment Package/ (creation of folders should be same as FileZilla’s folder structure)
+// Banking/Payment Logo - smb://192.168.76.163/webteam/188BET/PCH Logos/Deployment Package/(creation of folders should be same as FileZilla’s folder structure)

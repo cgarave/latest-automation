@@ -155,7 +155,7 @@ function inputBox(currentCount) {
     //Button Text
     let gameButtonTextInput = document.getElementById('game-button-text-input-' + currentCount)
     gameButtonTextInput.addEventListener('input', () => {
-      document.getElementById('game-button-text-' + currentCount).textContent = gameButtonTextInput.value
+      document.getElementById('game-button-link-' + currentCount).textContent = gameButtonTextInput.value
     })
   
     //Button Link
@@ -255,28 +255,31 @@ function createProductsComponent(compCount) {
     gameTitle.style.color = '#FFFFFF';
     gameTitle.textContent = 'Xiao Xiao';
 
-    const ctaLink = document.createElement('a');
-    ctaLink.id = 'game-button-link-' + compCount;
-    ctaLink.href = 'https://www.188bet.com/';
-    ctaLink.style.textDecoration = 'none';
-
     const ctaButton = document.createElement('div');
-    ctaButton.id = 'game-button-text-' + compCount;
-    ctaButton.style.color = 'white';
-    ctaButton.style.fontSize = '14px';
-    ctaButton.style.fontWeight = '600';
+    // ctaButton.id = 'game-button-text-' + compCount;
+    // ctaButton.style.color = 'white';
+    // ctaButton.style.fontSize = '14px';
+    // ctaButton.style.fontWeight = '600';
     ctaButton.style.padding = '6px';
     ctaButton.style.backgroundColor = '#FF8A00';
     ctaButton.style.borderRadius = '4px';
     ctaButton.style.width = 'fit-content';
     ctaButton.style.backgroundImage = 'linear-gradient(to bottom, #FF9200, #FF710D, #FF6A00)';
-    ctaButton.textContent = 'PLAY NOW';
+    //ctaButton.textContent = 'PLAY NOW';
 
-    ctaLink.appendChild(ctaButton);
+    const ctaLink = document.createElement('a');
+    ctaLink.id = 'game-button-link-' + compCount;
+    ctaLink.href = 'https://www.188bet.com/';
+    ctaLink.style.textDecoration = 'none';
+    ctaLink.style.color = 'white';
+    ctaLink.style.fontWeight = '600';
+    ctaLink.textContent = 'PLAY NOW';
+
+    ctaButton.appendChild(ctaLink);
 
     textWrapper.appendChild(provider);
     textWrapper.appendChild(gameTitle);
-    textWrapper.appendChild(ctaLink);
+    textWrapper.appendChild(ctaButton);
 
     textCell.appendChild(textWrapper);
 

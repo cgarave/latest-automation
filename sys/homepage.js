@@ -2,23 +2,22 @@ const automationDropdown = document.getElementById('automation-dropdown')
 automationDropdown.addEventListener('change', () => {
 
     const selection = automationDropdown.value;
-
+    
         switch(selection){
             case 'index.html':
-                window.location.href = selection;
+                window.location.href = '../../' + selection;
                 break;
             case 'floating-banner.html': 
-                window.location.href = selection;
+                window.location.href = 'sys/floating-banner/' + selection;
                 break;
             case 'landing-page.html': 
-                window.location.href = selection;
+                window.location.href = 'sys/landing-page/' + selection;
                 break;
             case 'widgets.html': 
-                window.location.href = selection;
+                window.location.href = 'sys/widgets/' + selection;
                 break;
             case 'newsletter.html': 
-                window.location.href = selection;
+                window.location.href = 'sys/newsletter/' + selection;
                 break;
         }
-
 })

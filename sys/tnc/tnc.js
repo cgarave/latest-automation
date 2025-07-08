@@ -128,8 +128,8 @@ tinymce.init({
         /<a :href="(.*?)">/g,
     ], 
     link_list: [
-        { title: '[Works on both English and Localized]Promotion General Terms and Conditions', value: 'https://www.188bet.com/en-gb/promotions#promo_gen_terms' },
-        { title: '[Works on both English and Localized]Standard Terms and Conditions', value: 'https://www.188bet.com/en-gb/corporate-affairs/terms-and-conditions' },
+        { title: 'Promotion General Terms and Conditions', value: 'https://www.taptap.asia/en-gb/promotions#promo_gen_terms' },
+        { title: 'Standard Terms and Conditions', value: 'https://www.taptap.asia/en-gb/corporate-affairs/terms-and-conditions' },
     ],
     // valid_styles: {
     //     'ol': 'list-style-type',
@@ -165,7 +165,7 @@ tinymce.init({
             event.content = event.content
             .replaceAll('</ol><ul>', '')
             .replaceAll('</ul><ol>', '')
-            .replaceAll('<p> </p>', '')
+            .replaceAll('<p> </p>', '<br>')
 
             //this section is for removing unnecessary html elements exported from my old automation
             .replace(/<div id="(.*?)" class="hidden" style="visibility: hidden; display: none;">1<\/div>/g, '')
@@ -933,10 +933,10 @@ function previewContent(lang) {
         //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
 
         //replacing paragraph
-        .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
-        .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
-        .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
-        .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+        .replaceAll('<p style="text-align: center;">', '<p class="text-center mb-4" style="text-align: center;">')
+        .replaceAll('<p style="text-align: left;">', '<p class="text-left mb-4" style="text-align: left;">')
+        .replaceAll('<p style="text-align: right;">', '<p class="text-right mb-4" style="text-align: right;">')
+        .replaceAll('<p style="text-align: justify;">', '<p class="text-justify mb-4" style="text-align: justify;">')
         .replaceAll('<p>', '<p class="mb-4">')
 
         //replacing list discs
@@ -1066,7 +1066,7 @@ document.getElementById('download').addEventListener('click', () => {
         //clean up
         mergedContent = mergedContent.replaceAll(' mceEditable', '').replaceAll(' non-editable', '').replaceAll('mceEditable', '')
 
-        //replacing links
+        //replacing 188 links
         mergedContent = mergedContent
             .replace(/:href="https:\/\/www.188asia.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
             .replace(/:href="https:\/\/www.188bet.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
@@ -1079,6 +1079,9 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<a href="https:\/\/www.my188promo.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.188family.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.188sukses.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+
+        //replacing taptap link
+            .replace(/:href="https:\/\/www.taptap.asia\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
         
         //replacing list styles
             .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')
@@ -1116,10 +1119,11 @@ document.getElementById('download').addEventListener('click', () => {
         
         //replacing paragraph
             //.replace(/<p class="MsoNormal">/g, '<p>')
-            .replaceAll('<p style="text-align: center;">', '<p class="text-center" style="text-align: center;">')
-            .replaceAll('<p style="text-align: left;">', '<p class="text-left" style="text-align: left;">')
-            .replaceAll('<p style="text-align: right;">', '<p class="text-right" style="text-align: right;">')
-            .replaceAll('<p style="text-align: justify;">', '<p class="text-justify" style="text-align: justify;">')
+            .replaceAll('<p style="text-align: center;">', '<p class="text-center mb-4" style="text-align: center;">')
+            .replaceAll('<p style="text-align: left;">', '<p class="text-left mb-4" style="text-align: left;">')
+            .replaceAll('<p style="text-align: right;">', '<p class="text-right mb-4" style="text-align: right;">')
+            .replaceAll('<p style="text-align: justify;">', '<p class="text-justify mb-4" style="text-align: justify;">')
+            .replaceAll('<p>', '<p class="mb-4">')
 
         //replacing list discs
             .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
@@ -1147,7 +1151,7 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('<br />', '<br>')
             .replaceAll('<br/>', '<br>')
             .replaceAll('<br><br>', '<br>')
-            .replaceAll('<p> </p>', '')
+            .replaceAll('<p> </p>', '<br>')
 
         //imports
             .replaceAll('sexpansionpanel', 'SExpansionPanel')

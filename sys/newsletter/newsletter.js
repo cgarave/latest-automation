@@ -5,8 +5,11 @@ const downloadBtn = document.getElementById('download');
 const inputContainer = document.getElementById('input-objects-container');
 const NLContainer = document.getElementById('nl-container');
 
-//Pretext and Alt Links
+//lang
+let currentCantSeeEmail = '';
+let currentClickHere = '';
 
+//Pretext and Alt Links
 let currentPreText = '';
 let currentAltLink = '';
 
@@ -25,6 +28,48 @@ const productsCard = `<div id="products-input" class="flex flex-col gap-y-2 h-fu
                       </div>`
 
 //Functions
+langSelection.addEventListener('change', () => {
+  switch(langSelection.value) {
+    case 'en-gb':
+      currentCantSeeEmail = 'Can\'t see email?';
+      currentClickHere = 'Click here';
+      break;
+    case 'zh-cn':
+      currentCantSeeEmail = '若无法查看内容';
+      currentClickHere = '请点击这里';
+      break;
+    case 'vi-vn':
+      currentCantSeeEmail = 'Nếu Quý Khách không thể xem email dưới đây,';
+      currentClickHere = '&#40;xin nhấn vào đây&#41;';
+      break;
+    case 'th-th':
+      currentCantSeeEmail = 'คุณกำลังมีปัญหารูปไม่แสดงใช่ไหม ? คลิกเพื่อรับชม';
+      currentClickHere = '(ที่นี่)';
+      break;
+    case 'ko-kr':
+      currentCantSeeEmail = '이메일 내용을 확인할 수 없나요?';
+      currentClickHere = '클릭해서 확인하세요.';
+      break;
+    case 'id-id':
+      currentCantSeeEmail = 'Tidak dapat melihat email ini,';
+      currentClickHere = 'klik di sini';
+      break;
+    case 'km-kh':
+      currentCantSeeEmail = 'មានបញ្ហាមើលអ៊ីម៉ែលរឺ?សូមចូលទៅកាន់ទំព័រវេបសាយ';
+      currentClickHere = '(នៅទីនេះ)';
+      break;
+    case 'ja-jp':
+      currentCantSeeEmail = 'メールが見られませんか？';
+      currentClickHere = 'こちらをクリック';
+      break;
+    case 'hi-in':
+      currentCantSeeEmail = 'Can\'t see email?';
+      currentClickHere = 'Click here';
+      break;
+
+  }
+})
+
 templateSelection.addEventListener('change', () => {
   switch(templateSelection.value) {
       case 'products': 
@@ -84,9 +129,15 @@ templateSelection.addEventListener('change', () => {
 });
 
 //Parse function
-function DomParser(contentToParse, componentToParse, pretext, altlink) {
+function DomParser(contentToParse, componentToParse, cantSeeEmailVal, clickHereVal, pretext, altlink) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(contentToParse, "text/html");
+
+  //Update the cant-see-email
+  const cantSeeEmail = doc.getElementById('cant-see-email');
+  if(cantSeeEmail) {
+    cantSeeEmail.textContent = cantSeeEmailVal;
+  }
 
   // Update the preview-text
   const previewText = doc.getElementById('preview-text');
@@ -98,6 +149,7 @@ function DomParser(contentToParse, componentToParse, pretext, altlink) {
   const altLink = doc.getElementById('alt-link');
   if (altLink) {
     altLink.href = altlink;
+    altLink.innerText = clickHereVal;
   }
 
   // Insert a new <div> somewhere — here, at the end of <body>
@@ -117,7 +169,7 @@ function DomParser(contentToParse, componentToParse, pretext, altlink) {
 //Download function
 downloadBtn.addEventListener('click', () => {
 
-  let x = DomParser(htmlWrapper, NLContainer.innerHTML, currentPreText, currentAltLink)
+  let x = DomParser(htmlWrapper, NLContainer.innerHTML, currentCantSeeEmail, currentClickHere, currentPreText, currentAltLink)
 
   let fileName = document.getElementById('filename').value;
   let blob = new Blob([x], {type: 'text/html'});

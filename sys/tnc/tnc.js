@@ -1082,6 +1082,7 @@ document.getElementById('download').addEventListener('click', () => {
 
         //replacing taptap link
             .replace(/:href="https:\/\/www.taptap.asia\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.taptap.asia\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
         
         //replacing list styles
             .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')

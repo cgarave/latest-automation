@@ -13,6 +13,8 @@ var htmlWrapper = `
             }
         }
         table,tbody,td {
+            margin: 0;
+            padding: 0;
             border-collapse: collapse;
         }
     </style>

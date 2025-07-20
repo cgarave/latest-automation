@@ -65,7 +65,7 @@ tinymce.PluginManager.add('customcontextmenu', function(editor) {
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
     plugins: 'advlist lists code table image link paste noneditable textcolor contextmenu customcontextmenu',
-    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertComponent insertImage',
+    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertWidget insertImage',
     contextmenu: 'editNumbering link image',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
@@ -277,9 +277,9 @@ tinymce.init({
             }
         });
 
-        editor.addButton('insertComponent', {
+        editor.addButton('insertWidget', {
             type: 'menubutton',  // Define the button as a dropdown menu
-            text: 'Insert Component',
+            text: 'Insert Widget',
             icon: false,
             menu: [
               {
@@ -662,9 +662,6 @@ document.getElementById('resetBtn').addEventListener('click', () => {
     document.getElementById('filename').value = '';
 })
 
-//guide button
-document.getElementById('importBtn').addEventListener('click', () => {
-})
 
 //dropdown region option
 let tncRegionDropdown = document.getElementById('tnc-regions-dropdown');
@@ -1201,4 +1198,20 @@ document.getElementById('preview-dropdown').addEventListener('change', () => {
 document.getElementById('hidePreview').addEventListener('click', () => {
     document.getElementById('preview-section').classList.toggle('hidden');
     document.getElementById('preview-overlay').classList.toggle('hidden');
+})
+
+//show guide
+const showGuide = document.getElementById('guideBtn').onclick = () => {document.getElementById('guide-container').classList.remove('hidden')}
+const hideGuide = document.getElementById('hideGuide').onclick = () => {document.getElementById('guide-container').classList.add('hidden')}
+document.getElementById('definitionBtn').addEventListener('click', () => {
+    document.getElementById('video').classList.add('hidden');
+    document.getElementById('videoBtn').classList.replace('bg-[#ff8906]', 'bg-neutral-200');
+    document.getElementById('definition').classList.remove('hidden');
+    document.getElementById('definitionBtn').classList.replace('bg-neutral-200','bg-[#ff8906]');
+})
+document.getElementById('videoBtn').addEventListener('click', () => {
+    document.getElementById('definition').classList.add('hidden');
+    document.getElementById('definitionBtn').classList.replace('bg-[#ff8906]', 'bg-neutral-200');
+    document.getElementById('video').classList.remove('hidden');
+    document.getElementById('videoBtn').classList.replace('bg-neutral-200', 'bg-[#ff8906]');
 })

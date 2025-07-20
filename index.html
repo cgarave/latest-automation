@@ -68,7 +68,7 @@
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-refresh"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
                     <p class="truncate hidden group-hover:block">RESET CONTENT</p>
                 </button>    
-                <button id="importBtn" class="bg-neutral-800 rounded-[4px] p-3 font-medium text-xs text-white h-fit flex flex-row gap-x-1 items-center cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-22 transition-translate duration-300 ease-in-out">
+                <button id="guideBtn" class="bg-neutral-800 rounded-[4px] p-3 font-medium text-xs text-white h-fit flex flex-row gap-x-1 items-center cursor-pointer hover:outline outline-[#ff9200] group w-10 hover:w-22 transition-translate duration-300 ease-in-out">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-help-square-rounded"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
                     <p class="truncate hidden group-hover:block">GUIDE</p>
                 </button>
@@ -99,8 +99,8 @@
                         <select id="template-dropdown" class="bg-transparent border-none outline-none w-44 h-10 py-2 cursor-pointer">
                             <option value="#">Select template</option>
                             <option value="SCFP">Default</option>
-                            <option value="SC">Significant Conditions only</option>
-                            <option value="FP">Full Promotion only</option>
+                            <option value="SC">Significant Conditions</option>
+                            <option value="FP">Full Promotion Specific Terms and Conditions</option>
                         </select>
                     </li>
                 </ol>
@@ -150,7 +150,7 @@
             <div class="w-full h-full overflow-scroll bg-white relative">
                 <nav class="w-full h-16 bg-neutral-800 flex flex-row justify-between items-center px-5 sticky top-0">
                     <ul class="flex flex-row gap-x-8 items-center font-semibold text-neutral-400 text-xs">
-                        <li><img id="light-logo" style="width: 60px;" src="https://www.sbbanner.com/newsletter/newsletter-template-2024/188-light.png"></li>
+                        <li><img id="light-logo" style="width: 60px;" src="https://sbbanner.com/newsletter/taptap-newsletter-assets/taptap-logo.png"></li>
                         <li>Sports</li>
                         <li>Casino</li>
                         <li>Live Casino</li>
@@ -256,6 +256,110 @@
         </div>
         <div class="flex flex-row gap-x-2 justify-end">
             <button id="close-insert-image-container" class="bg-neutral-800 rounded-[4px] p-2 font-medium text-xs text-white h-fit flex flex-row gap-x-1 items-center cursor-pointer outline outline-[#ff9200]">CANCEL</button>
+        </div>
+    </div>
+    <!--Guide-->
+    <div id="guide-container" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white overflow-hidden p-4 rounded-md h-[800px] w-[1000px] flex flex-col shadow-[0_0_12px_6px_rgba(0,0,0,0.3)] select-none">
+        <div class="flex flex-row justify-between">
+            <div class="flex flex-col">
+                <h1 class="font-semibold">Guide</h1>
+                <p class="text-xs mb-2">An intensive guide on how to use the automation</p>
+            </div>
+            <button id="hideGuide" class="bg-neutral-900 rounded-[4px] p-3 text-white h-fit flex items-center cursor-pointer hover:outline outline-[#ff9200]">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+            </button>
+        </div>
+        <div class="flex flex-row gap-x-2 w-full text-xs font-semibold mb-4">
+            <button id="definitionBtn" class="p-2 bg-[#ff8906] rounded-md cursor-pointer">Definition of Terms</button>
+            <button id="videoBtn" class="p-2 bg-neutral-200 rounded-md cursor-pointer">Videos</button>
+        </div>
+        <div id="definition" class="text-xs flex flex-col gap-y-2 overflow-scroll">
+            <p><b>TNC Automation</b> - a system that automates the creation of TNC HTML file. Users can copy/paste their TNCs from docx file or create their own from scratch using the automation's power editor.</p>
+            <p><b>Changelog</b> - a log to see all the updates and changes done to the system.</p>
+            <p><b>TNC File Name</b> - user must input the file name of their TNC before downloading the file. (ex. MY_SPPT_11_Dec_2025_005)</p>
+            <p><b>Convert APS</b> - converts APS code to HTML filename.</p>
+            <p><b>Reset Editor</b> - resets the entire editor.</p>
+            <p><b>Select Region</b> - a dropdown containing all taptap regions. Each region has their own TNC template. User must select region before creating TNC. After selecting a region, a generated text will appear at the editor.</p>
+            <p><b>Select Template</b> - a dropdown containing all TNC templates.</p>
+            <p><b>Preview</b> - Preview of TNC Promotion when deployed to the production.</p>
+            <p><b>Import TNC</b> - an upload button for importing TNC html file. A feature where the users can import and edit their existing TNCs. Imported file will create a new file after the download (This is to protect the old file and serve as a backup file).</a></p>
+            <p><b>Download</b> - a button to download the file created by the user.</p>
+        </div>
+        <div id="video" class="overflow-scroll hidden">
+            <div id="" class="grid grid-cols-3 gap-4">
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="convert-aps.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to use <b>CONVERT APS</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="reset-content.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to use <b>RESET CONTENT</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="select-template.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to <b>SELECT REGION and TEMPLATE</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="preview.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to <b>PREVIEW</b> a TNC</h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="import-html.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to <b>IMPORT TNC HTML</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="add-table.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to add, copy, and paste a <b>TABLE</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="insert-tables-2.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to add, copy, and paste a <b>TABLE</b> inside a list</h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="ordered-list.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to add a <b>LIST NUMBERS</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="unordered-list.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to add a <b>LIST BULLETS</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="add-link.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to add <b>LINKS</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="edit-link.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to edit <b>LINKS</b></h1>
+                </div>
+                <div class="flex flex-col gap-y-2 rounded-md bg-neutral-800 overflow-hidden">
+                    <video controls loop autoplay muted class="w-full">
+                        <source src="insert-sportsbook.mp4" type="video/mp4">
+                    </video>
+                    <h1 class="text-xs px-2 pb-2 text-white">How to add <b>SPORTSBOOK WIDGETS</b></h1>
+                </div>
+            </div>
         </div>
     </div>
 </body>

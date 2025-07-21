@@ -89,7 +89,8 @@ tinymce.init({
     height: 700,
     width: 1000,
     statusbar: false, //disabling status bar
-    protect: [ //protects the codes from deletion when inserting content to the editors. Tinymce doesn't accept these type of codes and will delete upon importing unless declared to protect plugin.
+    protect: [ 
+        //protects the codes from deletion when inserting content to the editors. Tinymce doesn't accept these type of codes and will delete upon importing unless declared to protect plugin.
         //init codes
         /<script src="https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/3.6.0\/jquery.min.js"><\/script>/g,
         /<script>\$\(function \(\) { \$\("#webteam-ss"\).attr\("href", "https:\/\/doc.188contents.com\/contents\/Components\/webteam\/webteam.css\?" \+ \$.now\(\)\); }\);<\/script>/g,
@@ -131,13 +132,6 @@ tinymce.init({
         { title: 'Promotion General Terms and Conditions', value: 'https://www.taptap.asia/en-gb/promotions#promo_gen_terms' },
         { title: 'Standard Terms and Conditions', value: 'https://www.taptap.asia/en-gb/corporate-affairs/terms-and-conditions' },
     ],
-    // valid_styles: {
-    //     'ol': 'list-style-type',
-    //     'p': 'text-align',
-    //     'div': 'text-align',
-    //     'span': 'color',
-    //     'img': 'margin, margin-left, margin-right'
-    // },
     content_style: `
                   body {
                     padding: 20px;
@@ -185,7 +179,6 @@ tinymce.init({
             .replace(/data-celllook="(.*?)"/g, '')
             .replaceAll('<em>', '')
             .replaceAll('</em>', '')
-            //.replace(/<td(.*?)>/g, '<td>')
             
             //imported IncludeContent
             //indonesia
@@ -214,11 +207,6 @@ tinymce.init({
             .replace(/<scard class="my-4 bg-secondary">\s*<ssectionheading dark="" divider="" contained="" title-tag="h4">\s*<span class="text-subtitle-1">\s*(.*?)\s*<\/span>\s*<\/ssectionheading>\s*<slist>\s*<slistitem dark="" class="md:hover:bg-secondary--darken-4">\s*<template #prependavatar="">\s*<savatar src="https:\/\/doc.188contents.com\/star4-content\/images\/live\/(.*?)\/(.*?)-4x3-sm.webp" alt="(.*?)" size="40" class="!rounded-lg ml-6">\s*<\/savatar>\s*<\/template>\s*(.*?)\s*<template #appendaction="">\s*<gamelauncher v-slot="\{openGame\}" product="live" game="(.*?)">\s*<sbutton @click="openGame\(\)" v-if="breakpoints.smAndUp" color="text-light--high" class="bg-primary--darken-5 hover:text-light--high mr-6">\s*(.*?)\s*<\/sbutton>\s*<sbutton @click="openGame\(\)" v-else="" dark="" icon-only="" flat="" rounded="" class="mr-6">\s*<sicon>\s*icon-arrow-right\s*<\/sicon>\s*<\/sbutton>\s*<\/gamelauncher>\s*<\/template>\s*<\/slistitem>\s*<slistitem dark="" class="md:hover:bg-secondary--darken-4">\s*<template #prependavatar="">\s*<savatar src="https:\/\/doc.188contents.com\/star4-content\/images\/live\/(.*?)\/(.*?)-4x3-sm.webp" alt="(.*?)" size="40" class="!rounded-lg ml-6">\s*<\/savatar>\s*<\/template>\s*(.*?)\s*<template #appendaction="">\s*<gamelauncher v-slot="\{openGame\}" product="live" game="(.*?)">\s*<sbutton @click="openGame\(\)" v-if="breakpoints.smAndUp" color="text-light--high" class="bg-primary--darken-5 hover:text-light--high mr-6">\s*(.*?)\s*<\/sbutton>\s*<sbutton @click="openGame\(\)" v-else="" dark="" icon-only="" flat="" rounded="" class="mr-6">\s*<sicon>\s*icon-arrow-right\s*<\/sicon>\s*<\/sbutton>\s*<\/gamelauncher>\s*<\/template>\s*<\/slistitem>\s*<slistitem dark="" class="md:hover:bg-secondary--darken-4">\s*<template #prependavatar="">\s*<savatar src="https:\/\/doc.188contents.com\/star4-content\/images\/live\/(.*?)\/(.*?)-4x3-sm.webp" alt="(.*?)" size="40" class="!rounded-lg ml-6">\s*<\/savatar>\s*<\/template>\s*(.*?)\s*<template #appendaction="">\s*<gamelauncher v-slot="\{openGame\}" product="live" game="(.*?)">\s*<sbutton @click="openGame\(\)" v-if="breakpoints.smAndUp" color="text-light--high" class="bg-primary--darken-5 hover:text-light--high mr-6">\s*(.*?)\s*<\/sbutton>\s*<sbutton @click="openGame\(\)" v-else="" dark="" icon-only="" flat="" rounded="" class="mr-6">\s*<sicon>\s*icon-arrow-right\s*<\/sicon>\s*<\/sbutton>\s*<\/gamelauncher>\s*<\/template>\s*<\/slistitem>\s*<slistitem dark="" class="md:hover:bg-secondary--darken-4">\s*<template #prependavatar="">\s*<savatar src="https:\/\/doc.188contents.com\/star4-content\/images\/live\/(.*?)\/(.*?)-4x3-sm.webp" alt="(.*?)" size="40" class="!rounded-lg ml-6">\s*<\/savatar>\s*<\/template>\s*(.*?)\s*<template #appendaction="">\s*<gamelauncher v-slot="\{openGame\}" product="live" game="(.*?)">\s*<sbutton @click="openGame\(\)" v-if="breakpoints.smAndUp" color="text-light--high" class="bg-primary--darken-5 hover:text-light--high mr-6">\s*(.*?)\s*<\/sbutton>\s*<sbutton @click="openGame\(\)" v-else="" dark="" icon-only="" flat="" rounded="" class="mr-6">\s*<sicon>\s*icon-arrow-right\s*<\/sicon>\s*<\/sbutton>\s*<\/gamelauncher>\s*<\/template>\s*<\/slistitem>\s*<slistitem dark="" class="md:hover:bg-secondary--darken-4">\s*<template #prependavatar="">\s*<savatar src="https:\/\/doc.188contents.com\/star4-content\/images\/live\/(.*?)\/(.*?)-4x3-sm.webp" alt="(.*?)" size="40" class="!rounded-lg ml-6">\s*<\/savatar>\s*<\/template>\s*(.*?)\s*<template #appendaction="">\s*<gamelauncher v-slot="\{openGame\}" product="live" game="(.*?)">\s*<sbutton @click="openGame\(\)" v-if="breakpoints.smAndUp" color="text-light--high" class="bg-primary--darken-5 hover:text-light--high mr-6">\s*(.*?)\s*<\/sbutton>\s*<sbutton @click="openGame\(\)" v-else="" dark="" icon-only="" flat="" rounded="" class="mr-6">\s*<sicon>\s*icon-arrow-right\s*<\/sicon>\s*<\/sbutton>\s*<\/gamelauncher>\s*<\/template>\s*<\/slistitem>\s*<\/slist>\s*<\/scard>/g, '<table id="game-list-5" class="non-editable"><tbody><tr><td colspan="5">$1</td></tr><tr><td colspan="5">live</td></tr><tr><td>$2</td><td>$3</td><td>$5</td><td>$6</td><td>$7</td></tr><tr><td>$8</td><td>$9</td><td>$11</td><td>$12</td><td>$13</td></tr><tr><td>$14</td><td>$15</td><td>$17</td><td>$18</td><td>$19</td></tr><tr><td>$20</td><td>$21</td><td>$23</td><td>$24</td><td>$25</td></tr><tr><td>$26</td><td>$27</td><td>$29</td><td>$30</td><td>$31</td></tr></tbody></table><br>')
             //casino list
             .replace(/<scard class="my-4 bg-secondary">\s*<ssectionheading dark="" divider="" contained="" title-tag="h4">\s*<span class="text-subtitle-1">\s*(.*?)\s*<\/span>\s*<\/ssectionheading>\s*<slist>\s*<slistitem dark="" class="md:hover:bg-secondary--darken-4">\s*<template #prependavatar="">\s*<savatar src="https:\/\/doc.188contents.com\/star4-content\/images\/casino\/(.*?)\/(.*?)\/(.*?)-4x3-sm.webp" alt="(.*?)" size="40" class="!rounded-lg ml-6">\s*<\/savatar>\s*<\/template>\s*(.*?)\s*<template #appendaction="">\s*<gamelauncher v-slot="\{openGame\}" product="casino" game="(.*?)">\s*<sbutton @click="openGame\(\)" v-if="breakpoints.smAndUp" color="text-light--high" class="bg-primary--darken-5 hover:text-light--high mr-6">\s*(.*?)\s*<\/sbutton>\s*<sbutton @click="openGame\(\)" v-else="" dark="" icon-only="" flat="" rounded="" class="mr-6">\s*<sicon>\s*icon-arrow-right\s*<\/sicon>\s*<\/sbutton>\s*<\/gamelauncher>\s*<\/template>\s*<\/slistitem>\s*<\/slist>\s*<\/scard>/g, '<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">$1</td></tr><tr><td colspan="5">casino</td></tr><tr><td>$2</td><td>$3</td><td>$6</td><td>$7</td><td>$8</td></tr></tbody></table><br>')
-            .replace()
-            .replace()
-            .replace()
-            .replace()
-
 
             //imported file links
             .replace(/<a :href="`(.*?)`">/g, '<a href="`$1`">')
@@ -229,8 +217,11 @@ tinymce.init({
             .replace(/<div class="border rounded mb-4 table-responsive">\s*<table class="w-full border-collapse border-spacing-0 text-center">/g, '<table class="w-full border-collapse border-spacing-0 text-center">')
             .replace(/<\/table>\s*<\/div>/g, '</table>')
 
-            //This section is to add the editable class to the imported file
+            //removing p tag inside td when copying texts from MS word
+            .replace(/<td(.*?)>\s*<p(.*?)>/g, '<td $1>')
+            .replace(/<\/p>\s*<\/td>/g, '</td>')
 
+            //This section is to add the editable class to the imported file
             .replace(/<div id="(.*?)" class="tnc-content-wrap\s*">/g, '<div id="$1" class="tnc-content-wrap non-editable">')
             .replace(/<div class="contentwrap tnc-content-format\s*">/g, '<div class="contentwrap tnc-content-format non-editable">')
 
@@ -242,14 +233,11 @@ tinymce.init({
             .replaceAll('<div class="">', '')
             .replace(/<h2 class="mb-4 font-semibold text-body-1\s*">(.*?)<\/h2>/g, '<h2 class="mb-4 font-semibold text-body-1 mceEditable">$1</h2><div class="mceEditable">')
 
-            //backup -- this causes the IMPORT of full promotion only template to break
-            // .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
-            // .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
-
             .replace(/<h2 class="m-4 font-semibold text-body-1\s*">/g, '<h2 class="m-4 font-semibold text-body-1 mceEditable">') //full promotion title
             .replace(/<div class="full-promotion-content\s*">/g, '<div class="full-promotion-content mceEditable">') //full promotion content
             
-            if(event.content.match(/<div class="mceEditable">/g)){ //fixes the issues when importing full promotion only template. It will add </div> at the start of SExpansionPanel when the imported content has Significant Conditions
+            if(event.content.match(/<div class="mceEditable">/g)){ 
+                //fixes the issues when importing full promotion only template. It will add </div> at the start of SExpansionPanel when the imported content has Significant Conditions
                 event.content = event.content
                 .replace(/<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
                 .replace(/<\/div>\s*<\/div>\s*<sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">/g, '</div><sexpansionpanel class="last:rounded-b-lg border-0" header-class="bg-transparent" content-class="last:rounded-b-lg">')
@@ -559,13 +547,6 @@ tinymce.init({
         editor.on('keyup', function(event) {
             if (event.keyCode === 8) {
                 const selectedNode = editor.selection.getNode();
-
-                //Dear Programmer,
-                //When I wrote this code, only god and I knew how it worked.
-                //Now, only god knows it!
-                //Therefore, if you are trying to optimize this routine and it fails,
-                //Please increase this counter as a warning for the next person:
-                //total_hours_wasted: 53
               
                 // Case: parent is mceEditable
                 const parent = selectedNode.parentElement;
@@ -597,25 +578,24 @@ tinymce.init({
         //     }
         // });
 
-        
 
-        editor.on('focus', function () {
-            console.log('Focused:', editor.id);
-            if (editor.id === 'mytextarea2') {
-                document.getElementById("game-image-1").readOnly = true;
-                document.getElementById("game-image-2").readOnly = true;
-                document.getElementById("game-image-3").readOnly = true;
-                document.getElementById("game-image-4").readOnly = true;
-                document.getElementById("game-image-5").readOnly = true;
-            }
-            if (editor.id === 'mytextarea') {
-                document.getElementById("game-image-1").readOnly = false;
-                document.getElementById("game-image-2").readOnly = false;
-                document.getElementById("game-image-3").readOnly = false;
-                document.getElementById("game-image-4").readOnly = false;
-                document.getElementById("game-image-5").readOnly = false;
-            }
-        });
+        // editor.on('focus', function () {
+        //     console.log('Focused:', editor.id);
+        //     if (editor.id === 'mytextarea2') {
+        //         document.getElementById("game-image-1").readOnly = true;
+        //         document.getElementById("game-image-2").readOnly = true;
+        //         document.getElementById("game-image-3").readOnly = true;
+        //         document.getElementById("game-image-4").readOnly = true;
+        //         document.getElementById("game-image-5").readOnly = true;
+        //     }
+        //     if (editor.id === 'mytextarea') {
+        //         document.getElementById("game-image-1").readOnly = false;
+        //         document.getElementById("game-image-2").readOnly = false;
+        //         document.getElementById("game-image-3").readOnly = false;
+        //         document.getElementById("game-image-4").readOnly = false;
+        //         document.getElementById("game-image-5").readOnly = false;
+        //     }
+        // });
         
     },
 });
@@ -638,7 +618,6 @@ const generateFilenameBtn = document.getElementById('generateFilename')
 generateFilenameBtn.addEventListener('click', () => {
     let input = document.getElementById('filename').value
     let indexOf_ = input.indexOf('_')
-    //let promoType = input.slice(indexOf_ + 1, indexOf_ + 5) + '_'
     let country = input.substr(0, indexOf_ + 1)
     let promoType = input.substr(indexOf_ + 1, 4)
     let year = input.substr(indexOf_ + 5, 4)
@@ -658,7 +637,6 @@ document.getElementById('resetBtn').addEventListener('click', () => {
     tncTemplateDropdown.value = '#'
     tncRegionDropdown.parentElement.classList.remove('hidden');
     document.getElementById('template-container').classList.add('hidden')
-    //document.getElementById('import-check').checked = false;
     document.getElementById('filename').value = '';
 })
 
@@ -925,6 +903,7 @@ function previewContent(lang) {
 
         //replacing tables
         .replace(/<table(.*?)>/g, '<table class="border w-full border-collapse border-spacing-0 text-center">')
+        .replace(/<td(.*?)>/g, '<td class="p-4" $1>')
         .replaceAll('<tbody>', '<tbody class="divide-y">')
         .replaceAll('</table>', '</table><br>')
         //.replace(/<td nowrap="nowrap" width="(.*?)">/g, '<td width="$1">')
@@ -1080,6 +1059,14 @@ document.getElementById('download').addEventListener('click', () => {
         //replacing taptap link
             .replace(/:href="https:\/\/www.taptap.asia\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
             .replace(/<a href="https:\/\/www.taptap.asia\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.taptap.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.taptap.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.taptap.mobi\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.taptap.mobi\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.dian2188.com\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.dian2188.com\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
+            .replace(/:href="https:\/\/www.cubcub.asia\/[^/]*\/([^>]*)">/g, ':href="`/${gv.lan}/$1`">')
+            .replace(/<a href="https:\/\/www.cubcub.asia\/[^/]*\/([^>]*)">/g, '<a :href="`/${gv.lan}/$1`">')
         
         //replacing list styles
             .replaceAll('<ol>', '<ol class="list-decimal pl-8 mb-4">')

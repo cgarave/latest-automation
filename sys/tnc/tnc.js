@@ -8,8 +8,8 @@ const image_lib = {
             'https://doc.188contents.com/star4-content/templates/promotions/images/en-USDT.png',
             'https://doc.188contents.com/star4-content/templates/promotions/images/cn-USDT.png',
             ],
-    indonesia: ['https://doc-cdn.stcb18x1.com/star4-content/images/banners/promotion/2025-03-Mar/BDAYPROMO-0225/BDAYPROMO-0225.png?v=7',
-                'https://doc-cdn.stcb18x1.com/star4-content/images/banners/promotion/2024-06-Jun/EUROREDEPOLEJ-0624/EUROREDEPOLEJ-0624-image01.webp'
+    indonesia: ['https://doc.188contents.com/star4-content/images/banners/promotion/2025-03-Mar/BDAYPROMO-0225/BDAYPROMO-0225.png?v=7',
+                'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/EUROREDEPOLEJ-0624/EUROREDEPOLEJ-0624-image01.webp'
             ]
 }
 document.getElementById('zh-image-array-container').innerHTML = `${image_lib.china.map(chinaAssets => `<img src="${chinaAssets}" class="zh-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
@@ -65,7 +65,7 @@ tinymce.PluginManager.add('customcontextmenu', function(editor) {
 tinymce.init({
     selector: '#mytextarea, #mytextarea2', //selecting two editor
     plugins: 'advlist lists code table image link paste noneditable textcolor contextmenu customcontextmenu',
-    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough | insertWidget insertImage',
+    toolbar: 'code table | numlist bullist | image link | indent outdent | alignleft aligncenter alignright alignjustify | forecolor bold italic underline strikethrough superscript | insertWidget | insertImage | insertRecommendedTable | insertRecommendedList',
     contextmenu: 'editNumbering link image',
     menubar: false,  // Disable the menubar entirely
     //editable_class: 'mceEditable',  //editable class tinymce 7
@@ -159,7 +159,7 @@ tinymce.init({
             event.content = event.content
             .replaceAll('</ol><ul>', '')
             .replaceAll('</ul><ol>', '')
-            .replaceAll('<p> </p>', '<br>')
+            .replace(/<p(.*?)> <\/p>/g, '<br>')
 
             //this section is for removing unnecessary html elements exported from my old automation
             .replace(/<div id="(.*?)" class="hidden" style="visibility: hidden; display: none;">1<\/div>/g, '')
@@ -186,6 +186,8 @@ tinymce.init({
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202505\/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202505\/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" \/><\/IncludeContent></h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202505\/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202505\/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" \/><\/IncludeContent></h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5><br>')
             //japan
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">スポーツ専用フリーベットはここで確認<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" \/><\/IncludeContent></h5><br>')
@@ -265,6 +267,201 @@ tinymce.init({
             }
         });
 
+        editor.addButton('insertRecommendedTable', {
+            text: 'Insert Recommended Games Table',  // Text on the button
+            onclick: function() {
+                const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
+                const gameCodesInput = document.getElementById('input-game-codes-container');
+                const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
+                gameCodesInput.classList.remove('hidden');
+                
+                gameCodesInsertBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
+                    document.getElementById('input-game-codes-container').classList.add('hidden');
+                    editor.insertContent(`<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">${numberOfGames.value}</td></tr><tr><td style="display: none;">${gameProduct.value}</td></tr><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table><br>`)
+                }
+                cancelGameCodesBtn.onclick = () => {
+                    gameCodesInput.classList.add('hidden');
+                }
+            }
+        });
+
+        editor.addButton('insertRecommendedList', {
+            text: 'Insert Recommended Games List',  // Text on the button
+            onclick: function() {
+
+                //variables for card, dropdown, insert/cancel button
+                const gameListInput = document.getElementById('input-game-list-container');
+                const numberOfListGames = document.getElementById('input-list-numberOf-games');
+                const gameListInsertBtn = document.getElementById('gameListInsertBtn');
+                const cancelGameListBtn = document.getElementById('cancelGameListBtn');
+                gameListInput.classList.remove('hidden');
+                
+
+                numberOfListGames.addEventListener('change', () => {
+                    let selectedList = numberOfListGames.value;
+
+                    switch(selectedList) {
+                        case '1':
+                            document.getElementById('div-list-container').innerHTML = gameListTemplates.list1;
+                            gameListInsertBtn.onclick = () => {
+                                let gameListTitle = document.getElementById('gameListTitle');
+                                let gameProduct = document.getElementById('game-product');
+
+                                let gameProvider = document.getElementById('game-provider-1');
+                                let gameName = document.getElementById('game-name-1');
+                                let gameImage = document.getElementById('game-image-1');
+                                gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                //let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode = document.getElementById('game-code-1');
+                                let gameCTA = document.getElementById('cta-1');
+
+                                tinymce.activeEditor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr></tbody></table><br>`)
+                            }
+                            break;
+                        case '2':
+                            document.getElementById('div-list-container').innerHTML = gameListTemplates.list2;
+                            gameListInsertBtn.onclick = () => {
+                                let gameListTitle = document.getElementById('gameListTitle');
+                                let gameProduct = document.getElementById('game-product');
+
+                                let gameProvider = document.getElementById('game-provider-1');
+                                let gameName = document.getElementById('game-name-1');
+                                let gameImage = document.getElementById('game-image-1');
+                                gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode = document.getElementById('game-code-1');
+                                let gameCTA = document.getElementById('cta-1');
+
+                                let gameProvider2 = document.getElementById('game-provider-2');
+                                let gameName2 = document.getElementById('game-name-2');
+                                let gameImage2 = document.getElementById('game-image-2');
+                                gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode2 = document.getElementById('game-code-2');
+                                let gameCTA2 = document.getElementById('cta-2');
+
+                                tinymce.activeEditor.insertContent(`<table id="game-list-2" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr></tbody></table><br>`)
+                            }
+                            break;
+                        case '3':
+                            document.getElementById('div-list-container').innerHTML = gameListTemplates.list3;
+                            gameListInsertBtn.onclick = () => {
+                                let gameListTitle = document.getElementById('gameListTitle');
+                                let gameProduct = document.getElementById('game-product');
+
+                                let gameProvider = document.getElementById('game-provider-1');
+                                let gameName = document.getElementById('game-name-1');
+                                let gameImage = document.getElementById('game-image-1');
+                                gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode = document.getElementById('game-code-1');
+                                let gameCTA = document.getElementById('cta-1');
+
+                                let gameProvider2 = document.getElementById('game-provider-2');
+                                let gameName2 = document.getElementById('game-name-2');
+                                let gameImage2 = document.getElementById('game-image-2');
+                                gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode2 = document.getElementById('game-code-2');
+                                let gameCTA2 = document.getElementById('cta-2');
+
+                                let gameProvider3 = document.getElementById('game-provider-3');
+                                let gameName3 = document.getElementById('game-name-3');
+                                let gameImage3 = document.getElementById('game-image-3');
+                                gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode3 = document.getElementById('game-code-3');
+                                let gameCTA3 = document.getElementById('cta-3');
+                                
+                                tinymce.activeEditor.insertContent(`<table id="game-list-3" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr></tbody></table><br>`)
+                            }
+                            break;
+                        case '4':
+                            document.getElementById('div-list-container').innerHTML = gameListTemplates.list4;
+                            gameListInsertBtn.onclick = () => {
+                                let gameListTitle = document.getElementById('gameListTitle');
+                                let gameProduct = document.getElementById('game-product');
+
+                                let gameProvider = document.getElementById('game-provider-1');
+                                let gameName = document.getElementById('game-name-1');
+                                let gameImage = document.getElementById('game-image-1');
+                                gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode = document.getElementById('game-code-1');
+                                let gameCTA = document.getElementById('cta-1');
+
+                                let gameProvider2 = document.getElementById('game-provider-2');
+                                let gameName2 = document.getElementById('game-name-2');
+                                let gameImage2 = document.getElementById('game-image-2');
+                                gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode2 = document.getElementById('game-code-2');
+                                let gameCTA2 = document.getElementById('cta-2');
+
+                                let gameProvider3 = document.getElementById('game-provider-3');
+                                let gameName3 = document.getElementById('game-name-3');
+                                let gameImage3 = document.getElementById('game-image-3');
+                                gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode3 = document.getElementById('game-code-3');
+                                let gameCTA3 = document.getElementById('cta-3');
+
+                                let gameProvider4 = document.getElementById('game-provider-4');
+                                let gameName4 = document.getElementById('game-name-4');
+                                let gameImage4 = document.getElementById('game-image-4');
+                                gameImage4 = gameImage4.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode4 = document.getElementById('game-code-4');
+                                let gameCTA4 = document.getElementById('cta-4');
+
+                                tinymce.activeEditor.insertContent(`<table id="game-list-4" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProvider4.value}</td><td>${gameImage4}</td><td>${gameName4.value}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr></tbody></table><br>`)
+                            }
+                            break;
+                        case '5':
+                            document.getElementById('div-list-container').innerHTML = gameListTemplates.list5;
+                            gameListInsertBtn.onclick = () => {
+                                let gameListTitle = document.getElementById('gameListTitle');
+                                let gameProduct = document.getElementById('game-product');
+
+                                let gameProvider = document.getElementById('game-provider-1');
+                                let gameName = document.getElementById('game-name-1');
+                                let gameImage = document.getElementById('game-image-1');
+                                gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode = document.getElementById('game-code-1');
+                                let gameCTA = document.getElementById('cta-1');
+
+                                let gameProvider2 = document.getElementById('game-provider-2');
+                                let gameName2 = document.getElementById('game-name-2');
+                                let gameImage2 = document.getElementById('game-image-2');
+                                gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode2 = document.getElementById('game-code-2');
+                                let gameCTA2 = document.getElementById('cta-2');
+
+                                let gameProvider3 = document.getElementById('game-provider-3');
+                                let gameName3 = document.getElementById('game-name-3');
+                                let gameImage3 = document.getElementById('game-image-3');
+                                gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode3 = document.getElementById('game-code-3');
+                                let gameCTA3 = document.getElementById('cta-3');
+
+                                let gameProvider4 = document.getElementById('game-provider-4');
+                                let gameName4 = document.getElementById('game-name-4');
+                                let gameImage4 = document.getElementById('game-image-4');
+                                gameImage4 = gameImage4.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode4 = document.getElementById('game-code-4');
+                                let gameCTA4 = document.getElementById('cta-4');
+
+                                let gameProvider5 = document.getElementById('game-provider-5');
+                                let gameName5 = document.getElementById('game-name-5');
+                                let gameImage5 = document.getElementById('game-image-5');
+                                gameImage5 = gameImage5.value.toLowerCase().replace(/\s+/g, '-').trim();
+                                let gameCode5 = document.getElementById('game-code-5');
+                                let gameCTA5 = document.getElementById('cta-5');
+
+                                tinymce.activeEditor.insertContent(`<table id="game-list-5" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProvider4.value}</td><td>${gameImage4}</td><td>${gameName4.value}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr><tr><td>${gameProvider5.value}</td><td>${gameImage5}</td><td>${gameName5.value}</td><td>${gameCode5.value}</td><td>${gameCTA5.value}</td></tr></tbody></table><br>`)
+                            }
+                            break;
+                    }
+                    
+                })
+
+                cancelGameListBtn.onclick = () => {
+                    gameListInput.classList.add('hidden');
+                }
+            }
+        });
+
         editor.addButton('insertWidget', {
             type: 'menubutton',  // Define the button as a dropdown menu
             text: 'Insert Widget',
@@ -295,6 +492,18 @@ tinymce.init({
                         text: '[ID-ID] Where to find your Free Spins',
                         onclick: function() {
                           editor.insertContent('<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ \'\/templates\/promotions\/Indonesia\/202505\/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" \/><\/IncludeContent></h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[EN-GB] Where to find your Lotto Free Bet?',
+                        onclick: function() {
+                          editor.insertContent('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5><br>');  // Insert content on selection
+                        }
+                    },
+                    {
+                        text: '[ID-ID] Dimana Anda dapat menemukan Free bet Lotto?',
+                        onclick: function() {
+                          editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5><br>');  // Insert content on selection
                         }
                     },
                 ]
@@ -339,201 +548,6 @@ tinymce.init({
                         }
                     },
                 ]
-              },
-              {
-                text: 'Recommended Games Table',
-                tooltip: 'Insert recommended games component',
-                onclick: function() {
-                    const gameCodesInsertBtn = document.getElementById('gameCodesInsertBtn');
-                    const gameCodesInput = document.getElementById('input-game-codes-container');
-                    const cancelGameCodesBtn = document.getElementById('cancelGameCodesBtn');
-                    gameCodesInput.classList.remove('hidden');
-                    gameCodesInsertBtn.onclick = () => { //onclick resolves the issue of duplicating click event when insert button is clicked using addEventListener
-                        document.getElementById('input-game-codes-container').classList.add('hidden');
-                        console.log(numberOfGames.dataset);
-                        editor.insertContent(`<table id="game-icons-1" class="non-editable"><tbody><tr><td style="display: none;">${numberOfGames.value}</td></tr><tr><td style="display: none;">${gameProduct.value}</td></tr><tr><td>${gameTitle.value}</td></tr><tr><td>${gameCodes.value}</td></tr></tbody></table><br>`)
-                    }
-                    cancelGameCodesBtn.onclick = () => {
-                        gameCodesInput.classList.add('hidden');
-                    }
-                }
-              },
-              {
-                text: 'Recommended Games List',
-                tooltip: 'Insert recommended games component',
-                onclick: function() {
-
-                    //variables for card, dropdown, insert/cancel button
-                    const gameListInput = document.getElementById('input-game-list-container');
-                    const numberOfListGames = document.getElementById('input-list-numberOf-games');
-                    const gameListInsertBtn = document.getElementById('gameListInsertBtn');
-                    const cancelGameListBtn = document.getElementById('cancelGameListBtn');
-                    gameListInput.classList.remove('hidden');
-                    
-
-                    numberOfListGames.addEventListener('change', () => {
-                        let selectedList = numberOfListGames.value;
-
-                        switch(selectedList) {
-                            case '1':
-                                document.getElementById('div-list-container').innerHTML = gameListTemplates.list1;
-                                gameListInsertBtn.onclick = () => {
-                                    let gameListTitle = document.getElementById('gameListTitle');
-                                    let gameProduct = document.getElementById('game-product');
-
-                                    let gameProvider = document.getElementById('game-provider-1');
-                                    let gameName = document.getElementById('game-name-1');
-                                    let gameImage = document.getElementById('game-image-1');
-                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    //let gameImage = gameName.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode = document.getElementById('game-code-1');
-                                    let gameCTA = document.getElementById('cta-1');
-
-                                    tinymce.activeEditor.insertContent(`<table id="game-list-1" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr></tbody></table><br>`)
-                                }
-                                break;
-                            case '2':
-                                document.getElementById('div-list-container').innerHTML = gameListTemplates.list2;
-                                gameListInsertBtn.onclick = () => {
-                                    let gameListTitle = document.getElementById('gameListTitle');
-                                    let gameProduct = document.getElementById('game-product');
-
-                                    let gameProvider = document.getElementById('game-provider-1');
-                                    let gameName = document.getElementById('game-name-1');
-                                    let gameImage = document.getElementById('game-image-1');
-                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode = document.getElementById('game-code-1');
-                                    let gameCTA = document.getElementById('cta-1');
-
-                                    let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = document.getElementById('game-image-2');
-                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode2 = document.getElementById('game-code-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
-
-                                    tinymce.activeEditor.insertContent(`<table id="game-list-2" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr></tbody></table><br>`)
-                                }
-                                break;
-                            case '3':
-                                document.getElementById('div-list-container').innerHTML = gameListTemplates.list3;
-                                gameListInsertBtn.onclick = () => {
-                                    let gameListTitle = document.getElementById('gameListTitle');
-                                    let gameProduct = document.getElementById('game-product');
-
-                                    let gameProvider = document.getElementById('game-provider-1');
-                                    let gameName = document.getElementById('game-name-1');
-                                    let gameImage = document.getElementById('game-image-1');
-                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode = document.getElementById('game-code-1');
-                                    let gameCTA = document.getElementById('cta-1');
-
-                                    let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = document.getElementById('game-image-2');
-                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode2 = document.getElementById('game-code-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
-
-                                    let gameProvider3 = document.getElementById('game-provider-3');
-                                    let gameName3 = document.getElementById('game-name-3');
-                                    let gameImage3 = document.getElementById('game-image-3');
-                                    gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode3 = document.getElementById('game-code-3');
-                                    let gameCTA3 = document.getElementById('cta-3');
-                                    
-                                    tinymce.activeEditor.insertContent(`<table id="game-list-3" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr></tbody></table><br>`)
-                                }
-                                break;
-                            case '4':
-                                document.getElementById('div-list-container').innerHTML = gameListTemplates.list4;
-                                gameListInsertBtn.onclick = () => {
-                                    let gameListTitle = document.getElementById('gameListTitle');
-                                    let gameProduct = document.getElementById('game-product');
-
-                                    let gameProvider = document.getElementById('game-provider-1');
-                                    let gameName = document.getElementById('game-name-1');
-                                    let gameImage = document.getElementById('game-image-1');
-                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode = document.getElementById('game-code-1');
-                                    let gameCTA = document.getElementById('cta-1');
-
-                                    let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = document.getElementById('game-image-2');
-                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode2 = document.getElementById('game-code-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
-
-                                    let gameProvider3 = document.getElementById('game-provider-3');
-                                    let gameName3 = document.getElementById('game-name-3');
-                                    let gameImage3 = document.getElementById('game-image-3');
-                                    gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode3 = document.getElementById('game-code-3');
-                                    let gameCTA3 = document.getElementById('cta-3');
-
-                                    let gameProvider4 = document.getElementById('game-provider-4');
-                                    let gameName4 = document.getElementById('game-name-4');
-                                    let gameImage4 = document.getElementById('game-image-4');
-                                    gameImage4 = gameImage4.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode4 = document.getElementById('game-code-4');
-                                    let gameCTA4 = document.getElementById('cta-4');
-
-                                    tinymce.activeEditor.insertContent(`<table id="game-list-4" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProvider4.value}</td><td>${gameImage4}</td><td>${gameName4.value}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr></tbody></table><br>`)
-                                }
-                                break;
-                            case '5':
-                                document.getElementById('div-list-container').innerHTML = gameListTemplates.list5;
-                                gameListInsertBtn.onclick = () => {
-                                    let gameListTitle = document.getElementById('gameListTitle');
-                                    let gameProduct = document.getElementById('game-product');
-
-                                    let gameProvider = document.getElementById('game-provider-1');
-                                    let gameName = document.getElementById('game-name-1');
-                                    let gameImage = document.getElementById('game-image-1');
-                                    gameImage = gameImage.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode = document.getElementById('game-code-1');
-                                    let gameCTA = document.getElementById('cta-1');
-
-                                    let gameProvider2 = document.getElementById('game-provider-2');
-                                    let gameName2 = document.getElementById('game-name-2');
-                                    let gameImage2 = document.getElementById('game-image-2');
-                                    gameImage2 = gameImage2.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode2 = document.getElementById('game-code-2');
-                                    let gameCTA2 = document.getElementById('cta-2');
-
-                                    let gameProvider3 = document.getElementById('game-provider-3');
-                                    let gameName3 = document.getElementById('game-name-3');
-                                    let gameImage3 = document.getElementById('game-image-3');
-                                    gameImage3 = gameImage3.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode3 = document.getElementById('game-code-3');
-                                    let gameCTA3 = document.getElementById('cta-3');
-
-                                    let gameProvider4 = document.getElementById('game-provider-4');
-                                    let gameName4 = document.getElementById('game-name-4');
-                                    let gameImage4 = document.getElementById('game-image-4');
-                                    gameImage4 = gameImage4.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode4 = document.getElementById('game-code-4');
-                                    let gameCTA4 = document.getElementById('cta-4');
-
-                                    let gameProvider5 = document.getElementById('game-provider-5');
-                                    let gameName5 = document.getElementById('game-name-5');
-                                    let gameImage5 = document.getElementById('game-image-5');
-                                    gameImage5 = gameImage5.value.toLowerCase().replace(/\s+/g, '-').trim();
-                                    let gameCode5 = document.getElementById('game-code-5');
-                                    let gameCTA5 = document.getElementById('cta-5');
-
-                                    tinymce.activeEditor.insertContent(`<table id="game-list-5" class="non-editable"><tbody><tr><td colspan="5">${gameListTitle.value}</td></tr><tr><td colspan="5">${gameProduct.value}</td></tr><tr><td>${gameProvider.value}</td><td>${gameImage}</td><td>${gameName.value}</td><td>${gameCode.value}</td><td>${gameCTA.value}</td></tr><tr><td>${gameProvider2.value}</td><td>${gameImage2}</td><td>${gameName2.value}</td><td>${gameCode2.value}</td><td>${gameCTA2.value}</td></tr><tr><td>${gameProvider3.value}</td><td>${gameImage3}</td><td>${gameName3.value}</td><td>${gameCode3.value}</td><td>${gameCTA3.value}</td></tr><tr><td>${gameProvider4.value}</td><td>${gameImage4}</td><td>${gameName4.value}</td><td>${gameCode4.value}</td><td>${gameCTA4.value}</td></tr><tr><td>${gameProvider5.value}</td><td>${gameImage5}</td><td>${gameName5.value}</td><td>${gameCode5.value}</td><td>${gameCTA5.value}</td></tr></tbody></table><br>`)
-                                }
-                                break;
-                        }
-                        
-                    })
-
-                    cancelGameListBtn.onclick = () => {
-                        gameListInput.classList.add('hidden');
-                    }
-                }
               },
             ]
         });
@@ -596,7 +610,22 @@ tinymce.init({
         //         document.getElementById("game-image-5").readOnly = false;
         //     }
         // });
-        
+
+        editor.on('init', function () {
+            // Mark .mceEditable areas as editable
+            var editables = editor.getBody().querySelectorAll('.mceEditable');
+            for (var i = 0; i < editables.length; i++) {
+              editables[i].setAttribute('contenteditable', 'true');
+            }
+          });
+    
+          // Optional: prevent keyboard input outside .mceEditable
+          editor.on('keydown', function (e) {
+            var node = editor.selection.getNode();
+            if (!node.closest('.mceEditable')) {
+              e.preventDefault();
+            }
+          }); 
     },
 });
 
@@ -650,6 +679,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'zh-cn':
             document.getElementById('filename').value = 'china_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of CN on image library
 
             tncTemplateDropdown.value = '#'; //resets the value of template dropdown when a user switches the region dropdown value. 
             tinymce.get('mytextarea').setContent('');
@@ -676,6 +706,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'vi-vn':
             document.getElementById('filename').value = 'Vietnam_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of VN on image library
 
             tncTemplateDropdown.value = '#';
             tinymce.get('mytextarea').setContent('');
@@ -702,6 +733,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'th-th':
             document.getElementById('filename').value = 'Thailand_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of TH on image library
 
             tncTemplateDropdown.value = '#';
             tinymce.get('mytextarea').setContent('');
@@ -728,6 +760,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'ko-kr':
             document.getElementById('filename').value = 'Korea_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of KR on image library
 
             tncTemplateDropdown.value = '#';
             tinymce.get('mytextarea').setContent('');
@@ -754,6 +787,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'id-id':
             document.getElementById('filename').value = 'Indonesia_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of ID on image library
 
             tncTemplateDropdown.value = '#';
             tinymce.get('mytextarea').setContent('');
@@ -780,6 +814,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'km-kh':
             document.getElementById('filename').value = 'Cambodia_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of KH on image library
 
             tncTemplateDropdown.value = '#';
             tinymce.get('mytextarea').setContent('');
@@ -806,6 +841,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'ja-jp':
             document.getElementById('filename').value = 'Japan_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of JP on image library
 
             tncTemplateDropdown.value = '#';
             tinymce.get('mytextarea').setContent('');
@@ -832,6 +868,7 @@ tncRegionDropdown.addEventListener('change', () => {
         case 'hi-in':
             document.getElementById('filename').value = 'India_'
             document.getElementById('template-container').classList.remove('hidden')
+            showImageLibraryImages(selectedRegion) //shows images of IN on image library
 
             tncTemplateDropdown.value = '#';
             tinymce.get('mytextarea').setContent('');
@@ -913,7 +950,7 @@ function previewContent(lang) {
         .replaceAll('<p style="text-align: left;">', '<p class="text-left mb-4" style="text-align: left;">')
         .replaceAll('<p style="text-align: right;">', '<p class="text-right mb-4" style="text-align: right;">')
         .replaceAll('<p style="text-align: justify;">', '<p class="text-justify mb-4" style="text-align: justify;">')
-        .replaceAll('<p>', '<p class="mb-4">')
+        //.replaceAll('<p>', '<p class="mb-4">')
 
         //replacing list discs
         .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
@@ -1108,7 +1145,7 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('<p style="text-align: left;">', '<p class="text-left mb-4" style="text-align: left;">')
             .replaceAll('<p style="text-align: right;">', '<p class="text-right mb-4" style="text-align: right;">')
             .replaceAll('<p style="text-align: justify;">', '<p class="text-justify mb-4" style="text-align: justify;">')
-            .replaceAll('<p>', '<p class="mb-4">')
+            //.replaceAll('<p>', '<p class="mb-4">')
 
         //replacing list discs
             .replace(/<ul(.*?)>/g, '<ul class="list-disc pl-8 mb-4"$1>')
@@ -1123,7 +1160,8 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" \/>\s*<\/IncludeContent>\s*<\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
             .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202505\/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'" \/>\s*<\/IncludeContent>\s*<\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202505/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" /></IncludeContent>')
             .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202505\/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'" \/>\s*<\/IncludeContent>\s*<\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202505/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" /></IncludeContent>')
-
+            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             //japan
             .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'" \/>\s*<\/IncludeContent>\s*<\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Japan/202505/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
             .replace(/<h5 class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">スポーツ専用フリーベットはここで確認<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'" \/>\s*<\/IncludeContent>\s*<\/h5>/g, '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
@@ -1136,7 +1174,7 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('<br />', '<br>')
             .replaceAll('<br/>', '<br>')
             .replaceAll('<br><br>', '<br>')
-            .replaceAll('<p> </p>', '<br>')
+            .replace(/<p(.*?)> <\/p>/g, '<br>')
 
         //imports
             .replaceAll('sexpansionpanel', 'SExpansionPanel')
@@ -1149,12 +1187,6 @@ document.getElementById('download').addEventListener('click', () => {
             .replace(/<a href="&#96;(.*?)&#96;">/g, '<a :href="`$1`">')
 
         let finalContent = mergedContent;
-
-        // const parser = new DOMParser();
-        // const doc = parser.parseFromString(finalContent, 'text/html');
-        // const serialized = doc.documentElement.outerHTML;
-        // Beautify before download
-        // const prettyHtml = html_beautify(serialized, { indent_size: 2 });
 
         finalContent = finalContent.replace(/></g, '>\n<');
 
@@ -1202,3 +1234,34 @@ document.getElementById('videoBtn').addEventListener('click', () => {
     document.getElementById('video').classList.remove('hidden');
     document.getElementById('videoBtn').classList.replace('bg-neutral-200', 'bg-[#ff8906]');
 })
+
+//show image library
+function showImageLibraryImages(region) {
+
+    document.getElementById('zh-images').classList.add('hidden');
+    document.getElementById('vn-images').classList.add('hidden');
+    document.getElementById('th-images').classList.add('hidden');
+    document.getElementById('kr-images').classList.add('hidden');
+    document.getElementById('id-images').classList.add('hidden');
+    document.getElementById('kh-images').classList.add('hidden');
+    document.getElementById('jp-images').classList.add('hidden');
+    document.getElementById('in-images').classList.add('hidden');
+
+    if(region == 'zh-cn'){
+        document.getElementById('zh-images').classList.remove('hidden');
+    } else if(region == 'vi-vn'){
+        document.getElementById('vn-images').classList.remove('hidden');
+    } else if(region == 'th-th'){
+        document.getElementById('th-images').classList.remove('hidden');
+    } else if(region == 'ko-kr'){
+        document.getElementById('kr-images').classList.remove('hidden');
+    } else if(region == 'id-id'){
+        document.getElementById('id-images').classList.remove('hidden');
+    } else if(region == 'km-kh'){
+        document.getElementById('kh-images').classList.remove('hidden');
+    } else if(region == 'ja-jp'){
+        document.getElementById('jp-images').classList.remove('hidden');
+    } else if(region == 'hi-in'){
+        document.getElementById('in-images').classList.remove('hidden');
+    }
+}

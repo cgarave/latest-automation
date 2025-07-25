@@ -14,7 +14,7 @@ document.getElementById('whats-new').addEventListener('click', () => {
 
 const update = {
     text: `
-            <p class="p-2 border border-[#ff9200] text-sm rounded-sm text-white">New version of TNC Automation</p>
+            <p class="p-2 border border-[#ff9200] text-sm rounded-sm text-white">TNC Automation version 1 is here!</p>
             <p class="p-2 border border-[#ff9200] text-sm rounded-sm text-white">A new look of TNC Automation. Introduced a clean UI for easier navigation, new tools and more!</p>
             <p class="p-2 border border-[#ff9200] text-sm rounded-sm text-white"><b>Insert Widget:</b> Added new widget for Indonesia</p>
             <p class="p-2 border border-[#ff9200] text-sm rounded-sm text-white"><b>Image Library:</b> Images of every region will only show depending on what region is selected.</p>

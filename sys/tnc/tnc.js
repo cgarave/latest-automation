@@ -159,7 +159,7 @@ tinymce.init({
             event.content = event.content
             .replaceAll('</ol><ul>', '')
             .replaceAll('</ul><ol>', '')
-            .replace(/<p(.*?)> <\/p>/g, '<br>')
+            .replaceAll('<p> </p>', '<br>')
 
             //this section is for removing unnecessary html elements exported from my old automation
             .replace(/<div id="(.*?)" class="hidden" style="visibility: hidden; display: none;">1<\/div>/g, '')

@@ -46,23 +46,17 @@
 
 //Sportsbook Free Bet
 //Indonesia EN & Local
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
 
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202505/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'" /></IncludeContent>
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202505/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'" /></IncludeContent>
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/en-gb_THD-0725-2_where-to-find-your-free-spins.html'" /></IncludeContent>
+//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/id-id_THD-0725-2_where-to-find-your-free-spins.html'" /></IncludeContent>
 
 //<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/en-gb_THD-0725_how-to-participate-in-this-promotion.html'" /></IncludeContent>
 //<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/id-id_THD-0725_how-to-participate-in-this-promotion.html'" /></IncludeContent>
 
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>
-
 //<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html'" /></IncludeContent>
 //<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html'" /></IncludeContent>
-
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/en-gb_THD-0725-2_where-to-find-your-free-spins.html'" /></IncludeContent>
-//<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Indonesia/202507/id-id_THD-0725-2_where-to-find-your-free-spins.html'" /></IncludeContent>
 
 //Japan EN & Local
 //Where to find your sportsbook free bet <IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + '/templates/promotions/Japan/202505/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'" /></IncludeContent>

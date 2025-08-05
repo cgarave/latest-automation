@@ -200,12 +200,16 @@ tinymce.init({
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/china\/202507\/en-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/china\/202507\/zh-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="zh-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">查找您的XJ彩票免费投注金</h5><br>')
             //indonesia
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5><br>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga</h5><br>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202505\/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202505\/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-gb_THD-0725-2_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_THD-0725-2_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-gb_THD-0725_how-to-participate-in-this-promotion.html'">\s*<\/includecontent>/g,'<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_THD-0725_how-to-participate-in-this-promotion.html'">\s*<\/includecontent>/g,'<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html'">\s*<\/includecontent>/g,'<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html'">\s*<\/includecontent>/g,'<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>')
             //japan
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="ja-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">スポーツ専用フリーベットはここで確認</h5><br>')
@@ -577,6 +581,30 @@ tinymce.init({
                             editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5><br>');  // Insert content on selection
                             }
                         },
+                        {
+                            text: '[EN-ID] How to participate in this promotion?',
+                            onclick: function() {
+                            editor.insertContent('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5><br>');  // Insert content on selection
+                            }
+                        },
+                        {
+                            text: '[ID-ID] How to participate in this promotion?',
+                            onclick: function() {
+                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5><br>');  // Insert content on selection
+                            }
+                        },
+                        {
+                            text: '[EN-ID] Where to find your Evolution Free Bet?',
+                            onclick: function() {
+                            editor.insertContent('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5><br>');  // Insert content on selection
+                            }
+                        },
+                        {
+                            text: '[ID-ID] Where to find your Evolution Free Bet?',
+                            onclick: function() {
+                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5><br>');  // Insert content on selection
+                            }
+                        },
                     ]
                 },
                 {
@@ -771,6 +799,22 @@ tncRegionDropdown.addEventListener('change', () => {
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(CNtemplate);
                         break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(CNtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(CNtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(CNSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(CNFPtemplate);
+                        break;
                 }
             })
             break;
@@ -797,6 +841,22 @@ tncRegionDropdown.addEventListener('change', () => {
                     case 'SCFP':
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(VNtemplate);
+                        break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(VNtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(VNtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(VNSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(VNFPtemplate);
                         break;
                 }
             })
@@ -825,6 +885,22 @@ tncRegionDropdown.addEventListener('change', () => {
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(THtemplate);
                         break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(THtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(THtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(THSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(THFPtemplate);
+                        break;
                 }
             })
             break;
@@ -851,6 +927,22 @@ tncRegionDropdown.addEventListener('change', () => {
                     case 'SCFP':
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(KRtemplate);
+                        break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(KRtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(KRtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(KRSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(KRFPtemplate);
                         break;
                 }
             })
@@ -879,6 +971,22 @@ tncRegionDropdown.addEventListener('change', () => {
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(IDtemplate);
                         break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(IDtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(IDtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(IDSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(IDFPtemplate);
+                        break;
                 }
             })
             break;
@@ -905,6 +1013,22 @@ tncRegionDropdown.addEventListener('change', () => {
                     case 'SCFP':
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(KHtemplate);
+                        break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(KHtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(KHtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(KHSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(KHFPtemplate);
                         break;
                 }
             })
@@ -933,6 +1057,22 @@ tncRegionDropdown.addEventListener('change', () => {
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(JPtemplate);
                         break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(JPtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(JPtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(JPSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(JPFPtemplate);
+                        break;
                 }
             })
             break;
@@ -959,6 +1099,22 @@ tncRegionDropdown.addEventListener('change', () => {
                     case 'SCFP':
                         tinymce.get('mytextarea').setContent(ENtemplate);
                         tinymce.get('mytextarea2').setContent(INtemplate);
+                        break;
+                    case 'T1':
+                        tinymce.get('mytextarea').setContent(ENSCtemplate);
+                        tinymce.get('mytextarea2').setContent(INtemplate);
+                        break;
+                    case 'T2':
+                        tinymce.get('mytextarea').setContent(ENFPtemplate);
+                        tinymce.get('mytextarea2').setContent(INtemplate);
+                        break;
+                    case 'T3':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(INSCtemplate);
+                        break;
+                    case 'T4':
+                        tinymce.get('mytextarea').setContent(ENtemplate);
+                        tinymce.get('mytextarea2').setContent(INFPtemplate);
                         break;
                 }
             })
@@ -1232,12 +1388,16 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('<h5 id="en-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/china/202507/en-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             .replaceAll('<h5 id="zh-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">查找您的XJ彩票免费投注金</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/china/202507/zh-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             //indonesia
-            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202505/en-gb_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202505/id-id_IDFSNOLIMITC-0525_where-to-find-your-free-spins.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-gb_THD-0725-2_where-to-find-your-free-spins.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_THD-0725-2_where-to-find-your-free-spins.html\'" /></IncludeContent>')
             .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
+            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-gb_THD-0725_how-to-participate-in-this-promotion.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_THD-0725_how-to-participate-in-this-promotion.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html\'" /></IncludeContent>')
             //japan
             .replaceAll('<h5 id="en-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Japan/202505/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
             .replaceAll('<h5 id="ja-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">スポーツ専用フリーベットはここで確認</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')

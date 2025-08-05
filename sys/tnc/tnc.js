@@ -8,12 +8,25 @@ const image_lib = {
             'https://doc.188contents.com/star4-content/templates/promotions/images/en-USDT.png',
             'https://doc.188contents.com/star4-content/templates/promotions/images/cn-USDT.png',
             ],
+    vietnam: [''],
+    thailand: ['https://doc.188contents.com/taptap-content/templates/promotions/images/th-th/retention-cashback-flow-bonus.png',
+            ],
+    korea: [''],
     indonesia: ['https://doc.188contents.com/star4-content/images/banners/promotion/2025-03-Mar/BDAYPROMO-0225/BDAYPROMO-0225.png?v=7',
                 'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/EUROREDEPOLEJ-0624/EUROREDEPOLEJ-0624-image01.webp'
-            ]
+            ],
+    cambodia: [''],
+    japan: [''],
+    india: [''],
 }
 document.getElementById('zh-image-array-container').innerHTML = `${image_lib.china.map(chinaAssets => `<img src="${chinaAssets}" class="zh-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('vn-image-array-container').innerHTML = `${image_lib.vietnam.map(vietnamAssets => `<img src="${vietnamAssets}" class="vn-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('th-image-array-container').innerHTML = `${image_lib.thailand.map(thailandAssets => `<img src="${thailandAssets}" class="th-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('kr-image-array-container').innerHTML = `${image_lib.korea.map(koreaAssets => `<img src="${koreaAssets}" class="kr-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
 document.getElementById('id-image-array-container').innerHTML = `${image_lib.indonesia.map(indonesiaAssets => `<img src="${indonesiaAssets}" class="id-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('kh-image-array-container').innerHTML = `${image_lib.cambodia.map(cambodiaAssets => `<img src="${cambodiaAssets}" class="kh-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('jp-image-array-container').innerHTML = `${image_lib.japan.map(japanAssets => `<img src="${japanAssets}" class="jp-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
+document.getElementById('in-image-array-container').innerHTML = `${image_lib.india.map(indiaAssets => `<img src="${indiaAssets}" class="ind-image rounded-md hover:border-2 border-[#ff9200] cursor-pointer">`).join('')}`
 
 //This is for game components
 //table
@@ -265,9 +278,33 @@ tinymce.init({
                 document.querySelectorAll('.zh-image').forEach(zh => {
                     zh.onclick = () => editor.insertContent(`<img src="${zh.src}"><br>`)
                 })
+                //Vietnam click listener
+                document.querySelectorAll('.vn-image').forEach(vn => {
+                    vn.onclick = () => editor.insertContent(`<img src="${vn.src}"><br>`)
+                })
+                //Thailand click listener
+                document.querySelectorAll('.th-image').forEach(th => {
+                    th.onclick = () => editor.insertContent(`<img src="${th.src}"><br>`)
+                })
+                //Korea click listener
+                document.querySelectorAll('.kr-image').forEach(kr => {
+                    kr.onclick = () => editor.insertContent(`<img src="${kr.src}"><br>`)
+                })
                 //Indonesia click listener
                 document.querySelectorAll('.id-image').forEach(id => {
                     id.onclick = () => editor.insertContent(`<img src="${id.src}"><br>`)
+                })
+                //Cambodia click listener
+                document.querySelectorAll('.kh-image').forEach(kh => {
+                    kh.onclick = () => editor.insertContent(`<img src="${kh.src}"><br>`)
+                })
+                //Japan click listener
+                document.querySelectorAll('.jp-image').forEach(jp => {
+                    jp.onclick = () => editor.insertContent(`<img src="${jp.src}"><br>`)
+                })
+                //India click listener
+                document.querySelectorAll('.ind-image').forEach(ind => {
+                    ind.onclick = () => editor.insertContent(`<img src="${ind.src}"><br>`)
                 })
             }
         });

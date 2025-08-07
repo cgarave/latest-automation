@@ -11,7 +11,7 @@ const image_lib = {
     vietnam: [''],
     thailand: ['https://doc.188contents.com/taptap-content/templates/promotions/images/th-th/retention-cashback-flow-bonus.png',
             ],
-    korea: [''],
+    korea: ['https://doc.188contents.com/star4-content/images/banners/promotion/2023-02-Feb/NBGLOTTOHOTTRENDPROMO-0223/en-vn-1_NBGLOTTOHOTTRENDPROMO-0223.webp'],
     indonesia: ['https://doc.188contents.com/star4-content/images/banners/promotion/2025-03-Mar/BDAYPROMO-0225/BDAYPROMO-0225.png?v=7',
                 'https://doc.188contents.com/star4-content/images/banners/promotion/2024-06-Jun/EUROREDEPOLEJ-0624/EUROREDEPOLEJ-0624-image01.webp'
             ],
@@ -173,6 +173,7 @@ tinymce.init({
             .replaceAll('</ol><ul>', '')
             .replaceAll('</ul><ol>', '')
             .replaceAll('<p> </p>', '<br>')
+            .replace(/<\/strong>\s*<strong>/g, '')
 
             //this section is for removing unnecessary html elements exported from my old automation
             .replace(/<div id="(.*?)" class="hidden" style="visibility: hidden; display: none;">1<\/div>/g, '')
@@ -200,16 +201,16 @@ tinymce.init({
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/china\/202507\/en-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/china\/202507\/zh-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="zh-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">查找您的XJ彩票免费投注金</h5><br>')
             //indonesia
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5><br>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga</h5><br>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-gb_THD-0725-2_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_THD-0725-2_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet?</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-gb_THD-0725-2_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins?</h5><br>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_THD-0725-2_where-to-find-your-free-spins.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free Spin?</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/en-gb_THD-0725_how-to-participate-in-this-promotion.html'">\s*<\/includecontent>/g,'<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_THD-0725_how-to-participate-in-this-promotion.html'">\s*<\/includecontent>/g,'<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202507\/id-id_THD-0725_how-to-participate-in-this-promotion.html'">\s*<\/includecontent>/g,'<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Bagaiman cara mengikuti promosi ini?</h5>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html'">\s*<\/includecontent>/g,'<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>')
-            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html'">\s*<\/includecontent>/g,'<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>')
+            .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Indonesia\/202408\/id-id_188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html'">\s*<\/includecontent>/g,'<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Evolution?</h5>')
             //japan
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="en-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5><br>')
             .replace(/<includecontent :init-collapse="isClaimed" :url="gv.domains.content \+ '\/templates\/promotions\/Japan\/202505\/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html'">\s*<\/includecontent>/g, '<h5 id="ja-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">スポーツ専用フリーベットはここで確認</h5><br>')
@@ -548,25 +549,25 @@ tinymce.init({
                         {
                             text: '[EN-ID] Where to find your Sportbook Free Bet?',
                             onclick: function() {
-                            editor.insertContent('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5><br>');  // Insert content on selection
+                            editor.insertContent('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet?</h5><br>');  // Insert content on selection
                             }
                         },
                         {
-                            text: '[ID-ID] Dimana Anda dapat menemukan Free bet olahraga',
+                            text: '[ID-ID] Dimana Anda dapat menemukan Free bet olahraga?',
                             onclick: function() {
-                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga</h5><br>');  // Insert content on selection
+                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?</h5><br>');  // Insert content on selection
                             }
                         },
                         {
-                            text: '[EN-ID] Where to find your Free Spins',
+                            text: '[EN-ID] Where to find your Free Spins?',
                             onclick: function() {
-                            editor.insertContent('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>');  // Insert content on selection
+                            editor.insertContent('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins?</h5><br>');  // Insert content on selection
                             }
                         },
                         {
-                            text: '[ID-ID] Where to find your Free Spins',
+                            text: '[ID-ID] Dimana Anda dapat menemukan Free Spin?',
                             onclick: function() {
-                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5><br>');  // Insert content on selection
+                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free Spin?</h5><br>');  // Insert content on selection
                             }
                         },
                         {
@@ -588,9 +589,9 @@ tinymce.init({
                             }
                         },
                         {
-                            text: '[ID-ID] How to participate in this promotion?',
+                            text: '[ID-ID] Bagaiman cara mengikuti promosi ini?',
                             onclick: function() {
-                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5><br>');  // Insert content on selection
+                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Bagaiman cara mengikuti promosi ini?</h5><br>');  // Insert content on selection
                             }
                         },
                         {
@@ -600,9 +601,9 @@ tinymce.init({
                             }
                         },
                         {
-                            text: '[ID-ID] Where to find your Evolution Free Bet?',
+                            text: '[ID-ID] Dimana Anda dapat menemukan Free bet Evolution?',
                             onclick: function() {
-                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5><br>');  // Insert content on selection
+                            editor.insertContent('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Evolution?</h5><br>');  // Insert content on selection
                             }
                         },
                     ]
@@ -1388,16 +1389,16 @@ document.getElementById('download').addEventListener('click', () => {
             .replaceAll('<h5 id="en-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/china/202507/en-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             .replaceAll('<h5 id="zh-cn" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">查找您的XJ彩票免费投注金</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/china/202507/zh-cn_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             //indonesia
-            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-gb_THD-0725-2_where-to-find-your-free-spins.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_THD-0725-2_where-to-find-your-free-spins.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet olahraga?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Free Spins?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-gb_THD-0725-2_where-to-find-your-free-spins.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free Spin?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_THD-0725-2_where-to-find-your-free-spins.html\'" /></IncludeContent>')
             .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Lotto Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Lotto?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_188DAYBLUE-0824_where-to-find-your-lotto-free-bet.html\'"></IncludeContent>')
             .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/en-gb_THD-0725_how-to-participate-in-this-promotion.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">How to participate in this promotion?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_THD-0725_how-to-participate-in-this-promotion.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Bagaiman cara mengikuti promosi ini?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202507/id-id_THD-0725_how-to-participate-in-this-promotion.html\'" /></IncludeContent>')
             .replaceAll('<h5 id="en-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html\'" /></IncludeContent>')
-            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Evolution Free Bet?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html\'" /></IncludeContent>')
+            .replaceAll('<h5 id="id-id" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Dimana Anda dapat menemukan Free bet Evolution?</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Indonesia/202408/id-id_188DAYBLUE-0824_where-to-find-your-evolution-free-bet.html\'" /></IncludeContent>')
             //japan
             .replaceAll('<h5 id="en-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">Where to find your Sportbook Free Bet</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Japan/202505/en-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
             .replaceAll('<h5 id="ja-jp" class="non-editable" style="width: full; text-align: left; padding: 12px; background-color: #f5f5f5; border-left: 5px solid #5ba7ff;">スポーツ専用フリーベットはここで確認</h5>', '<IncludeContent :init-collapse="isClaimed" :url="gv.domains.content + \'/templates/promotions/Japan/202505/ja-jp_JPAFFSNSPROMO_0525_where-to-find-your-sportsbook-free-bet.html\'" /></IncludeContent>')
